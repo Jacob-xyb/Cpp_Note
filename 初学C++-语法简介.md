@@ -272,6 +272,30 @@ if( boolean_expression 1)
 }
 ```
 
+- 三目运算符
+
+ [**条件运算符 ? :**](https://www.runoob.com/cplusplus/cpp-conditional-operator.html) 可以用来替代 **if...else** 语句。它的一般形式如下：
+
+```
+Exp1 ? Exp2 : Exp3;
+```
+
+其中，Exp1、Exp2 和 Exp3 是表达式。请注意，冒号的使用和位置。
+
+? 表达式的值是由 Exp1 决定的。如果 Exp1 为真，则计算 Exp2 的值，结果即为整个 ? 表达式的值。如果 Exp1 为假，则计算 Exp3 的值，结果即为整个 ? 表达式的值。
+
+```cpp
+int a = 10; int b = 20; int c = 0;
+c = (a > b ? a : b);  // c 就是 a b 中最大的值
+```
+
+还可以对返回的变量继续赋值
+
+```cpp
+(a > b ? a : b) = 100;  // a b 中最大值会被重新赋值为 100
+cout << "a= " << a << ", b= " << b << endl;
+```
+
 - switch
 
 一个 **switch** 语句允许测试一个变量等于多个值时的情况。每个值称为一个 case，且被测试的变量会对每个 **switch case** 进行检查。
@@ -306,3 +330,60 @@ switch(expression){
 - 注意：
 
 1. `if`后面不能加分号，不然无论是否满足条件都会执行下面语句。 
+2. `switch`缺点，判断时候只能是整型或者字符型，不可以是一个区间
+3. `switch`优点，结构清晰，执行效率高。
+
+# 循环结构
+
+## while 循环
+
+```cpp
+while(condition)
+{
+   statement(s);
+}
+```
+
+## do...while循环
+
+**do...while** 循环是在循环的尾部检查它的条件。
+
+```cpp
+do
+{
+   statement(s);
+
+}while( condition );
+```
+
+请注意，条件表达式出现在循环的尾部，所以循环中的 statement(s) 会在条件被测试之前至少执行一次。
+
+## for 循环
+
+```cpp
+for ( init; condition; increment )
+{
+   statement(s);
+}
+```
+
+下面是 for 循环的控制流：
+
+1. **init** 会首先被执行，且只会执行一次。这一步允许您声明并初始化任何循环控制变量。您也可以不在这里写任何语句，只要有一个分号出现即可。
+2. 接下来，会判断 **condition**。如果为真，则执行循环主体。如果为假，则不执行循环主体，且控制流会跳转到紧接着 for 循环的下一条语句。
+3. 在执行完 for 循环主体后，控制流会跳回上面的 **increment** 语句。该语句允许您更新循环控制变量。该语句可以留空，只要在条件后有一个分号出现即可。
+4. 条件再次被判断。如果为真，则执行循环，这个过程会不断重复（循环主体，然后增加步值，再然后重新判断条件）。在条件变为假时，for 循环终止。
+
+示例：
+
+```cpp
+int main(){
+    for (int i = 0; i < 10; i++)
+    {
+        cout << i << endl;
+    }
+    system("pause");
+    return 0;
+}
+```
+
