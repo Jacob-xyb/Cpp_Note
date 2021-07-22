@@ -29,12 +29,14 @@ void allocateSpace(struct Teacher tcArr[], int len)
     // 给老师赋值
     for (int i = 0; i < len; i++)
     {
-        tcArr[i].tName = "Teacher_" + nameSeed[i];
+        tcArr[i].tName = "Teacher_"; 
+        tcArr[i].tName += nameSeed[i];
 
         // 每个老师带5个学生
         for (int j = 0; j < stuLen; j++)
         {
-            tcArr[i].stuArr[j].sName = "Student_" + nameSeed[j];
+            tcArr[i].stuArr[j].sName = "Student_";
+            tcArr[i].stuArr[j].sName += nameSeed[j];
             tcArr[i].stuArr[j].score = 60;
         }
         
@@ -70,8 +72,6 @@ int main()
     allocateSpace(tcArr,len);
 
     printInfo(tcArr,len);
-
-    cout << tcArr[0].tName;
     
     return 0;
 }
