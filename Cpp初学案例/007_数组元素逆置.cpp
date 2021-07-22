@@ -23,5 +23,5 @@ int main()
         cout << rearr[i] << ",";
     }
     
-    
+    return 0;
 }
