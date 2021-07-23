@@ -7,6 +7,8 @@
 */
 
 #include <iostream>
+#include <ctime>  // 导入时间模块
+
 using namespace std;
 
 struct Student
@@ -23,7 +25,8 @@ struct Teacher
 
 // 创建赋值函数
 void allocateSpace(struct Teacher tcArr[], int len)
-{
+{   
+    srand((unsigned int)time(NULL));  // 根据时间生成一个随机数就是一个 真随机数，不然 rand()只会是一个 伪随机数。
     string nameSeed = "ABCDE";
     int stuLen = sizeof(tcArr[0].stuArr)/sizeof(tcArr[0].stuArr[0]);
     // 给老师赋值
@@ -37,7 +40,7 @@ void allocateSpace(struct Teacher tcArr[], int len)
         {
             tcArr[i].stuArr[j].sName = "Student_";
             tcArr[i].stuArr[j].sName += nameSeed[j];
-            tcArr[i].stuArr[j].score = 60;
+            tcArr[i].stuArr[j].score =  rand() % 101;
         }
         
     }
@@ -57,7 +60,7 @@ void printInfo(struct Teacher tcArr[],int len)
                  << tcArr[i].stuArr[j].score << "\t";
         }
 
-        cout << endl;
+        cout << endl << endl;
     }
     
 }
