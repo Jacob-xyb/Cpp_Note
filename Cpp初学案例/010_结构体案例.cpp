@@ -38,8 +38,21 @@ void allocateSpace(struct Teacher tcArr[], int len)
         // 每个老师带5个学生
         for (int j = 0; j < stuLen; j++)
         {
+            //test 历史遗留难题
+            // tcArr[i].stuArr[j].sName = "Student_";
+            // tcArr[i].stuArr[j].sName += nameSeed[j];
+
+            // tcArr[i].stuArr[j].sName = string("Student_") + nameSeed[j];
+
+            // tcArr[i].stuArr[j].sName = string("Student_") + string(nameSeed[j]);
+
+            // tcArr[i].stuArr[j].sName = "Student_" + string("Student_") + nameSeed[j];
+            // tcArr[i].stuArr[j].sName = string("Student_") + nameSeed[j] + "Student_";
+
+            // 不会出错的写法
             tcArr[i].stuArr[j].sName = "Student_";
             tcArr[i].stuArr[j].sName += nameSeed[j];
+            
             tcArr[i].stuArr[j].score =  rand() % 101;
         }
         
