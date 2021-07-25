@@ -3,6 +3,33 @@ using namespace std;
 #define MAX 1000        // 最大人数
 // 显示菜单界面
 
+// int 类型输入判断
+void TypeInt(int *val)
+{   
+    while(cin.fail())
+    {
+        cin.clear();
+        cin.ignore();
+        cout << "输入错误，请输入一个整数：";
+        cin >> *val;
+    }
+}
+
+// 打断点，清屏
+void SleepAndClear()
+{
+    // clear
+    // windows
+    // system("pause");
+    // system("cls");    
+
+    // mac
+    cout << "please press any key to continue...";
+    string PAUSE;
+    cin >> PAUSE;
+    system("clear");
+}
+
 void printStart(int len)
 {
     for (int i = 0; i < len; i++)
@@ -38,8 +65,10 @@ void showMenu()
     cout << endl;
 } 
 
+// 结构体：人
 struct Person
-{
+{   
+    // 姓名；性别；年龄；电话；地址
     string m_Name;
     int m_Sex;      // 性别 1男 2女
     int m_Age;
@@ -54,6 +83,7 @@ struct AddressBooks
     int m_Size;     // 通讯录中人员个数
 };
 
+// 1、添加联系人
 void addPerson(struct AddressBooks * abs)
 {
     // 判断通讯录是否已满，如果满了就不再添加
@@ -78,6 +108,7 @@ void addPerson(struct AddressBooks * abs)
         while (true)
         {   
             cin >> sex;
+            TypeInt(&sex);
             if (sex == 1 || sex ==2)
             {
                 abs->personArray[abs->m_Size].m_Sex = sex;
@@ -85,27 +116,68 @@ void addPerson(struct AddressBooks * abs)
             }
             cout << "性别输入有误，请重新输入：";            
         }
+        // add age
+        int age;
+        cout << "请输入年龄：" <<endl;
+        while (true)    
+        {
+            cin >> age;
+            TypeInt(&age);
+            if (age >= 0)
+            {
+                abs->personArray[abs->m_Size].m_Age = age;
+                break;
+            }
+            else
+            {
+                cout << "请输入正确年龄：" << endl;
+            }
+        }
+
         // add phone
         string phone;
         cout << "请输入电话号码：" << endl;
         cin >> phone;
         abs->personArray[abs->m_Size].m_Phone = phone;
-        // add age
-        
-        // while (true)    
-        // {
-            // cin >> age;
-        // }
         
         // add address
         cout << "请输入住址：" << endl;
+        string address;
+        cin >> address;
+        abs->personArray[abs->m_Size].m_Addr = address;
 
-        
-        
+        // update adressBook
+        abs->m_Size++;
+        cout << "添加成功" << endl;    
 
+        // clear
+        SleepAndClear();
     }
-    
-    
+}
+
+// 2、显示联系人
+void showPerson(struct AddressBooks * abs)
+{
+    // 先判断通讯录人数
+    if (abs->m_Size == 0)
+    {
+        cout << "当前记录为空" << endl;
+    }
+    else
+    {
+        for(int i = 0; i < abs->m_Size; i++)
+        {
+            cout << "姓名：" << abs->personArray[i].m_Name << endl;
+            cout << "性别：" << 
+            (abs->personArray[i].m_Age == 1 ? "男" : "女") << "\t";
+            cout << "年龄：" << abs->personArray[i].m_Age << "\t";            
+            cout << "电话" << abs->personArray[i].m_Phone << endl;            
+            cout << "地址" << abs->personArray[i].m_Addr << endl;          
+        }
+    }
+
+    // clear
+    SleepAndClear();
 }
 
 int main()
@@ -114,9 +186,10 @@ int main()
     struct AddressBooks abs;
     // 初始化通讯录中的当前人员个数
     abs.m_Size = 0;
- 
     int select = 0;
-
+    
+    cout << "开始运行：" << endl;
+    
     while (true)
     {
         showMenu();
@@ -129,6 +202,7 @@ int main()
             addPerson(&abs);    // 利用地址传递可以修饰实参
             break;
         case 2:     // "2、显示联系人",
+            showPerson(&abs);
             break;
         case 3:     // "3、删除联系人",
             break;
@@ -152,3 +226,4 @@ int main()
  
     return 0;
 }
+
