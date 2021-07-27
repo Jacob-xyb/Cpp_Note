@@ -14,7 +14,7 @@ void TypeInt(int* val)
 	while (cin.fail())
 	{
 		cin.clear();		// 错误位重置，这句话一定要写的
-		cin.ignore();
+		cin.ignore();		// TODO; 输入多个错误无法处理
 		cout << "输入错误，请输入一个整数：";
 		cin >> *val;
 	}
