@@ -55,6 +55,29 @@ struct AddressBooks
 	int m_Size;     // 通讯录中人员个数
 };
 
+// 共用函数
+int isNull(struct AddressBooks* abs)
+{
+	if (abs->m_Size < 1)
+	{	
+		cout << "当前通讯录为空" << endl;
+		return 0;
+	}
+	return 1;
+}
+
+// 打印联系人
+void prtSinglePerson(Person abs[], int i)
+{
+	cout << "姓名：" << abs[i].m_Name << endl;
+	cout << "性别：" <<
+		(abs[i].m_Sex == 1 ? "男" : "女") << "\t";
+	cout << "年龄：" << abs[i].m_Age << "\t";
+	cout << "电话" << abs[i].m_Phone << endl;
+	cout << "地址" << abs[i].m_Addr << endl;
+	cout << endl;
+}
+
 // 1、添加联系人
 void addPerson(struct AddressBooks* abs)
 {
@@ -105,7 +128,6 @@ void addPerson(struct AddressBooks* abs)
 				cout << "请输入正确年龄：" << endl;
 			}
 		}
-
 		// add phone
 		string phone;
 		cout << "请输入电话号码：" << endl;
@@ -131,20 +153,15 @@ void addPerson(struct AddressBooks* abs)
 void showPerson(struct AddressBooks* abs)
 {
 	// 先判断通讯录人数
-	if (abs->m_Size == 0)
+	if (! isNull(abs))
 	{
-		cout << "当前记录为空" << endl;
 	}
 	else
 	{
+		cout << endl;
 		for (int i = 0; i < abs->m_Size; i++)
 		{
-			cout << "姓名：" << abs->personArray[i].m_Name << endl;
-			cout << "性别：" <<
-				(abs->personArray[i].m_Age == 1 ? "男" : "女") << "\t";
-			cout << "年龄：" << abs->personArray[i].m_Age << "\t";
-			cout << "电话" << abs->personArray[i].m_Phone << endl;
-			cout << "地址" << abs->personArray[i].m_Addr << endl;
+			prtSinglePerson(abs->personArray, i);
 		}
 	}
 
@@ -153,20 +170,26 @@ void showPerson(struct AddressBooks* abs)
 }
 
 // 3、删除联系人
-// 判读联系人是否存在，返回联系人所在数组中的具体位置，不存在放回-1
 int isExist(AddressBooks* abs, string name)
 {
+	 //判读联系人是否存在，返回联系人所在数组中的具体位置，不存在放回-1
 	for (int i = 0; i < abs->m_Size; i++)
 	{
-		if (abs->personArray[i].m_Name == name)
+	if (abs->personArray[i].m_Name == name)
 			return i;
 	}
 	return -1;
 }
 
 void deletePerson(AddressBooks* abs)
-{
-	cout << "请输入您要的联系人" << endl;
+{	
+	if (! isNull(abs))
+	{
+		// clear
+		SleepAndClear();
+		return;
+	}
+	cout << "请输入您想要删除的联系人" << endl;
 	string name;
 	cin >> name;
 	// ret == -1 没查到
@@ -189,19 +212,162 @@ void deletePerson(AddressBooks* abs)
 	SleepAndClear();
 }
 
+// 4、查找联系人
+void findPerson(struct AddressBooks* abs)
+{
+	// 先判断是否为空
+	if (!isNull(abs))
+	{
+		SleepAndClear();
+		return;
+	}
+	else
+	{
+		cout << "请输入您想查找的联系人姓名：" << endl;
+		string name;
+		cin >> name;
+		// for 循环查找
+		int ret = isExist(abs, name);
+		if (ret != -1)
+		{
+			cout << endl;
+			prtSinglePerson(abs->personArray, ret);
+		}
+		else
+		{
+			cout << "联系人\"" << name << "\"不在通讯录中" << endl;
+		}
+
+		// cls
+		SleepAndClear();
+	}
+}
+
+// 5、修改联系人
+void modifyPerson(AddressBooks* abs)
+{	
+	// 先判断是否为空
+	if (!isNull(abs))
+	{
+		SleepAndClear();
+		return;
+	}
+	// 找寻过程中判断是否存在
+	cout << "请输入您要修改的联系人" << endl;
+	string name;
+	cin >> name;
+	int ret = isExist(abs, name);
+	if (ret == -1)
+	{
+		cout << "查无此人" << endl;
+		system("cls");
+	}
+	// modify person
+	else
+	{
+		system("cls");
+		// 声明菜单变量
+		string menuArr[] = {
+			"1、修改联系人姓名",
+			"2、修改联系人性别",
+			"3、修改联系人年龄",
+			"4、修改联系人电话",
+			"5、修改联系人地址",
+			"0、退出修改",
+		};
+		while (true)
+		{	
+			// 打印菜单
+			for (int i = 0; i < 5; i++)
+			{
+				cout << "****  " << menuArr[i] << "  ****" << endl;
+			}
+			cout << "****  " << menuArr[5] << "        ****" << endl;
+			// 打印需要修改的用户信息
+			cout << "当前用户信息为：" << endl;
+			cout << endl;
+			prtSinglePerson(abs->personArray,ret);
+
+			// 用户输入
+			cout << "请输入修改项目：" << endl;
+			int mSelect;
+			cin >> mSelect;
+			TypeInt(&mSelect);
+			string tempS;
+			int tempI;
+			switch (mSelect)
+			{
+			case 1:
+				cout << "请输入修改后姓名" << endl;
+				cin >> tempS;
+				abs->personArray[ret].m_Name = tempS;
+				break;
+			case 2:
+				cout << "请输入修改后性别" << endl;
+				while (true)	// 指定输入 1 or 2
+				{
+					cin >> tempI;
+					TypeInt(&tempI);
+					if (tempI == 1 || tempI == 2)
+					{
+						abs->personArray[ret].m_Sex = tempI;
+						break;
+					}
+					cout << "性别输入有误，请重新输入：";
+				}
+				break;
+			case 3:
+				cout << "请输入修改后年龄" << endl;
+				while (true)
+				{
+					cin >> tempI;
+					TypeInt(&tempI);
+					if (tempI >= 0)
+					{
+						abs->personArray[ret].m_Age = tempI;
+						break;
+					}
+					else
+					{
+						cout << "请输入正确年龄：" << endl;
+					}
+				}
+				break;
+			case 4:
+				cout << "请输入修改后电话" << endl;
+				cin >> tempS;
+				abs->personArray[ret].m_Phone = tempS;
+				break;
+			case 5:
+				cout << "请输入修改后地址" << endl;
+				cin >> tempS;
+				abs->personArray[ret].m_Addr = tempS;
+				break;
+			case 0:
+				system("cls");
+				return;
+			default:
+				break;
+			}
+			system("cls");
+		}
+	}
+}
+
 int main()
 {
 	// 创建通讯录结构体变量
 	struct AddressBooks abs;
 	// 初始化通讯录中的当前人员个数
 	abs.m_Size = 0;
-	int select = 0;
+
 
 	while (true)
 	{
 		showMenu();
-
+		int select = 0;
 		cin >> select;
+		TypeInt(&select);
 
 		switch (select)
 		{
@@ -212,10 +378,13 @@ int main()
 			showPerson(&abs);
 			break;
 		case 3:     // "3、删除联系人",
+			deletePerson(&abs);
 			break;
 		case 4:     // "4、查找联系人",
+			findPerson(&abs);
 			break;
 		case 5:     // "5、修改联系人",
+			modifyPerson(&abs);
 			break;
 		case 6:     // "6、清空联系人",
 			break;
@@ -223,12 +392,10 @@ int main()
 			cout << "欢迎下次使用" << endl;
 			system("pause");
 			return 0;
-			break;
 		default:
+			system("cls");
 			break;
 		}
-
-		cout << endl;
 	}
 
 	return 0;
