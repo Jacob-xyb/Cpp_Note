@@ -177,8 +177,16 @@ void deletePerson(AddressBooks* abs)
 	}
 	else
 	{
-		// TODO
+		// 查询到后进行数组左移实现删除操作
+		for (int i = ret; i < abs->m_Size; i++)
+		{
+			abs->personArray[i] = abs->personArray[i + 1];
+		}
+		abs->m_Size --;
+		cout << "删除成功" << endl;
 	}
+	// clear
+	SleepAndClear();
 }
 
 int main()
