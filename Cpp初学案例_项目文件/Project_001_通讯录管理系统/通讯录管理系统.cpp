@@ -354,6 +354,25 @@ void modifyPerson(AddressBooks* abs)
 	}
 }
 
+// 6.清空联系人
+void cleanPerson(AddressBooks* abs)
+{
+	cout << "当前通讯录共有：" << abs->m_Size << "人" << endl;
+	cout << "请确认是否清空联系人(yes/no)" << endl;
+	string choose;
+	cin >> choose;
+	if (choose == "yes")
+	{
+		abs->m_Size = 0;
+		cout << "通讯录已清空" << endl;
+	}
+	else
+	{
+		cout << "输入错误，未能成功清空联系人" << endl;
+	}
+	SleepAndClear();
+}
+
 int main()
 {
 	// 创建通讯录结构体变量
@@ -387,6 +406,7 @@ int main()
 			modifyPerson(&abs);
 			break;
 		case 6:     // "6、清空联系人",
+			cleanPerson(&abs);
 			break;
 		case 0:     // "0、退出通讯录",
 			cout << "欢迎下次使用" << endl;
