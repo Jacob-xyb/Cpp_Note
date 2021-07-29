@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="017_杨辉三角形.cpp">
+    <ClCompile Include="020_猴子吃桃问题.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
