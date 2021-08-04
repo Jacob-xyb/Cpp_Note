@@ -5,7 +5,7 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-//void vector_007();
-void string_002();
+//void vector_008();
+void vector_010();
 
-#define test() string_002()
+#define test() vector_010()
