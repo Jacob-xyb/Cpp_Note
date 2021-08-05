@@ -6,6 +6,6 @@ using namespace std;
 
 // º¯ÊıÉùÃ÷
 //void vector_008();
-void vector_010();
+void vector_C11_eg001();
 
-#define test() vector_010()
+#define test() vector_C11_eg001()
