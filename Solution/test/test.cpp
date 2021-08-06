@@ -1,33 +1,12 @@
 #include <iostream>
+#include "..\..\Cpp进阶案例(STL)\实现原理\Jx_test.h"
 using namespace std;
-
-class Person
-{
-public:
-    void showPersonClass()
-    {
-        cout << "This is Person class!" << endl;
-    }
-    void showPersonAge()
-    {
-        cout << "age = " << m_Age << endl;
-    }
-    int m_Age;
-};
-void test01()
-{
-    Person * p = NULL;
- 
-    p->showPersonClass();
-    //p->showPersonAge();
-}
-
 
 
 int main()
 {
 
-    test01();
+	test();
 	system("pause");
 	return 0;
 }

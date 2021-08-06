@@ -453,37 +453,6 @@ void vector_014()
 }
 
 
-// 研究一下二维向量
-void vector_015()
-{
-    vector<vector<int>> v;
-    cout << "空的二维数组对象容量为：" << v.capacity() << endl;
-    // 创建小容器
-    vector<int> v1;
-    cout << "空的一维数组对象容量为：" << v1.capacity() << endl;
-    vector<int> v2;
-    vector<int> v3;
-    vector<int> v4;
-    // 向小容器中添加数据
-    for (int i = 0; i < 4; i++)
-    {
-        v1.push_back(i + 1);
-        v2.push_back(i + 2);
-        v3.push_back(i + 3);
-        v4.push_back(i + 4);
-    }
-    // 将小容器插入到大容器中
-    v.push_back(v1);
-    v.push_back(v2);
-    v.push_back(v3);
-    v.push_back(v4);
-    // 通过大容器，遍历所有数据
-    printVector(v);
-
-    //cout << v[1][1] << endl;    // 说明可以v[][]调用某一个元素
-    //printVector(v[1]);  // 说明v[row]是一个vector<>尖括号内的对象
-
-}
 
 // vector与数组联动
 void vector_016()
@@ -519,7 +488,7 @@ void vector_016()
 }
 
 
-// vector 新特性
+// vector 新特性创建向量
 void vector_C11_eg001()
 {
     // 直接用数组创建向量
@@ -528,7 +497,29 @@ void vector_C11_eg001()
     cout << "新特性创建一维数组v1：" << endl;
     printVector(ivt_v1);
     cout << endl;
-
     //  二维数组
+    vector<vector<int>> ivt_vv1{ {1,2,3},{2,3,4},{3,4,5} };
+    printVector(ivt_vv1);
+}
+
+
+// 研究一下二维向量
+void vector_015()
+{
+    vector<vector<int>> v;
+    cout << "空的二维数组对象容量为：" << v.capacity() << endl;
+    // 创建小容器
+    vector<int> v1;
+    cout << "空的一维数组对象容量为：" << v1.capacity() << endl;
+    v1 = { 1,2,3,4 };   // 向小容器中添加数据
+    for (int i = 0; i < 4; i++)
+    {
+        v.push_back(v1);
+    }
+    // 通过大容器，遍历所有数据
+    printVector(v);
+
+    //cout << v[1][1] << endl;    // 说明可以v[][]调用某一个元素
+    //printVector(v[1]);  // 说明v[row]是一个vector<>尖括号内的对象
 
 }
