@@ -521,5 +521,21 @@ void vector_015()
 
     //cout << v[1][1] << endl;    // 说明可以v[][]调用某一个元素
     //printVector(v[1]);  // 说明v[row]是一个vector<>尖括号内的对象
+}
 
+//vector区间
+void vector_017()
+{
+    vector<int> v{ 0,1,2,3,4,5,6 };
+    //创建一个v1，size()小于v.size()
+    vector<int> v1(3);
+    copy(v.begin(),v.begin() + 2, v1.begin());
+    printVector(v1);    
+    //  在范围内进行拷贝当然是没有问题
+    //copy(v.begin(), v.end(), v1.begin());
+    //printVector(v1);
+    ////  在范围外进行拷贝就会报错，程序崩溃
+
+    //assign比较便捷
+    //printVector((v.begin(), v.end()));
 }
