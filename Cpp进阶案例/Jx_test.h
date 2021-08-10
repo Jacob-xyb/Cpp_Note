@@ -1,4 +1,5 @@
-// STL_Note.h
+// test.h
+
 #include <iostream>
 using namespace std;
 #include <vector>
@@ -6,7 +7,6 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-//void vector_008();
-void vector_015();
+void variable_in_for001();
 
-#define test() vector_015()
+#define test() variable_in_for001()

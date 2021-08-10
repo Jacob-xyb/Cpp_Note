@@ -77,7 +77,7 @@ void string_005()
 	jx += " have ";
 	cout << "string& operator+=(const char* str);" << jx << endl;
 	//-`string& operator+=(const char c); `		// 重载+=操作符
-	jx += ' a';
+	jx += " a";
 	cout << "string& operator+=(const char c); " << jx << endl;
 	//-`string& operator+=(const string & str); `		// 重载+=操作符
 	string str = " hobby";

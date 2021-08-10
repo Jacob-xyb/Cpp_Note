@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    test();
+    variable_in_for001();
 
     system("pause");
     return 0;
