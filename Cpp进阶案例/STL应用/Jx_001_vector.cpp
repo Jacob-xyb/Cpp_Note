@@ -221,7 +221,7 @@ void vector_008()
     // n个elem方式构造
     vector<int> v3(10, 100);
     printVector(v3);
-    //  elem不写不会报错，elem会被初始化为0
+    //  elem不写不会报错，elem会被初始化为0  //Jx_star
     vector<int> v5(10);
     cout << "v5容量：" << v5.capacity() << endl;
     printVector(v5);
@@ -255,6 +255,11 @@ void vector_009()
     cout << "n个elem拷贝赋值" << endl;
     v2.assign(10, 10);
     printVector(v2);
+
+    // v1继续直接赋值
+    v1 = v2;
+    cout << "看看v1赋值后的结果" << endl;
+    printVector(v1);
 }
 
 
@@ -503,7 +508,7 @@ void vector_C11_eg001()
 }
 
 
-// 研究一下二维向量
+//研究一下二维向量
 void vector_015()
 {
     vector<vector<int>> v;
@@ -523,6 +528,45 @@ void vector_015()
     //printVector(v[1]);  // 说明v[row]是一个vector<>尖括号内的对象
 }
 
+//  二维数组的申明
+void vector_2dim001()
+{
+    //声明一维向量的方式：
+    //  `vector(n, elem);`
+    vector<int> dim1_v1(10);
+    cout << "如果不填elem，则初始化为0" << endl;
+    printVector(dim1_v1);
+    vector<int> dim1_v2(10, 1);
+    cout << "如果填elem，则初始化为elem" << endl;
+    printVector(dim1_v2);
+    //  其实(n,elem)中：
+    //      n：指代vector<>中<>内的数量
+    //      elem：指代vector<>中<>内的内容
+
+    //将一维数组的构造类比到二维数组的构造上
+    //  创建m*n的数组
+    //vector<vector<int>> dim2_v1(m, vector<int>(n));
+    vector<vector<int>> dim2_v1(3, vector<int>(3));
+    cout << "查看构造的二维数组" << endl;
+    printVector(dim2_v1);
+    vector<vector<int>> dim2_v2(3, vector<int>(3, 6));
+    cout << "查看构造的二维数组" << endl;
+    printVector(dim2_v2);
+    
+    //对二维数组的单行进行赋值
+    //  tips:可以超出原有数组长度进行赋值
+    dim2_v2[0] = { 1,2,3,4,5,6 };
+    cout << "单行赋值的二维数组" << endl;
+    printVector(dim2_v2);
+
+    //构建二维数组只输入一个参数
+    vector<vector<int>> dim2_v3(3);
+    cout << "构建二维数组只输入一个参数" << endl;
+    printVector(dim2_v3);   //输出为空
+    cout << "是否能调用空间" << endl;
+    //dim2_v3[0][0] = 1;    //不能调用空间，切记切记！
+}
+
 //vector区间
 void vector_017()
 {
@@ -538,4 +582,39 @@ void vector_017()
 
     //assign比较便捷
     //printVector((v.begin(), v.end()));
+}
+
+//二维数组resize()
+void vector_2dim002()
+{
+    vector<vector<int>> v1(3, { 6,6,6,6,6,6 });
+    cout << "打印初始创建的二维数组" << endl;
+    printVector(v1);
+    cout << "此时的容量：" << v1.capacity() << endl;  //这只是一行
+    cout << "此时的空间：" << v1.size() << endl;
+    cout << "再次计算整个二维数组" << endl;
+    cout << "此时的容量：" << v1.capacity()*v1[0].capacity() << endl;
+    cout << "此时的空间：" << v1.size()*v1[0].size() << endl;
+
+    v1.resize(4, {0,0});    //resize仅仅只针对v1<>里面的东西进行resize
+    printVector(v1);
+    cout << "再次计算整个二维数组" << endl;
+    cout << "此时的容量：" << v1.capacity() * v1[0].capacity() << endl;
+    cout << "此时的空间：" << v1.size() * v1[0].size() << endl;
+
+    v1[0].resize(12);
+    printVector(v1);
+    cout << "再次计算整个二维数组" << endl;
+    cout << "此时的容量：" << v1.capacity() * v1[0].capacity() << endl;
+    cout << "此时的空间：" << v1.size() * v1[0].size() << endl;
+    cout << "显然乘法不能够算出精确的容量和个数了" << endl;
+    int cap = 0, num = 0;
+    for (int i = 0; i < v1.size(); i++)
+    {
+        cap += v1[i].capacity();
+        num += v1[i].size();
+    }
+    cout << "再次计算整个二维数组" << endl;
+    cout << "此时的容量：" << cap << endl;
+    cout << "此时的空间：" << num << endl;
 }

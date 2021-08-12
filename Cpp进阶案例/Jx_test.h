@@ -7,6 +7,6 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void variable_in_for001();
+void vector_008();
 
-#define test() variable_in_for001()
+#define test() vector_008()

@@ -24,6 +24,9 @@
     <ClCompile Include="..\..\Cpp进阶案例\关键字\Jx_001_sizeof.cpp">
       <Filter>资源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Cpp进阶案例\STL应用\Jx_001_vector.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Cpp进阶案例\Jx_test.h">
