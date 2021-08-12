@@ -1,4 +1,4 @@
-#include "Jx_test.h"
+#include "../Jx_test.h"
 //#include <vector>
 //#include <algorithm>
 

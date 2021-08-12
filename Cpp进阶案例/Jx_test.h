@@ -7,6 +7,6 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void vector_008();
+void dataType003();
 
-#define test() vector_008()
+#define test() dataType003()

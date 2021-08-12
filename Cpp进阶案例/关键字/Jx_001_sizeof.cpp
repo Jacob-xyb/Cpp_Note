@@ -26,3 +26,14 @@ void sizeof_type001()
 	//cout << sizeof(float) << endl;
 }
 
+//查看当前系统下数据类型所占字节
+void sizeof_view001()
+{
+	cout << "查看当前系统下数据类型所占字节" << endl;
+	cout << "sizeof(int): " << sizeof(int) << endl;
+	cout << "sizeof(float): " << sizeof(float) << endl;
+	cout << "sizeof(double): " << sizeof(double) << endl;
+	cout << "sizeof(char): " << sizeof(char) << endl;
+	cout << "sizeof(bool): " << sizeof(bool) << endl;
+}
+
