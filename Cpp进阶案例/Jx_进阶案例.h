@@ -7,6 +7,6 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void dataType003();
+void vector_bool001();
 
-#define test() dataType003()
+#define test() vector_bool001()

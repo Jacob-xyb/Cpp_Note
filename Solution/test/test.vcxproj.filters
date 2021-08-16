@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Cpp进阶案例\Jx_000_test.cpp">
+    <ClCompile Include="..\..\Cpp进阶案例\Jx_000_进阶案例.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Cpp进阶案例\关键字\Jx_002_for.cpp">
@@ -32,7 +32,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Cpp进阶案例\Jx_test.h">
+    <ClInclude Include="..\..\Cpp进阶案例\Jx_进阶案例.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "../Jx_test.h"
+#include "../Jx_进阶案例.h"
 //#include <vector>
 //#include <algorithm>
 
@@ -617,4 +617,41 @@ void vector_2dim002()
     cout << "再次计算整个二维数组" << endl;
     cout << "此时的容量：" << cap << endl;
     cout << "此时的空间：" << num << endl;
+}
+
+//vector<bool>
+void vector_bool001()
+{
+    //首先看一下bool型打印出来是什么样的
+    vector<bool> vbool1{ true,false,true,false };
+    for (int i = 0; i < vbool1.size(); i++)
+    {
+        cout << vbool1[i] << " ";
+    }
+    cout << endl;
+    //1 0 1 0
+
+    //是否能用0 1创建bool型向量
+    vector<bool> vbool2(5, 1);
+    for (int i = 0; i < vbool2.size(); i++)
+    {
+        cout << vbool2[i] << " ";
+    }
+    cout << endl;
+    //1 1 1 1 1 //看来是可以的！
+    vector<bool> vbool3{ 0,1,0,1,0 };
+    for (int i = 0; i < vbool3.size(); i++)
+    {
+        cout << vbool3[i] << " ";
+    }
+    cout << endl;
+    //0 1 0 1 0 //这样也是可以的！
+    //vector<bool> vbool4{ 0,1,2,1,0 };   //只能 0 1
+    //vector<bool> vbool4{ 0,1,1.1,1,0 };   //只能 0 1
+    vector<bool> vbool4{ 0,1,1.0,1,0 };   //编译器有红线，但是可以执行
+    for (int i = 0; i < vbool4.size(); i++)
+    {
+        cout << vbool4[i] << " ";
+    }
+    cout << endl;
 }
