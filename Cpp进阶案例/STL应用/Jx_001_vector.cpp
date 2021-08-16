@@ -218,7 +218,7 @@ void vector_008()
     vector<int> v2(v1.begin(), v1.end());       
     printVector(v2);
 
-    // n个elem方式构造
+    // n个elem方式构造   //`vector(n, elem);`
     vector<int> v3(10, 100);
     printVector(v3);
     //  elem不写不会报错，elem会被初始化为0  //Jx_star
