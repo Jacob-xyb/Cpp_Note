@@ -7,6 +7,6 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void vector_bool001();
+void copy_Jx001();
 
-#define test() vector_bool001()
+#define test() copy_Jx001()

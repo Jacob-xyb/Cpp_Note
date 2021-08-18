@@ -30,6 +30,9 @@
     <ClCompile Include="..\..\Cpp进阶案例\关键字\Jx_003_内置数据类型.cpp">
       <Filter>资源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Cpp进阶案例\实现原理\Jx_003_深浅拷贝.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Cpp进阶案例\Jx_进阶案例.h">
