@@ -7,6 +7,6 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void copy_Jx001();
+void variable_in_for005();
 
-#define test() copy_Jx001()
+#define test() variable_in_for005()

@@ -73,3 +73,18 @@ void variable_in_for004()
 	}
 	//cout << "外围空间中的a：" << a << " ";	//error C2065: “a”: 未声明的标识符
 }
+
+//研究 for + while 循环时变量的变化
+void variable_in_for005()
+{
+	for (int i = 0; i < 10; i++)
+	{
+		cout << "while循环前的i：" << i << endl;
+		while (i<5)
+		{
+			i++;
+		}
+		cout << "while循环后的i：" << i << endl;
+	}
+	//结论：while循环是可以直接改变for循环的变量的
+}
