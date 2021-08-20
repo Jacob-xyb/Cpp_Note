@@ -149,3 +149,25 @@ void sort_Qsort002(vector<int>& a, int L, int H)
 
 ## 源代码
 
+```cpp
+void sort_Isort001(vector<int>& a)
+{
+	if (a.size() < 2) return;
+	for (int i = 1; i < a.size(); i++)
+	{
+		int j = i;
+		while (j > 0 && a[j - 1] > a[j])
+		{
+			int temp = a[j - 1];
+			a[j - 1] = a[j];
+			a[j] = temp;
+			j--;
+		}
+	}
+}
+```
+
+# 堆排序（Heap Sort）
+
+# TODO
+

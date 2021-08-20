@@ -7,6 +7,6 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void variable_in_for005();
+void sort_Isort_test();
 
-#define test() variable_in_for005()
+#define test() sort_Isort_test()

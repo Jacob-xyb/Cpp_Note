@@ -107,10 +107,25 @@ void sort_Isort001(vector<int>& a)
 	if (a.size() < 2) return;
 	for (int i = 1; i < a.size(); i++)
 	{
-		while (true)
+		int j = i;
+		while (j > 0 && a[j - 1] > a[j])
 		{
-
+			int temp = a[j - 1];
+			a[j - 1] = a[j];
+			a[j] = temp;
+			j--;
 		}
 	}
+}
+
+void sort_Isort_test()
+{
+	vector<int> vec_v1{ 20,40,10,70,10,30 };
+	sort_Isort001(vec_v1);
+	for (int i = 0; i < vec_v1.size(); i++)
+	{
+		cout << vec_v1[i] << " ";
+	}
+	cout << endl;
 }
 //==================================================
