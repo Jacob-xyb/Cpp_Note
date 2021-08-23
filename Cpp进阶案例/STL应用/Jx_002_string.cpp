@@ -1,4 +1,4 @@
-#include "Jx_test.h"
+#include "..\Jx_进阶案例.h"
 
 // string的构造函数
 //	`string();`		// 创建一个空的字符串 例如：string str;
@@ -223,6 +223,25 @@ void string_010()
 	jx = str.substr(2);
 	cout << "只写起始位置参数：" << jx << endl;
 }
+
+//==================================================
+//有关字符串的转换问题
+//	字符串大小写转换	
+void string_transform001()
+{
+	string str1 = "Hello World!";
+	std::transform(str1.begin(), str1.end(), str1.begin(), tolower);
+	cout << str1 << endl;	//hello world!
+	std::transform(str1.begin(), str1.end(), str1.begin(), toupper);
+	cout << str1 << endl;	//HELLO WORLD!
+
+	//test:前后的begin必须一致，否则error
+	cout << endl;
+	//std::transform(str1.begin() + 1, str1.end(), str1.begin() + 1, tolower);
+	std::transform(str1.begin() + 1, str1.end()-4, str1.begin() + 1, tolower);
+	cout << str1 << endl;
+}
+//==================================================
 
 
 // 小案例

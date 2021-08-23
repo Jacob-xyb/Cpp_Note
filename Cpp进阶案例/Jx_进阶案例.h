@@ -3,10 +3,11 @@
 #include <iostream>
 using namespace std;
 #include <vector>
+#include <string>
 #include <algorithm>
 
 
 // º¯ÊıÉùÃ÷
-void sort_Isort_test();
+void string_transform001();
 
-#define test() sort_Isort_test()
+#define test() string_transform001()
