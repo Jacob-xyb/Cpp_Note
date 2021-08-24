@@ -8,6 +8,13 @@ using namespace std;
 
 
 // º¯ÊýÉùÃ÷
-void string_transform001();
+void vector_009_branchAt20210824();
 
-#define test() string_transform001()
+#define test() vector_009_branchAt20210824()
+
+
+//Jx_global
+void printVector(vector<int>& v);
+void printVector(vector<vector<int>>& v);
+
+

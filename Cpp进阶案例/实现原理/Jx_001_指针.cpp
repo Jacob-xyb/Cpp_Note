@@ -1,4 +1,4 @@
-#include "../Jx_test.h"
+#include "../Jx_进阶案例.h"
 
 /*
 (int)a：强制类型转换，a为浮点数等对象
@@ -38,9 +38,9 @@ void array_index_002()
 	int a[] = { 1,2,3,4,5 };
 	// 分别看看输出：a、a[0]、a+1、a[1]
 	cout << "a: " << a << endl;
-	cout << "a[0]: " << a[0] << endl;
+	//cout << "a[0]: " << a[0] << endl;
 	cout << "a+1: " << a+1 << endl;
-	cout << "a[1]: " << a[1] << endl;
+	//cout << "a[1]: " << a[1] << endl;
 	// 可以得出怎样的结论呢？
 	//	数组名就是一个指针，a 和 a+1 均输出的是元素的地址
 	//	我们换一个方式来输出同样的内容
@@ -64,6 +64,7 @@ void array_index_002()
 
 
 //探索一下计算机内存实现原理 
+//	float
 void float_index_001()
 {
 	float jx = -3.75;

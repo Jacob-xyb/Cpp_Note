@@ -3,28 +3,6 @@
 //#include <algorithm>
 
 
-// 写一个打印vector<int>的函数方便调用
-void printVector(vector<int>& v)
-{
-    for (vector<int>::iterator it = v.begin(); it != v.end(); it++)
-    {
-        cout << *it << " ";
-    }
-    cout << endl;
-}
-// 写一个打印vector<vector<int>>的函数方便调用
-
-void printVector(vector<vector<int>>& v)
-{
-    for (vector<vector<int>>::iterator it = v.begin(); it != v.end(); it++)
-    {
-        for (vector<int>::iterator jt = it->begin(); jt != it->end(); jt++)
-        {
-            cout << *jt << " ";
-        }
-        cout << endl;
-    }
-}
 
 // 创建一个一维向量，并打印出来
 void init_Dim1andCout(vector<int>& v)
@@ -262,13 +240,47 @@ void vector_009()
     printVector(v1);
 }
 
+//      vector 的 `=` 与 `assign`完全等效
+//      并且都是深拷贝：既没有改变指针指向，也没有清除之前的被操作变量
+void vector_009_branchAt20210824()
+{
+    vector<int> v1(1, 5);
+    vector<int> v2(2, 6);
+    vector<int> v3(3, 7);
+    vector<int> v4(4, 8);
+    cout << "v1.addr: " << &v1 << "\nv2.addr: " << &v2 << endl;
+    cout << "v3.addr: " << &v3 << "\nv4.addr: " << &v4 << endl;
+    v2 = v1;
+    cout << "v1-size: " << v1.size() << " v1.addr: " << &v1 << endl;
+    cout << "v2-size: " << v2.size() << " v2.addr: " << &v2 << endl;
+
+    v4.assign(v3.begin(), v3.end());
+    cout << "v3-size: " << v3.size() << " v3.addr: " << &v3 << endl;
+    cout << "v4-size: " << v4.size() << " v4.addr: " << &v4 << endl;
+    cout << endl;
+
+    //  上面测试的代码是`较大空间  = 较小空间`
+    //  现在研究 `较小空间 = 较大空间`
+    //      依旧是深拷贝，没有改变指针指向
+    vector<int> v5(6,1);
+    vector<int> v6(66666,1);
+    cout << "赋值前：" << endl;
+    cout << "v5-size: " << v5.size() << " v5.addr: " << &v5 << endl;
+    cout << "v6-size: " << v6.size() << " v6.addr: " << &v6 << endl;
+    //v5 = v6;
+    v5.assign(v6.begin(), v6.end());
+    cout << "赋值后：" << endl;
+    cout << "v5-size: " << v5.size() << " v5.addr: " << &v5 << endl;
+    cout << "v6-size: " << v6.size() << " v6.addr: " << &v6 << endl;
+}
+
 
 // vector 容量和大小
 /*- `empty();`			// 判断容器是否为空
 - `capacity();`			// 容器的容量
 - `size();`				// 返回容器中元素的个数
 - `resize(int num);`	// 重新定义容器的长度为num,
-  // 如果容器变长，则以默认值填充新位置。
+  // 如果容器变长，则以默认值0填充新位置。
   // 如果容器变短，则末尾超出容器长度的元素被删除。
 - `resize(int num, elem);`	// 默认值变为 elem*/
 void vector_010()
@@ -321,6 +333,13 @@ void vector_010()
     cout << "此时容器中元素的个数为：" << v1.size() << endl;
     //      此时，容器中元素个数为14，容量为19
     //      总之，会多开辟空间，但是每次多开辟多少是容器类自己决定的
+
+    //对一个空数组resize
+    vector<int> v2;
+    printVector(v2);
+    v2.resize(5);
+    cout << "resize一个空数组" << endl;
+    printVector(v2);
 }
 
 
