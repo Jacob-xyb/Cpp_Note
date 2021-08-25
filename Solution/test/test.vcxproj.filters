@@ -54,6 +54,9 @@
     <ClCompile Include="..\..\Cpp进阶案例\Jx_global.cpp">
       <Filter>资源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Cpp进阶案例\实现原理\Jx_005_函数中的参数传递.cpp">
+      <Filter>资源文件\实现原理</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Cpp进阶案例\Jx_进阶案例.h">
