@@ -8,9 +8,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void vector_009_branchAt20210824();
+void pointer_Jx002();
 
-#define test() vector_009_branchAt20210824()
+#define test() pointer_Jx002()
 
 
 //Jx_global

@@ -113,7 +113,7 @@ void dataType004()
 	int arr3[] = { 5,4,3,2,1 };
 	cout << arr3[0] << endl;
 }
-
+//	二维数组
 void dataType005()
 {
 	//二维数组有多种声明方式

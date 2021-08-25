@@ -1,5 +1,44 @@
 #include "../Jx_进阶案例.h"
 
+
+//指针定义
+void pointer_Jx001()
+{
+	//1.定义一个指针
+	int a = 10;
+	// 指针定义语法： 数据类型 * 指针变量名；
+	int* p;	//整型指针，表明指针指向的数据类型是整型
+	// 让指针记录变量 a 的地址
+	p = &a;
+	cout << "a的地址为： " << &a << endl;
+	cout << "指针p的值为： " << p << endl;
+	cout << "指针p的地址为： " << &p << endl;	//指针也需要占内存空间
+	cout << endl;
+
+	// 2.使用指针
+	// 可以通过解引用的方式来找到指针指向的内存	// *p
+	cout << "p指向的内存内容为： " << *p << endl;
+	// 通过 *p 可以访问和读写 内存内容
+	*p = 1000;
+	cout << "改写后，a的值变为了：" << a << endl;
+	cout << "此时，*p的值变为了： " << *p << endl;
+	cout << "但是p的值是没有变的为： " << p << endl;
+	cout << "同时，p的内存地址&p也没有变： " << &p << endl;
+}
+
+//指针所占内存空间
+void pointer_Jx002()
+{
+	//无论什么数据类型的指针
+	//	32位操作系统：4字节
+	//	64位操作系统：8字节
+	cout << "sizeof(int*): " << sizeof(int*) << endl;		//4bit(x64)
+	cout << "sizeof(long*): " << sizeof(long*) << endl;		//4bit(x64)
+	cout << "sizeof(float*): " << sizeof(float*) << endl;	//4bit(x64)
+	cout << "sizeof(double*): " << sizeof(double*) << endl;	//8bit(x64)
+}
+
+
 /*
 (int)a：强制类型转换，a为浮点数等对象
 (int&)a：将a对象的内容看成int，并不会对内存做更改
@@ -83,3 +122,5 @@ void float_index_001()
 	cout << "换成整形后地址会改变吗：" << &jx << endl;
 	//	`int(jx)`对其进行转换并没有改变 jx 的首地址，可能是由于 `sizeof(int) == sizeof(float)
 }
+
+
