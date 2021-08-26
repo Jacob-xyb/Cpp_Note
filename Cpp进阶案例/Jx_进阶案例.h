@@ -8,9 +8,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void pointer_Jx002();
+void struct_Jx001();
 
-#define test() pointer_Jx002()
+#define test() struct_Jx001()
 
 
 //Jx_global

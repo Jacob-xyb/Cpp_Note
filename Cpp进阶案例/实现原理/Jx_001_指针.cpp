@@ -38,6 +38,111 @@ void pointer_Jx002()
 	cout << "sizeof(double*): " << sizeof(double*) << endl;	//8bit(x64)
 }
 
+//空指针和野指针
+void pointer_Jx003()
+{
+	//空指针
+	int* p = NULL;
+	//	只能查看p指针所指向的地址
+	cout << p << endl;	//0000000000000000
+	//	但是不能访问和读写
+	//cout << *p << endl;	//引发了异常: 读取访问权限冲突。\n p 是 nullptr。
+	//*p = 100;	//访问都不可，那只要再出现*p就会报错了
+
+	//野指针
+	int* p1 = (int*)0x1100;	//创建一个指针指向一片内存空间是可以的
+	cout << p1 << endl;	//可以查看，但是不能解引用
+	//cout << *p1 << endl;	//error:读取访问权限异常
+}
+
+
+//const修饰指针
+//	普通指针
+void pointer_Jx004_001()
+{
+	int a = 10, b = 20;
+	cout << "a的值为：" << a << endl;
+	cout << "a的地址为：" << &a << endl;
+	cout << "b的值为：" << b << endl;
+	cout << "b的地址为：" << &b << endl;
+	//普通指针
+	//	 指针的指向可以修改，指针指向的值也可以修改
+	int* p = &a;
+	cout << "指针p的解引用：" << *p << endl;
+	cout << "指针p的指向地址：" << p << endl;
+	cout << endl << "更改后" << endl << endl;
+	p = &b;	//指针的指向可以修改
+	cout << "指针p的解引用：" << *p << endl;
+	cout << "指针p的指向地址：" << p << endl;
+	*p = 30;	//指针指向的值也可以修改
+	cout << "指针p的解引用：" << *p << endl;
+	cout << "指针p的指向地址：" << p << endl;
+	//b的值改变了，但是地址没有改变
+	cout << "b的值为：" << b << endl;
+	cout << "b的地址为：" << &b << endl;
+}
+//	const修饰指针 -- 常量指针
+//		可以理解为 const *p	//常量指针
+//		p可以改变，但是*p不可以
+void pointer_Jx004_002()
+{
+	int a = 10, b = 20;
+	cout << "a的值为：" << a << endl;
+	cout << "a的地址为：" << &a << endl;
+	cout << "b的值为：" << b << endl;
+	cout << "b的地址为：" << &b << endl;
+	//const修饰指针 -- 常量指针
+	//	 指针的指向可以修改，但是指针指向的值不可以修改
+	const int* p = &a;
+	cout << "指针p的解引用：" << *p << endl;
+	cout << "指针p的指向地址：" << p << endl;
+	cout << endl << "更改后" << endl << endl;
+	p = &b;	//指针的指向可以修改
+	cout << "指针p的解引用：" << *p << endl;
+	cout << "指针p的指向地址：" << p << endl;
+	//*p = 30;	//error:表达式必须是可修改的左值	//指针指向的值不可以修改
+}
+// const修饰常量 -- 指针常量
+//		可以理解为 * const p	//指针常量
+//		*p可以改变，但是p不可以
+void pointer_Jx004_003()
+{
+	int a = 10, b = 20;
+	cout << "a的值为：" << a << endl;
+	cout << "a的地址为：" << &a << endl;
+	cout << "b的值为：" << b << endl;
+	cout << "b的地址为：" << &b << endl;
+	//const修饰常量 -- 指针常量
+	//	 指针的指向不可以修改，但是指针指向的值可以修改。
+	int* const p = &a;
+	cout << "指针p的解引用：" << *p << endl;
+	cout << "指针p的指向地址：" << p << endl;
+	cout << endl << "更改后" << endl << endl;
+	//p = &b;	//指针的指向不可以修改
+	*p = 30;	//但是指针指向的值可以修改
+	cout << "指针p的解引用：" << *p << endl;
+	cout << "指针p的指向地址：" << p << endl;
+	//a的值改变了，但是地址没有改变
+	cout << "b的值为：" << a << endl;
+	cout << "b的地址为：" << &a << endl;
+}
+// const既修饰指针，又修饰常量
+void pointer_Jx004_004()
+{
+	int a = 10, b = 20;
+	cout << "a的值为：" << a << endl;
+	cout << "a的地址为：" << &a << endl;
+	cout << "b的值为：" << b << endl;
+	cout << "b的地址为：" << &b << endl;
+	//const修饰常量 -- 指针常量
+	//	 指针的指向不可以修改，但是指针指向的值可以修改。
+	const int* const p = &a;
+	cout << "指针p的解引用：" << *p << endl;
+	cout << "指针p的指向地址：" << p << endl;
+	cout << endl << "更改后" << endl << endl;
+	//p = &b;	//指针的指向不可以修改
+	//*p = 30;	//指针指向的值也不可以修改
+}
 
 /*
 (int)a：强制类型转换，a为浮点数等对象
@@ -45,13 +150,14 @@ void pointer_Jx002()
 (int*)a：强制转换成int类型指针，a为指针
 */
 
-// 数组中的指针：对象指针和元素指针
+//数组中的指针：对象指针和元素指针
 void array_index_001()
 {
 	int b[] = { 1,2,3,4,5 };
 	cout << "查看一下array的内存地址：" << &b << endl;
 	// 但是b也是可以创建array的地址的
 	cout << "直接用数组变量名查看地址：" << b << endl;
+	//此时 &b == b，但是他们并不相同，只是输出的地址是相同的而已
 	
 	// 但是这两个指针是有区别的
 	//	&b 是对象 b 这整个对象的（起始）地址；
@@ -68,10 +174,10 @@ void array_index_001()
 	cout << "查看一下array的内存地址：" << int(b) << endl;
 	cout << "对象指针+1结果：" << int(&b + 1) << endl;
 	cout << "元素指针+1结果：" << int(b + 1) << endl;
-	cout << "验证&b[0]+1：" << int(&b[0] + 1) << endl;
+	cout << "验证&b[0]+1：" << int(&b[0] + 1) << endl;	//事实上 b = &b[0]
 }
 
-// 数组中的指针：剖析数组索引
+//数组中的指针：剖析数组索引
 void array_index_002()
 {
 	int a[] = { 1,2,3,4,5 };

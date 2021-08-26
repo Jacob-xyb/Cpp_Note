@@ -1,5 +1,4 @@
-#include <iostream>
-using namespace std;
+#include "../Jx_进阶案例.h"
 
 class Dog
 {
@@ -25,13 +24,11 @@ private:
 // 初始化类静态成员
 int Dog::count = 0;
 
-int main()
+void static_object()
 {
     Dog dog01("Sherry");
     Dog dog02("Henry");
     Dog::func();
     cout << "现在有 " << Dog::count << " 只狗：" << endl;
-    
-    system("pause");
-    return 0;
+
 }

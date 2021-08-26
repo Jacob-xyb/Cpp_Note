@@ -1,4 +1,4 @@
-#include "..\Jx_进阶案例.h"
+#include "../Jx_进阶案例.h"
 
 // string的构造函数
 //	`string();`		// 创建一个空的字符串 例如：string str;
