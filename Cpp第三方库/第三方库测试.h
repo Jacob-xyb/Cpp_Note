@@ -11,7 +11,7 @@ using namespace std;
 #include <Eigen/Dense>
 
 // º¯ÊıÉùÃ÷
-void Eigen_introduction_Jx002();
+void Eigen_introduction_Jx001();
 
-#define test() Eigen_introduction_Jx002()
+#define test() Eigen_introduction_Jx001()
 
