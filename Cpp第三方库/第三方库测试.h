@@ -11,7 +11,7 @@ using namespace std;
 #include <Eigen/Dense>
 
 // º¯ÊıÉùÃ÷
-void Eigen_introduction_Jx001();
+void Eigen_MatrixClass_Constructors_001();
 
-#define test() Eigen_introduction_Jx001()
+#define test() Eigen_MatrixClass_Constructors_001()
 

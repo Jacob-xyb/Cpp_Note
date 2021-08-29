@@ -38,6 +38,25 @@ void Eigen_introduction_started_002()
 	//矩阵与向量的乘法
 	cout << "m * v =" << endl << m * v << endl;
 }
+// Matrices and vectors:Eg002
+void Eigen_introduction_started_003()
+{
+	//MatrixXd m = MatrixXd::Random(3, 3);
+	//m = (m + MatrixXd::Constant(3, 3, 1.2)) * 50;
+	//cout << "m =" << endl << m << endl;
+	//VectorXd v(3);
+	//v << 1, 2, 3;
+	//cout << "m * v =" << endl << m * v << endl;
+
+	//一下代码实现的功能与上述完全一致
+	//但是实现方式略有不同，相比上一个例子，以下代码更多的采用了方阵实现
+	Matrix3d m = Matrix3d::Random();
+	m = (m + Matrix3d::Constant(1.2)) * 50;
+	cout << "m =" << endl << m << endl;
+	Vector3d v(1, 2, 3);
+	cout << "m * v =" << endl << m * v << endl;
+}
+
 //comma-initializer
 //	尺度一定要一致
 void Eigen_introduction_Jx003()
@@ -150,6 +169,29 @@ void Eigen_introduction_MatrixClass_001()
 	ArrayXf arr2 = ArrayXXf::Constant(4,1,2);
 	cout << arr2 << endl;
 }
+//	Constructors
+void Eigen_MatrixClass_Constructors_001()
+{
+	//If C++11 is enabled, fixed-size column or row vectors of arbitrary size can be initialized by passing an arbitrary number of coefficients:
+	Matrix<int, 5, 1> v1{ 1, 2, 3, 4, 5 };	//double '{}' is also ok.
+	cout << v1 << endl;
+
+	//In the general case of matrices and vectors with either fixed or runtime sizes, coefficients have to be grouped by rows and passed as an initializer list of initializer list
+	//Matrix<int, 2, 3> m1{ 1, 2, 3, 4, 5, 6 };	//error!
+	Matrix<int, 2, 3> m1{ {1, 2, 3}, {4, 5, 6} };	//yes!
+	cout << m1 << endl;
+
+	//For column or row vectors, implicit transposition is allowed. This means that a column vector can be initialized from a single row:
+	//	Because of implicit transposition, so must be initialized by double '{}'
+	VectorXd v2{ {1.5, 2.5, 3.5} };             // A column-vector with 3 coefficients
+	cout << "implicit transposition:" << endl <<  v2 << endl;	//unbelievable
+	RowVectorXd v2t{ {1.5, 2.5, 3.5} };
+	cout << "implicit transposition:" << endl << v2t << endl;
+	//	回看模板原型，也会隐式转置，甚至兼容单双括号！！！
+	Matrix<int, 1, 5> v3t { 1, 2, 3, 4, 5 } ;
+	cout << "Constructors" << endl << v3t << endl;
+}
+
 
 //The Array class
 //	Array定义及四则运算

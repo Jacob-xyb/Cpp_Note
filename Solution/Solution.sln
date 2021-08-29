@@ -9,8 +9,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cpp初学案例_项目文�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "leetcode", "..\..\leetcode_Jacob\cpp\leetcode\leetcode.vcxproj", "{DCEF5078-04D4-4D26-AFFC-773191817A6B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LM", "..\..\Company\Lib_test2\LM\LM.vcxproj", "{B4442AEC-4915-4B7D-AB2B-7645C5F1C173}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cpp进阶案例", "..\Cpp进阶案例\Cpp进阶案例_Proj\Cpp进阶案例.vcxproj", "{50D8E0EC-A86A-4C92-8A78-F5CA043DDA67}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cpp第三方库", "..\Cpp第三方库\Prj\Cpp第三方库.vcxproj", "{4AD627B2-40DD-463D-9B7C-FE05EC6382C1}"
@@ -47,14 +45,6 @@ Global
 		{DCEF5078-04D4-4D26-AFFC-773191817A6B}.Release|x64.Build.0 = Release|x64
 		{DCEF5078-04D4-4D26-AFFC-773191817A6B}.Release|x86.ActiveCfg = Release|Win32
 		{DCEF5078-04D4-4D26-AFFC-773191817A6B}.Release|x86.Build.0 = Release|Win32
-		{B4442AEC-4915-4B7D-AB2B-7645C5F1C173}.Debug|x64.ActiveCfg = Debug|x64
-		{B4442AEC-4915-4B7D-AB2B-7645C5F1C173}.Debug|x64.Build.0 = Debug|x64
-		{B4442AEC-4915-4B7D-AB2B-7645C5F1C173}.Debug|x86.ActiveCfg = Debug|Win32
-		{B4442AEC-4915-4B7D-AB2B-7645C5F1C173}.Debug|x86.Build.0 = Debug|Win32
-		{B4442AEC-4915-4B7D-AB2B-7645C5F1C173}.Release|x64.ActiveCfg = Release|x64
-		{B4442AEC-4915-4B7D-AB2B-7645C5F1C173}.Release|x64.Build.0 = Release|x64
-		{B4442AEC-4915-4B7D-AB2B-7645C5F1C173}.Release|x86.ActiveCfg = Release|Win32
-		{B4442AEC-4915-4B7D-AB2B-7645C5F1C173}.Release|x86.Build.0 = Release|Win32
 		{50D8E0EC-A86A-4C92-8A78-F5CA043DDA67}.Debug|x64.ActiveCfg = Debug|x64
 		{50D8E0EC-A86A-4C92-8A78-F5CA043DDA67}.Debug|x64.Build.0 = Debug|x64
 		{50D8E0EC-A86A-4C92-8A78-F5CA043DDA67}.Debug|x86.ActiveCfg = Debug|Win32

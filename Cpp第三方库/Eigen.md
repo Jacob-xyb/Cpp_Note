@@ -8,9 +8,9 @@
 
 - 速查
 
-[头文件检索](file:///D:/cpplib/Code_Dict/eigen-doc/group__QuickRefPage.html#QuickRef_Headers)
+  [头文件检索](https://eigen.tuxfamily.org/dox/group__QuickRefPage.html#QuickRef_Headers)
 
-[Array, matrix and vector types](file:///D:/cpplib/Code_Dict/eigen-doc/group__QuickRefPage.html#QuickRef_Types)
+[Array, matrix and vector types](https://eigen.tuxfamily.org/dox/group__QuickRefPage.html#QuickRef_Types)
 
 ## 简介
 
@@ -31,7 +31,7 @@ Eigen是一个开源库，从3.1.1版本开始遵从MPL2许可。
 
   有关扩展特征特征和支持自定义标量类型的讨论和示例
 
-- [Eigen内部见解](file:///D:/cpplib/Code_Dict/eigen-doc/UserManual_Generalities.html)
+- [Eigen内部见解](https://eigen.tuxfamily.org/dox/UserManual_Generalities.html)
 
   例如预处理器指令、控制断言、多线程、MKL 支持、一些Eigen的内部见解等等..
 
@@ -44,6 +44,12 @@ Eigen是一个开源库，从3.1.1版本开始遵从MPL2许可。
   下载解压缩，`项目的包含路径`添加Eigen源代码根目录，代码中包含Eigen头文件即可
 
   实际上，`Eigen`子目录中的头文件是使用[Eigen](namespaceEigen.html)编译程序所需的唯一文件。所有平台的头文件都相同。没有必要使用 CMake 或安装任何东西。
+
+## 模块和头文件
+
+Eigen库被分为一个Core模块和其他一些模块，每个模块有一些相应的头文件。 为了便于引用，Dense模块整合了一系列模块；Eigen模块整合了所有模块。一般情况下，`include<Eigen/Dense>`就够了。
+
+![](https://img-blog.csdnimg.cn/20201208114004847.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01heWJlVG5U,size_16,color_FFFFFF,t_70)
 
 ## Hello Eigen
 
@@ -120,15 +126,140 @@ void Eigen_introduction_started_002()
 }
 ```
 
+- example 2
 
+```cpp
+void Eigen_introduction_started_003()
+{
+	//MatrixXd m = MatrixXd::Random(3, 3);
+	//m = (m + MatrixXd::Constant(3, 3, 1.2)) * 50;
+	//cout << "m =" << endl << m << endl;
+	//VectorXd v(3);
+	//v << 1, 2, 3;
+	//cout << "m * v =" << endl << m * v << endl;
 
-  
+	//一下代码实现的功能与上述完全一致
+	//但是实现方式略有不同，相比上一个例子，以下代码更多的采用了方阵实现
+	Matrix3d m = Matrix3d::Random();
+	m = (m + Matrix3d::Constant(1.2)) * 50;
+	cout << "m =" << endl << m << endl;
+	Vector3d v(1, 2, 3);
+	cout << "m * v =" << endl << m * v << endl;
+} 
+```
 
-## 模块和头文件
+- 总结
 
-Eigen库被分为一个Core模块和其他一些模块，每个模块有一些相应的头文件。 为了便于引用，Dense模块整合了一系列模块；Eigen模块整合了所有模块。一般情况下，`include<Eigen/Dense>`就够了。
+  使用固定大小的矩阵和向量有两个优点。编译器生成更好（更快）的代码，因为它知道矩阵和向量的大小。在类型中指定大小还允许在编译时进行更严格的检查。例如，如果您尝试将 a `Matrix4d`（4×4 矩阵）与 a `Vector3d`（大小为 3 的向量）相乘，编译器会报错。但是，使用多种类型会增加编译时间和可执行文件的大小。在编译时也可能不知道矩阵的大小。经验上是对 4×4 或更小的大小使用固定大小的矩阵。
 
-![](https://img-blog.csdnimg.cn/20201208114004847.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01heWJlVG5U,size_16,color_FFFFFF,t_70)
+# 矩阵和数组操作
+
+## 矩阵类（**The Matrix class**）
+
+在[Eigen 中](https://eigen.tuxfamily.org/dox/namespaceEigen.html)，所有矩阵和向量都是[Matrix](https://eigen.tuxfamily.org/dox/classEigen_1_1Matrix.html)模板类的对象。向量只是矩阵的一种特殊情况，具有 1 行或 1 列。
+
+### Matrix的前三个模板参数
+
+该[矩阵](https://eigen.tuxfamily.org/dox/classEigen_1_1Matrix.html)类需要六个模板参数，但是现在了解前三个参数已经足够了。
+
+剩下的三个参数有默认值，现在我们将保持不变，我们将[在下面讨论](https://eigen.tuxfamily.org/dox/group__TutorialMatrixClass.html#TutorialMatrixOptTemplParams)。
+
+Matrix的三个强制性模板参数是：
+
+`Matrix<typename Scalar, int RowsAtCompileTime, int ColsAtCompileTime>`
+
+- `Scalar`是标量类型，即系数的类型。也就是说，如果您想要一个浮点矩阵，请在此处选择`float`。有关所有支持的标量类型的列表以及如何扩展对新类型的支持，请参阅[标量](https://eigen.tuxfamily.org/dox/TopicScalarTypes.html)类型。
+- `RowsAtCompileTime`和`ColsAtCompileTime`是编译时已知的矩阵的行数和列数（如果在编译时不知道该数字，请参见[下文](https://eigen.tuxfamily.org/dox/group__TutorialMatrixClass.html#TutorialMatrixDynamic)了解该怎么做）。
+
+我们提供了很多方便的 typedef 来涵盖通常的情况。例如，`Matrix4f`是一个 4x4 的浮点矩阵。这是[Eigen](https://eigen.tuxfamily.org/dox/namespaceEigen.html)定义的方式：
+
+`typedef Matrix<float, 4, 4> Matrix4f;`
+
+**Tips:**虽然Eigen官方已经提供了许多命名模板，但是这是对于`X <= 4 ` 的情况比较试用，一般处理大数据时，为了尽可能的多实用固定矩阵，应该熟练掌握利用原始模板创建对象
+
+### 向量
+
+如上所述，在[Eigen 中](https://eigen.tuxfamily.org/dox/namespaceEigen.html)，向量只是矩阵的一种特殊情况，具有 1 行或 1 列。他们有 1 列的情况是最常见的；这样的向量称为列向量，通常简称为向量。在它们有 1 行的另一种情况下，它们被称为行向量。
+
+例如，方便的 typedef `Vector3f`是 3 个浮点数的（列）向量。它由[Eigen](https://eigen.tuxfamily.org/dox/namespaceEigen.html)定义如下：
+
+`typedef Matrix<float, 3, 1> Vector3f;`
+
+我们还为行向量提供方便的 typedef，例如：
+
+`typedef Matrix<int, 1, 2> RowVector2i;`
+
+### The special value Dynamic
+
+当然，Eigen不限于其维度在编译时已知的矩阵。在RowsAtCompileTime和ColsAtCompileTime模板参数可以采取特殊值Dynamic这表明大小在编译时是未知的，所以必须作为运行时变量来处理。在Eigen术语中，这样的大小被称为动态 大小；而在编译时已知的大小称为固定 大小。
+
+例如，方便的 typedef `MatrixXd` 表示具有动态大小的双精度矩阵，定义如下：
+
+`typedef Matrix<double, Dynamic, Dynamic> MatrixXd;`
+
+同样，我们定义了一个动态大小的 typedef `VectorXi`如下：
+
+`typedef Matrix<int, Dynamic, 1> VectorXi;`
+
+还可以固定某行或某列的大小：
+
+`Matrix<float, 3, Dynamic>;`
+
+### 构造函数
+
+- 默认构造函数始终可用，从不执行任何动态内存分配，也从不初始化矩阵系数。你可以做：
+
+`Matrix3f a;	//a 是一个 3×3 矩阵，带有未初始化系数的普通 float[9] 数组，`
+
+`MatrixXf b;	//b 是一个动态大小的矩阵，其大小当前为 0×0，并且其系数数组尚未分配。`
+
+- 也可以使用获取尺寸的构造函数。
+
+  对于矩阵，总是首先传递行数。对于向量，只需传递向量大小。他们分配给定大小的系数数组，但不初始化系数本身：
+
+`MatrixXf a(10,15); //a 是一个 10x15 动态大小的矩阵，具有已分配但当前未初始化的系数。`
+
+`VectorXf b(30); //b 是大小为 30 的动态大小向量，具有已分配但当前未初始化的系数。 `
+
+- 为了提供跨固定大小和动态大小矩阵的统一 API，在固定大小矩阵上使用这些构造函数是合法的，即使在这种情况下传递大小是无用的。所以这是合法的：
+
+`Matrix3f a(3,3); //虽然没有意义，但是是合法的 `
+
+- 矩阵和向量也可以从系数列表中初始化。在 C++11 之前，此功能仅限于固定大小的小列或最大大小为 4 的向量：
+
+`Vector4d c(5.0, 6.0, 7.0, 8.0);  //C++11之前只能用于固定尺寸的矩阵和向量，且尺寸不大于4`
+
+- 如果启用 C++11，则可以通过传递任意数量的系数来初始化任意大小的固定大小的列或行向量：
+
+```cpp
+Vector2i a(1, 2);                      // A column vector containing the elements {1, 2}
+Matrix<int, 5, 1> b {1, 2, 3, 4, 5};   // A row-vector containing the elements {1, 2, 3, 4, 5}
+Matrix<int, 1, 5> c = {1, 2, 3, 4, 5}; // A column vector containing the elements {1, 2, 3, 4, 5}
+```
+
+- 无论是固定还是动态矩阵，系数必须按行分组：
+
+```cpp
+MatrixXi a {      // construct a 2x2 matrix
+      {1, 2},     // first row
+      {3, 4}      // second row
+};
+Matrix<double, 2, 3> b {
+      {2, 3, 4},
+      {5, 6, 7},
+};
+```
+
+- 但是对于列或行向量，允许隐式转置。这意味着可以从单行初始化列向量：
+
+  切记，只有向量才满足
+
+```cpp
+VectorXd a {{1.5, 2.5, 3.5}};             // A column-vector with 3 coefficients
+RowVectorXd b {{1.0, 2.0, 3.0, 4.0}};     // A row-vector with 4 coefficients
+```
+
+### 系数存取器
 
 ## 入门案例
 
