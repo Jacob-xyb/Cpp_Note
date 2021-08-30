@@ -1,8 +1,8 @@
 #include "../第三方库测试.h"
 using namespace Eigen;
 
-//MatrixXd
-//	初识Eigen矩阵
+/*Eigen入门*/
+//初识Eigen矩阵
 void Eigen_introduction_started_001()
 {
 	MatrixXd m(2, 2);	// MatrixXd 表示的是动态数组，初始化的时候指定数组的行数和列数
@@ -13,7 +13,7 @@ void Eigen_introduction_started_001()
 	m(1, 1) = m(1, 0) + m(0, 1);
 	std::cout << m << std::endl;
 }
-// Matrices and vectors:Eg001
+//Matrices and vectors:Eg001
 void Eigen_introduction_started_002()
 {
 	//初始化动态矩阵m,使用Random函数,初始化的值在[-1,1]区间内,矩阵大小3X3
@@ -38,7 +38,7 @@ void Eigen_introduction_started_002()
 	//矩阵与向量的乘法
 	cout << "m * v =" << endl << m * v << endl;
 }
-// Matrices and vectors:Eg002
+//Matrices and vectors:Eg002
 void Eigen_introduction_started_003()
 {
 	//MatrixXd m = MatrixXd::Random(3, 3);
@@ -56,11 +56,10 @@ void Eigen_introduction_started_003()
 	Vector3d v(1, 2, 3);
 	cout << "m * v =" << endl << m * v << endl;
 }
-
 //comma-initializer
-//	尺度一定要一致
-void Eigen_introduction_Jx003()
+void Eigen_introduction_started_004()
 {
+	//尺度一定要一致
 	RowVectorXd vec1(3);
 	vec1 << 1, 2, 3;
 	std::cout << "vec1 = " << vec1 << std::endl;
@@ -73,8 +72,8 @@ void Eigen_introduction_Jx003()
 	joined << vec1, vec2;	//同类型向量可以这样合并
 	std::cout << "joined = " << joined << std::endl;
 }
-//	常用的初始化方法
-void Eigen_introduction_Jx004()
+//常用的初始化方法
+void Eigen_introduction_started_005()
 {
 	//随机初始化初始化的值在[-1,1]区间内,矩阵大小3X3
 	MatrixXd m0 = MatrixXd::Random(3, 3);    
@@ -98,8 +97,8 @@ void Eigen_introduction_Jx004()
 	mat = (MatrixXf(2, 2) << 0, 1, 2, 0).finished() * mat;    
 	std::cout << "after: " << endl << mat << std::endl;
 }
-//	MatrixXd中的X
-void Eigen_introduction_MatrixXd_001()
+//MatrixXd中的X
+void Eigen_introduction_started_006()
 {
 	//Xd可以被Xd定义
 	MatrixXd m0 = MatrixXd::Random(3, 3);
@@ -112,30 +111,19 @@ void Eigen_introduction_MatrixXd_001()
 	Matrix2d m2 = MatrixXd::Ones(2, 2);
 	cout << "m2 = " << endl << m2 << endl;
 }
-//	获取行列尺寸
-void Eigen_introduction_MatrixXd_002()
-{ 
-	MatrixXd m = Matrix2d::Ones();
-	cout << m << endl;
-	m.resize(4, 3);
-	std::cout << "The matrix m is of size "
-		<< m.rows() << "x" << m.cols() << std::endl;
-	std::cout << "It has " << m.size() << " coefficients" << std::endl;
-	VectorXd v(2);
-	v.resize(5);
-	std::cout << "The vector v is of size " << v.size() << std::endl;
-	std::cout << "As a matrix, v is of size "
-		<< v.rows() << "x" << v.cols() << std::endl;
-}
 
-//The Matrix class
-//	Storage orders
+/*The Matrix class*/
+//Storage orders
 void Eigen_introduction_Storage_orders_001()
 {
-	Matrix<int, 3, 4, ColMajor> Acolmajor;
-	Acolmajor << 8, 2, 2, 9,
-				 9, 1, 4, 4,
-				 3, 5, 4, 5;
+	//ColMajor为0；RowMajor为1
+	//列向量必须为列优先；行向量必须为行优先
+	//	Matrix<int, dynamic, 1> option 默认为ColMajor且必须为ColMajor
+	//	Matrix<int, 1, dynamic> option 默认为RowMajor且必须为RowMajor
+	Matrix<int, 3, 3, ColMajor> Acolmajor;
+	Acolmajor << 1, 2, 3,
+				 4, 5, 6,
+				 7, 8, 9;
 	cout << "The matrix A:" << endl;
 	cout << Acolmajor << endl << endl;
 
@@ -144,14 +132,14 @@ void Eigen_introduction_Storage_orders_001()
 	  cout << *(Acolmajor.data() + i) << "  ";
 	cout << endl << endl;
 
-	Matrix<int, 3, 4, RowMajor> Arowmajor = Acolmajor;
+	Matrix<int, 3, 3, RowMajor> Arowmajor = Acolmajor;
 	cout << "In memory (row-major):" << endl;
 	for (int i = 0; i < Arowmajor.size(); i++)
 	  cout << *(Arowmajor.data() + i) << "  ";
 	cout << endl << endl;
 }
-//	简单测试
-void Eigen_introduction_MatrixClass_001()
+//	test
+void Eigen_introduction_Storage_orders_002()
 {
 	//Matrix的三个必需模板参数
 	//	Matrix<typename Scalar, int RowsAtCompileTime, int ColsAtCompileTime>
@@ -169,7 +157,7 @@ void Eigen_introduction_MatrixClass_001()
 	ArrayXf arr2 = ArrayXXf::Constant(4,1,2);
 	cout << arr2 << endl;
 }
-//	Constructors
+//Constructors
 void Eigen_MatrixClass_Constructors_001()
 {
 	//If C++11 is enabled, fixed-size column or row vectors of arbitrary size can be initialized by passing an arbitrary number of coefficients:
@@ -191,9 +179,187 @@ void Eigen_MatrixClass_Constructors_001()
 	Matrix<int, 1, 5> v3t { 1, 2, 3, 4, 5 } ;
 	cout << "Constructors" << endl << v3t << endl;
 }
+//Coefficient accessors
+void Eigen_MatrixClass_Coefficient_001()
+{
+	// the syntax m(index) is not restricted to vectors, it is also available for general matrices
+	//	但是是有关矩阵的存储顺序的
+	//	mCol 是列优先矩阵； mRow 是行优先矩阵
+	Matrix<int, 3, 3, ColMajor> mCol;
+	//Matrix<int, 3, 3, 0> mCol;
+	mCol << 1, 2, 3, 4, 5, 6, 7, 8, 9;
+	cout << "mCol" << endl << mCol << endl;
+	cout << "mCol(2): " << mCol(2) << endl;	//7
+	Matrix<int, 3, 3, RowMajor> mRow;
+	//Matrix<int, 3, 3, 1> mRow;
+	mRow << 1, 2, 3, 4, 5, 6, 7, 8, 9;
+	cout << "mRow" << endl << mRow << endl;
+	cout << "mRow(2): " << mRow(2) << endl;	//3
+
+	//operator[]
+	//cout << mRow[3] << endl;	//error	//matrix can't use operator[]
+	Matrix<int, 1, 3> v;
+	v << 1, 2, 3;
+	cout << v[2] << endl;	//3	//one row or one col can use operator[]
+}
+//Resizeing
+void Eigen_MatrixClass_Resizeing_001()
+{
+	//	The current size of a matrix can be retrieved by rows(), cols() and size(). These methods return the number of rows, the number of columns and the number of coefficients, respectively. Resizing a dynamic-size matrix is done by the resize() method.
+	MatrixXd m = Matrix2d::Ones();
+	cout << "调整前:" << endl << m << endl;
+	m.resize(4, 3);
+	std::cout << "The matrix m is of size "
+		<< m.rows() << "x" << m.cols() << std::endl;
+	std::cout << "It has " << m.size() << " coefficients" << std::endl;
+	cout << "调整后:" << endl << m << endl;
+	VectorXd v(2);
+	v.resize(5);
+	std::cout << "The vector v is of size " << v.size() << std::endl;
+	std::cout << "As a matrix, v is of size "
+		<< v.rows() << "x" << v.cols() << std::endl;
+}
+void Eigen_MatrixClass_Resizeing_002()
+{
+	MatrixXd m = Matrix2d::Ones();
+	cout << "调整前:" << endl << m << endl;
+	m.resize(2, 2);
+	cout << "不改变尺寸:" << endl << m << endl;
+	m.conservativeResize(4, 3);
+	cout << "保留调整后:" << endl << m << endl;
+
+	RowVectorXd v(2);
+	v << 1, 2;
+	v.conservativeResize(5);
+	cout << "保留调整后:" << endl << v << endl;
+}
+//Optional template parameters
+void Eigen_MatrixClass_TemplateParameters_001()
+{
+	Matrix<int, Dynamic, Dynamic, 0, 4, 4> m;
+	cout << m.size() << endl;
+	m.resize(2, 2);
+	cout << m.size() << endl;
+	m.resize(3, 3);
+	cout << m.size() << endl;
+	//m.resize(5, 3);	//error:(i,j) 中的 i and j 均小于 原有尺寸才行
+}
+
+/*Matrixand vector arithmetic*/
+//Addition and subtraction
+void Eigen_MatrixArithmetic_AdditionAndSubtraction_001()
+{
+	Matrix2d a;
+	a << 1, 2,
+		3, 4;
+	MatrixXd b(2, 2);
+	b << 2, 3,
+		1, 4;
+	std::cout << "a + b =\n" << a + b << std::endl;
+	std::cout << "a - b =\n" << a - b << std::endl;
+	std::cout << "Doing a += b;" << std::endl;
+	a += b;
+	std::cout << "Now a =\n" << a << std::endl;
+	RowVector3d v(1, 2, 3);
+	RowVector3d w(1, 0, 0);
+	std::cout << "-v + w - v =\n" << -v + w - v << std::endl;
+}
+//Scalar multiplication and division
+void Eigen_MatrixArithmetic_ScalarMAndD_001()
+{
+	Matrix2d a;
+	a << 1, 2,
+		3, 4;
+	Vector3d v(1, 2, 3);
+	std::cout << "a * 2.5 =\n" << a * 2.5 << std::endl;
+	std::cout << "0.1 * v =\n" << 0.1 * v << std::endl;
+	std::cout << "Doing v *= 2;" << std::endl;
+	v *= 2;
+	std::cout << "Now v =\n" << v << std::endl;
+}
+//Transposition and conjugation 转置和共轭
+void Eigen_MatrixArithmetic_Transposition_001()
+{
+	MatrixXcf a = MatrixXcf::Random(2, 2);
+	cout << "Here is the matrix a\n" << a << endl;
+	cout << "Here is the matrix a^T\n" << a.transpose() << endl;
+	cout << "Here is the conjugate of a\n" << a.conjugate() << endl;
+	cout << "Here is the matrix a^*\n" << a.adjoint() << endl;
+
+	//实数矩阵 的共轭 会报错吗？	//不会
+	MatrixXf b = MatrixXf::Random(2, 2);
+	cout << "Here is the conjugate of b\n" << b.conjugate() << endl;
+}
+void Eigen_MatrixArithmetic_Transposition_002()
+{
+	Matrix2i a; a << 1, 2, 3, 4;
+	cout << "Here is the matrix a:\n" << a << endl;
+
+	//a = a.transpose(); // !!! do NOT do this !!!
+	//cout << "and the result of the aliasing effect:\n" << a << endl;
+
+	a.transposeInPlace();
+	cout << "and the result of the transposeInPlace():\n" << a << endl;
+}
+//Multiplication
+void Eigen_MatrixArithmetic_Multiplication_001()
+{
+	Matrix2d mat;
+	mat << 1, 2,
+		3, 4;
+	Vector2d u(-1, 1), v(2, 0);
+	std::cout << "Here is mat* mat:\n" << mat * mat << std::endl;
+	std::cout << "Here is mat * u:\n" << mat * u << std::endl;
+	std::cout << "Here is u^T * mat:\n" << u.transpose() * mat << std::endl;
+	std::cout << "Here is u^T * v:\n" << u.transpose() * v << std::endl;
+	std::cout << "Here is u * v^T:\n" << u * v.transpose() << std::endl;
+	std::cout << "Let's multiply mat by itself" << std::endl;
+	mat = mat * mat;
+	std::cout << "Now mat is mat:\n" << mat << std::endl;
+}
+//Dot product and cross product
+void Eigen_MatrixArithmetic_DotAndCross_001()
+{
+	Vector3d v(1, 2, 3);
+	Vector3d w(0, 1, 2);
+
+	cout << "Dot product: " << v.dot(w) << endl;
+	double dp = v.adjoint() * w; // automatic conversion of the inner product to a scalar
+	cout << "Dot product via a matrix product: " << dp << endl;
+	cout << "Cross product:\n" << v.cross(w) << endl;
+}
+//Basic arithmetic reduction operations
+void Eigen_MatrixArithmetic_ReductionOperations_001()
+{
+	Eigen::Matrix2d mat;
+	mat << 1, 2,
+		3, 4;
+	cout << "Here is mat.sum():       " << mat.sum() << endl;		// 10
+	cout << "Here is mat.prod():      " << mat.prod() << endl;		// 24	
+	cout << "Here is mat.mean():      " << mat.mean() << endl;		// 2.5	
+	cout << "Here is mat.minCoeff():  " << mat.minCoeff() << endl;	// 1
+	cout << "Here is mat.maxCoeff():  " << mat.maxCoeff() << endl;	// 4
+	cout << "Here is mat.trace():     " << mat.trace() << endl;		// 5
+}
+void Eigen_MatrixArithmetic_ReductionOperations_002()
+{
+	Matrix3f m = Matrix3f::Random();
+	std::ptrdiff_t i, j;
+	//int i, j;
+	float minOfM = m.minCoeff(&i, &j);
+	cout << "这是矩阵 m:\n" << m << endl;
+	cout << "它的最小系数 (" << minOfM
+		<< ") 位于 (" << i << "," << j << ")\n\n";
+
+	RowVector4i v = RowVector4i::Random();
+	int maxOfV = v.maxCoeff(&i);
+	cout << "这是向量 v：" << v << endl;
+	cout << "它的最大系数 (" << maxOfV
+		<< ") 在位置 " << i << endl;
+}
 
 
-//The Array class
+/*The Array class*/
 //	Array定义及四则运算
 void Eigen_introduction_ArrayClass_001()
 {

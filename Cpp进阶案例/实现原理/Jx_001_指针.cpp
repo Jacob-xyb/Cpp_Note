@@ -56,7 +56,7 @@ void pointer_Jx003()
 }
 
 
-//const–ﬁ Œ÷∏’Î
+/*const–ﬁ Œ÷∏’Î*/
 //	∆’Õ®÷∏’Î
 void pointer_Jx004_001()
 {

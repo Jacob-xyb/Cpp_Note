@@ -151,7 +151,7 @@
     <ClCompile Include="..\实现原理\Jx_001_指针.cpp" />
     <ClCompile Include="..\实现原理\Jx_002_逻辑运算符.cpp" />
     <ClCompile Include="..\实现原理\Jx_003_深浅拷贝.cpp" />
-    <ClCompile Include="..\实现原理\Jx_004_C++对象生存期_static.cpp" />
+    <ClCompile Include="..\实现原理\Jx_004_变量类型.cpp" />
     <ClCompile Include="..\实现原理\Jx_005_函数中的参数传递.cpp" />
   </ItemGroup>
   <ItemGroup>

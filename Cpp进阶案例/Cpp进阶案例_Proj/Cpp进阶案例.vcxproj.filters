@@ -48,7 +48,7 @@
     <ClCompile Include="..\实现原理\Jx_003_深浅拷贝.cpp">
       <Filter>资源文件\实现原理</Filter>
     </ClCompile>
-    <ClCompile Include="..\实现原理\Jx_004_C++对象生存期_static.cpp">
+    <ClCompile Include="..\实现原理\Jx_004_变量类型.cpp">
       <Filter>资源文件\实现原理</Filter>
     </ClCompile>
     <ClCompile Include="..\实现原理\Jx_005_函数中的参数传递.cpp">

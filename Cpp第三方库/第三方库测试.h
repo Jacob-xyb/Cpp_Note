@@ -9,9 +9,11 @@ using namespace std;
 
 //Eigen
 #include <Eigen/Dense>
+#include <Eigen/NonLinearOptimization>
+using namespace Eigen;
 
 // º¯ÊýÉùÃ÷
-void Eigen_MatrixClass_Constructors_001();
+void Eigen_MatrixArithmetic_ReductionOperations_002();
 
-#define test() Eigen_MatrixClass_Constructors_001()
+#define test() Eigen_MatrixArithmetic_ReductionOperations_002()
 
