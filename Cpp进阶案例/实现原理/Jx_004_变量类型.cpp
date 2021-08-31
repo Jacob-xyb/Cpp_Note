@@ -21,10 +21,8 @@ public:
 private:
     string m_name;
 };
-
 //初始化类静态成员
 int Dog::count = 0;
-
 void static_object_001()
 {
     Dog dog01("Sherry");
@@ -32,6 +30,7 @@ void static_object_001()
     Dog::func();
     cout << "现在有 " << Dog::count << " 只狗：" << endl;
 }
+
 
 /*变量类型*/
 //全局区   //全局变量、静态变量、常量  //程序运行前
@@ -72,7 +71,6 @@ void ParamType_001()
 
     //总结:局部不在全局区，其余(全局变量、静态变量、常量)都在全局区
 }
-
 //栈区    //存放函数的参数值，局部变量等
 int* func_Stack_001()
 {
@@ -85,4 +83,21 @@ void Stack_001()
     //  不要返回局部变量的地址
     int* p = func_Stack_001();
     cout << *p << endl;     //能够正常输出10是因为编译器做了保留
+}
+//堆区    //new创建
+int* func_Heap_001()
+{
+    //利用new关键字 可以将数据开辟到堆区
+    //  指针也是局部变量，存放在栈区
+    int* p = new int(10);   //new 返回的是该类型的指针
+    int* arr = new int[10]; //10代表数组有10个元素，返回数组的首地址
+    delete[] arr;           //手动释放数组
+    return p;
+}
+void Heap_001()
+{
+    //在堆区开辟数据
+    int* p = func_Heap_001();   //程序执行完自动释放
+    delete p;                   //也可以手动释放
+    //cout << *p << endl;       //error:读取访问权限冲突。
 }

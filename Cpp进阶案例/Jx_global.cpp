@@ -1,16 +1,8 @@
 #include "./Jx_进阶案例.h"
 
-// 写一个打印vector<int>的函数方便调用
-void printVector(vector<int>& v)
-{
-    for (vector<int>::iterator it = v.begin(); it != v.end(); it++)
-    {
-        cout << *it << " ";
-    }
-    cout << endl;
-}
-// 写一个打印vector<vector<int>>的函数方便调用
 
+
+//template<typename T>
 void printVector(vector<vector<int>>& v)
 {
     for (vector<vector<int>>::iterator it = v.begin(); it != v.end(); it++)
@@ -21,7 +13,10 @@ void printVector(vector<vector<int>>& v)
         }
         cout << endl;
     }
+    cout << endl;
 }
+
+
 void printStart(int len)
 {
     for (int i = 0; i < len; i++)
@@ -30,7 +25,7 @@ void printStart(int len)
     }   
 }
 
-// int 类型输入判断
+//int 类型输入判断
 void TypeInt(int* val)
 {
 	while (cin.fail())

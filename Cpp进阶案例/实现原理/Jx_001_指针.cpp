@@ -25,7 +25,6 @@ void pointer_Jx001()
 	cout << "但是p的值是没有变的为： " << p << endl;
 	cout << "同时，p的内存地址&p也没有变： " << &p << endl;
 }
-
 //指针所占内存空间
 void pointer_Jx002()
 {
@@ -37,7 +36,6 @@ void pointer_Jx002()
 	cout << "sizeof(float*): " << sizeof(float*) << endl;	//4bit(x64)
 	cout << "sizeof(double*): " << sizeof(double*) << endl;	//8bit(x64)
 }
-
 //空指针和野指针
 void pointer_Jx003()
 {
@@ -57,7 +55,7 @@ void pointer_Jx003()
 
 
 /*const修饰指针*/
-//	普通指针
+//普通指针
 void pointer_Jx004_001()
 {
 	int a = 10, b = 20;
@@ -81,11 +79,11 @@ void pointer_Jx004_001()
 	cout << "b的值为：" << b << endl;
 	cout << "b的地址为：" << &b << endl;
 }
-//	const修饰指针 -- 常量指针
-//		可以理解为 const *p	//常量指针
-//		p可以改变，但是*p不可以
+//const修饰指针 -- 常量指针	//const *p	//p可变，*p不可变
 void pointer_Jx004_002()
 {
+	//可以理解为 const *p	//常量指针
+	//p可以改变，但是*p不可以
 	int a = 10, b = 20;
 	cout << "a的值为：" << a << endl;
 	cout << "a的地址为：" << &a << endl;
@@ -102,11 +100,11 @@ void pointer_Jx004_002()
 	cout << "指针p的指向地址：" << p << endl;
 	//*p = 30;	//error:表达式必须是可修改的左值	//指针指向的值不可以修改
 }
-// const修饰常量 -- 指针常量
-//		可以理解为 * const p	//指针常量
-//		*p可以改变，但是p不可以
+//const修饰常量 -- 指针常量	//* const p	//p不可变,*p可变
 void pointer_Jx004_003()
 {
+	//可以理解为 * const p	//指针常量
+	//*p可以改变，但是p不可以
 	int a = 10, b = 20;
 	cout << "a的值为：" << a << endl;
 	cout << "a的地址为：" << &a << endl;
@@ -144,12 +142,13 @@ void pointer_Jx004_004()
 	//*p = 30;	//指针指向的值也不可以修改
 }
 
+
+/*(int)相关应用*/
 /*
 (int)a：强制类型转换，a为浮点数等对象
 (int&)a：将a对象的内容看成int，并不会对内存做更改
 (int*)a：强制转换成int类型指针，a为指针
 */
-
 //数组中的指针：对象指针和元素指针
 void array_index_001()
 {
@@ -176,7 +175,6 @@ void array_index_001()
 	cout << "元素指针+1结果：" << int(b + 1) << endl;
 	cout << "验证&b[0]+1：" << int(&b[0] + 1) << endl;	//事实上 b = &b[0]
 }
-
 //数组中的指针：剖析数组索引
 void array_index_002()
 {
@@ -208,8 +206,8 @@ void array_index_002()
 }
 
 
-//探索一下计算机内存实现原理 
-//	float
+/*探索一下计算机内存实现原理*/
+//float
 void float_index_001()
 {
 	float jx = -3.75;
@@ -228,5 +226,14 @@ void float_index_001()
 	cout << "换成整形后地址会改变吗：" << &jx << endl;
 	//	`int(jx)`对其进行转换并没有改变 jx 的首地址，可能是由于 `sizeof(int) == sizeof(float)
 }
-
+//引用的指针	//的确是指向了同一片内存
+void And_Index_001()
+{
+	//引用必须初始化
+	//引用在初始化后，不可以改变
+	int a = 0;
+	int& b = a;
+	cout << "a的地址：" << (int)&a << endl;
+	cout << "b的地址：" << (int)&b << endl;
+}
 

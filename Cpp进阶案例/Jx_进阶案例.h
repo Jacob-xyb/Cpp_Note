@@ -8,13 +8,38 @@ using namespace std;
 
 
 // º¯ÊýÉùÃ÷
-void Stack_001();
+void Template_Type_004();
 
-#define test() Stack_001()
+#define test() Template_Type_004()
 
 
 //Jx_global
-void printVector(vector<int>& v);
-void printVector(vector<vector<int>>& v);
+template<typename T>
+void printVector(vector<T>& v)
+{
+    //int n = v.size();
+    //for (int i = 0; i < n; i++)
+    //{
+    //    cout << v[i] << " ";
+    //}
+    for (typename vector<T>::iterator it = v.begin(); it != v.end(); it++)
+    {
+        cout << *it << " ";
+    }
+    cout << endl;
+}
 
+template<typename T>
+void printVector(vector<vector<T>>& v)
+{
+    for (typename vector<vector<T>>::iterator it = v.begin(); it != v.end(); it++)
+    {
+        for (typename vector<T>::iterator jt = it->begin(); jt != it->end(); jt++)
+        {
+            cout << *jt << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
 
