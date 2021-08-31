@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Eigen\Eigen_b站案例.cpp" />
     <ClCompile Include="..\Eigen\Eigen入门.cpp" />
     <ClCompile Include="..\第三方库测试.cpp" />
   </ItemGroup>
