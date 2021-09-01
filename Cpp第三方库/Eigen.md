@@ -344,6 +344,8 @@ std::cout << m;
 
 ### 调整大小
 
+- `resize()` 、`conservativeResize()`
+
 可以通过rows()、cols()和size()检索矩阵的当前大小。这些方法分别返回行数、列数和系数数。调整动态大小矩阵的大小是通过resize()方法完成的。
 
 - **注意：**

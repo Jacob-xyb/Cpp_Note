@@ -13,7 +13,8 @@ using namespace std;
 using namespace Eigen;
 
 // º¯ÊıÉùÃ÷
-void Eigen_bilibili_002();
+void Eigen_QuickCheck_007();
 
-#define test() Eigen_bilibili_002()
+#define test() Eigen_QuickCheck_007()
 
+  

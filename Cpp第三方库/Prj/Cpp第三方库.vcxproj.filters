@@ -24,7 +24,7 @@
     <ClCompile Include="..\Eigen\Eigen入门.cpp">
       <Filter>资源文件\Eigen</Filter>
     </ClCompile>
-    <ClCompile Include="..\Eigen\Eigen_b站案例.cpp">
+    <ClCompile Include="..\Eigen\Eigen函数快查.cpp">
       <Filter>资源文件\Eigen</Filter>
     </ClCompile>
   </ItemGroup>
