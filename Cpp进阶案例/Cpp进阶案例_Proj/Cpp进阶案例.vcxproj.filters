@@ -69,6 +69,9 @@
     <ClCompile Include="..\关键字\Jx_005_template.cpp">
       <Filter>资源文件\关键字</Filter>
     </ClCompile>
+    <ClCompile Include="..\关键字\Jx_006_class.cpp">
+      <Filter>资源文件\关键字</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Jx_进阶案例.h">

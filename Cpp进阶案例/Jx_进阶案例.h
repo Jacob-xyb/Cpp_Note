@@ -8,9 +8,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void PlaceholderParameters_001t();
+void Class_Jx001();
 
-#define test() PlaceholderParameters_001t()
+#define test() Class_Jx001()
 
 
 //Jx_global
