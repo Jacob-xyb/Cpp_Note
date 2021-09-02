@@ -156,10 +156,16 @@ template<class NameT, class AgeT>
 class PersonClass
 {
 public:
+	//构造函数
 	PersonClass(NameT name, AgeT age)
 	{
 		this->m_Name = name;
 		this->m_Age = age;
+	}
+	//成员函数
+	void showPerson()
+	{
+		cout << "name: " << this->m_Name << " age= " << this->m_Age << endl;
 	}
 	NameT m_Name;
 	AgeT m_Age;

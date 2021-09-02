@@ -51,7 +51,7 @@
     <ClCompile Include="..\实现原理\Jx_004_变量类型.cpp">
       <Filter>资源文件\实现原理</Filter>
     </ClCompile>
-    <ClCompile Include="..\实现原理\Jx_005_函数中的参数传递.cpp">
+    <ClCompile Include="..\实现原理\Jx_005_函数参数.cpp">
       <Filter>资源文件\实现原理</Filter>
     </ClCompile>
     <ClCompile Include="..\关键字\Jx_001_sizeof.cpp">

@@ -13,8 +13,8 @@ using namespace std;
 using namespace Eigen;
 
 // º¯ÊıÉùÃ÷
-void Eigen_QuickCheck_007();
+void Eigen_RandomShuffle();
 
-#define test() Eigen_QuickCheck_007()
+#define test() Eigen_RandomShuffle()
 
   

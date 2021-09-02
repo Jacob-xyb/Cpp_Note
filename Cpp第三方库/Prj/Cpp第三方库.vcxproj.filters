@@ -27,6 +27,9 @@
     <ClCompile Include="..\Eigen\Eigen函数快查.cpp">
       <Filter>资源文件\Eigen</Filter>
     </ClCompile>
+    <ClCompile Include="..\Eigen\Eigen进阶.cpp">
+      <Filter>资源文件\Eigen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\第三方库测试.h">

@@ -8,9 +8,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void Template_Type_004();
+void PlaceholderParameters_001t();
 
-#define test() Template_Type_004()
+#define test() PlaceholderParameters_001t()
 
 
 //Jx_global
