@@ -8,9 +8,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void Class_Jx001();
+void Class_Jx002();
 
-#define test() Class_Jx001()
+#define test() Class_Jx002()
 
 
 //Jx_global
