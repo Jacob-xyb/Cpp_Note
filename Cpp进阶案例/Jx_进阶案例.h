@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void Class_Jx002();
+void Class_Jx003();
 
-#define test() Class_Jx002()
+#define test() Class_Jx003()
 
 
 

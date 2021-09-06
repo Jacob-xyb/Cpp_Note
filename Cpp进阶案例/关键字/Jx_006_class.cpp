@@ -126,7 +126,27 @@ void Class_Jx002()
 	cout << "this is a pause.." << endl;
 }
 //构造函数的分类
+class PersonJx002
+{
+public:
+	//无参构造函数
+	PersonJx002()
+	{
+		cout << "无参构造函数的调用" << endl;
+	}
+	PersonJx002(int a)
+	{
+		cout << "有参构造函数的调用" << endl;
+		this->mAge = a;
+	}
+	int getAge() { return mAge; }
+private:
+	int mAge;
+};
 void Class_Jx003()
 {
-
+	PersonJx002 p1;
+	cout << p1.getAge() << endl;
+	PersonJx002 p2(18);
+	cout << p2.getAge() << endl;
 }
