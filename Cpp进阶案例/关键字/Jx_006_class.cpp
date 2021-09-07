@@ -136,17 +136,51 @@ public:
 	}
 	PersonJx002(int a)
 	{
-		cout << "有参构造函数的调用" << endl;
 		this->mAge = a;
+		cout << "有参构造函数的调用" << endl;
 	}
+
+	//拷贝构造函数
+	PersonJx002(const PersonJx002& p)
+	{
+		mAge = p.mAge;
+		cout << "拷贝构造函数的调用" << endl;
+	}
+	
+	//析构函数
+	~PersonJx002()
+	{
+		cout << "年龄为 " << mAge << " 的对象被析构" << endl;
+	}
+
 	int getAge() { return mAge; }
 private:
 	int mAge;
 };
 void Class_Jx003()
 {
-	PersonJx002 p1;
+	//1.括号法
+	PersonJx002 p1;		//调用无参构造函数
 	cout << p1.getAge() << endl;
-	PersonJx002 p2(18);
+	PersonJx002 p2(10);	//调用有参构造函数
 	cout << p2.getAge() << endl;
+
+	PersonJx002 p3(p2);	//调用拷贝构造函数
+	cout << p3.getAge() << endl;
+
+	//2.显式法
+	PersonJx002 p4;		//PersonJx002 p4();	写法错误，会认为是一个函数声明.
+	PersonJx002 p5 = PersonJx002(20);
+	PersonJx002 p6 = PersonJx002(p5);
+
+	//注意事项
+	PersonJx002(30);		// 匿名对象	特点：当前行执行结束后，系统会立即回收掉匿名对象
+	cout << "aaa" << endl;		// 测试发现会在 'aaa' 之前进行构造和析构
+	// 注意：不要利用拷贝构造函数初始化匿名对象
+	// 因为编译器会认为 PersonJx002(p6) 是 PersonJx002 p6；对象重定义
+	// PersonJx002(p6);
+
+	//3.隐式转换法
+	PersonJx002 p7 = 40;	//有参构造
+	PersonJx002 p8 = p7;	//拷贝构造
 }
