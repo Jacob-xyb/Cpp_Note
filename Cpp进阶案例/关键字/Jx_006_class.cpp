@@ -184,3 +184,108 @@ void Class_Jx003()
 	PersonJx002 p7 = 40;	//有参构造
 	PersonJx002 p8 = p7;	//拷贝构造
 }
+//深浅拷贝
+class PersonJx003
+{
+public:
+	//无参构造函数
+	PersonJx003()
+	{
+		cout << "无参构造函数的调用" << endl;
+	}
+	//有参构造函数
+	PersonJx003(int age, int height)
+	{
+		this->mAge = age;
+		this->mHeight = new int(height);
+		cout << "有参构造函数的调用" << endl;
+	}
+	//用深拷贝重写拷贝构造函数	//默认拷贝构造函数是浅拷贝
+	PersonJx003(const PersonJx003& p)
+	{
+		this->mAge = p.mAge;
+		this->mHeight = new int(*p.mHeight);
+		cout << "拷贝构造函数的调用" << endl;
+	}
+	~PersonJx003()
+	{
+		if (mHeight)
+		{
+			delete mHeight;
+			mHeight = NULL;
+		}
+		cout << "析构函数的调用" << endl;
+	}
+public:
+	int mAge;
+	int *mHeight;	//将此数据创建到堆区
+};
+void Class_Jx004()
+{
+	PersonJx003 p1(18, 160);	//有参构造
+	PersonJx003 p2(p1);			//拷贝构造函数，此时属于浅拷贝函数
+	cout << "p1的年龄" << p1.mAge << endl;
+}
+//初始化列表
+class PersonJx004
+{
+public:
+	//传统初始化操作
+	/*PersonJx004(int a, int b, int c)
+	{
+		mA = a;
+		mB = b;
+		mC = c;
+	}*/
+
+	//初始化列表创建无参构造函数
+	PersonJx004():mA(10),mB(20),mC(30){}
+
+	//有参构造函数也可以用初始化列表改写
+	PersonJx004(int a, int b, int c):mA(a), mB(b), mC(c) {}
+public:
+	int mA;
+	int mB;
+	int mC;
+};
+void Class_Jx005()
+{
+	PersonJx004 p1;
+	cout << p1.mA << "\t" << p1.mB << "\t" << p1.mC << endl;
+	PersonJx004 p2(11, 22, 33);
+	cout << p2.mA << "\t" << p2.mB << "\t" << p2.mC << endl;
+}
+//静态成员变量和静态成员函数
+class PersonJx005
+{
+public:
+	//静态成员函数
+	static void func()
+	{
+		cout << "静态成员函数的调用" << endl;
+		mA = 100;		//静态成员函数可以访问静态成员变量
+		//mB = 200;		//静态成员函数不能访问非静态成员变量
+
+	}
+	//静态成员变量
+	static int mA;
+	//非静态成员变量
+	int mB;
+private:
+	//静态成员函数也是有访问权限的
+	static void func2()
+	{
+		cout << "私有的静态成员函数的调用" << endl;
+	}
+};
+//	初始化静态成员变量
+int PersonJx005::mA = 0;
+void Class_Jx006()
+{
+	//1.通过对象访问
+	PersonJx005 p1;
+	p1.func();
+
+	//2.通过类名访问
+	PersonJx005::func();
+}

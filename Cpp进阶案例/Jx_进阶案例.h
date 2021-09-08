@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void Class_Jx003();
+void vector_exist();
 
-#define test() Class_Jx003()
+#define test() vector_exist()
 
 
 

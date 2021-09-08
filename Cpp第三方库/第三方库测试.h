@@ -13,8 +13,8 @@ using namespace std;
 using namespace Eigen;
 
 // º¯ÊıÉùÃ÷
-void Eigen_RandomShuffle();
+void Eigen_NormalizationMatrix();
 
-#define test() Eigen_RandomShuffle()
+#define test() Eigen_NormalizationMatrix()
 
   

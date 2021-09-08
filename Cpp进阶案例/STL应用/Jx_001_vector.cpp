@@ -4,7 +4,7 @@
 
 
 
-// 创建一个一维向量，并打印出来
+//创建一个一维向量，并打印出来
 void init_Dim1andCout(vector<int>& v)
 {
     for (int i = 0; i < 10; i++)
@@ -16,7 +16,7 @@ void init_Dim1andCout(vector<int>& v)
 }
 
 
-// vector容器内存放内置数据类型
+//vector容器内存放内置数据类型
 void vector_001()
 {
     //// 创建了一个vector容器，数组
@@ -34,7 +34,7 @@ void vector_001()
     vector<int>::iterator itEnd = v.end();      // v.end(); 结束迭代器，指向容器中最后一个元素的下一个位置
 }
 
-// vector 的 第一种遍历方式
+//vector 的 第一种遍历方式
 void vector_002()
 {
     vector<int> v;
@@ -52,7 +52,7 @@ void vector_002()
     }
 }
 
-// vector 的 第二种遍历方式
+//vector 的 第二种遍历方式
 void vector_003()
 {
     vector<int> v;
@@ -72,7 +72,7 @@ void myPrint(int val)
     cout << val << endl;
 }
 
-// vector 的 第三种遍历方式
+//vector 的 第三种遍历方式
 void vector_004()
 {
     vector<int> v;
@@ -118,7 +118,7 @@ void vector_005()
     }
 }
 
-//  存放指针
+//存放指针
 void vector_006()
 {
     vector<Person*> v;      // Type* 就是指针的意思
@@ -143,7 +143,7 @@ void vector_006()
 }
 
 
-// 容器嵌套容器
+//容器嵌套容器
 void vector_007()
 {
     vector<vector<int>> v;
@@ -177,7 +177,7 @@ void vector_007()
 }
 
 
-// vector 构造函数
+//vector 构造函数
 /*- `vector<T> v;`		// 采用模板实现类实现，默认构造函数
 - `vector(v.begin(),v.end());`		// 将v[ begin(),end() ) 区间中的元素拷贝给本身
 - `vector(n, elem);`				// 构造函数将n各elem拷贝给本身
@@ -210,7 +210,7 @@ void vector_008()
 }
 
 
-// vector 赋值操作
+//vector 赋值操作
 /*- `vector& operator=(const vector& vec);`		// 重载等号操作符
 - `assign(beg,end);`		// [beg,end) 区间拷贝赋值
 - `assign(n,elem);`		// n个elem拷贝赋值*/
@@ -275,7 +275,7 @@ void vector_009_branchAt20210824()
 }
 
 
-// vector 容量和大小
+//vector 容量和大小
 /*- `empty();`			// 判断容器是否为空
 - `capacity();`			// 容器的容量
 - `size();`				// 返回容器中元素的个数
@@ -343,7 +343,7 @@ void vector_010()
 }
 
 
-// vector 插入和删除
+//vector 插入和删除
 /*- `push_back(ele);`		// 尾部插入元素ele
 - `pop_back();`			// 尾部删除一个元素
 - `insert(const_iterator pos, ele);`		// 迭代器指向位置pos插入元素ele
@@ -380,7 +380,7 @@ void vector_011()
 }
 
 
-// vector数据存取
+//vector数据存取
 /*- `at(int idx);`		// 返回索引idx所指的数据
 - `operator[];`			// 返回索引idx所指的数据
 - `front();`			// 返回容器中第一个数据元素
@@ -407,7 +407,7 @@ void vector_012()
 }
 
 
-// vector 互换容器
+//vector 互换容器
 /*`swap(vec);`		// 将vec与本身的元素互换*/
 void vector_013()
 {
@@ -441,7 +441,7 @@ void vector_013()
 }
 
 
-// vector 预留空间
+//vector 预留空间
 /*`reserve(int len);`		// 容器预留len个元素长度，预留位置不初始化，元素不可访问。*/
 void vector_014()
 {
@@ -478,7 +478,7 @@ void vector_014()
 
 
 
-// vector与数组联动
+//vector与数组联动
 void vector_016()
 {
     // 内置数组我们可以显式地把数组的元素初始化为一组常量值
@@ -512,7 +512,7 @@ void vector_016()
 }
 
 
-// vector 新特性创建向量
+//vector 新特性创建向量
 void vector_C11_eg001()
 {
     // 直接用数组创建向量
@@ -547,7 +547,7 @@ void vector_015()
     //printVector(v[1]);  // 说明v[row]是一个vector<>尖括号内的对象
 }
 
-//  二维数组的申明
+//二维数组的申明
 void vector_2dim001()
 {
     //声明一维向量的方式：
@@ -673,4 +673,17 @@ void vector_bool001()
         cout << vbool4[i] << " ";
     }
     cout << endl;
+}
+
+//if x in vector?
+void vector_exist()
+{
+    vector<double> v1{ 1,3,5,7,9 };
+    printVector(v1);
+
+    double num = 5;
+    vector<double>::iterator idx;
+    idx = std::find(v1.begin(), v1.end(), num);
+    cout << idx - v1.begin() << endl;
+    //挺奇怪，idx是一个指针，并且不能单独输出，idx-v1.begin()就变成了标签，太奇怪了
 }
