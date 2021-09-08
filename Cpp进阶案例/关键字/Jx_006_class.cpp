@@ -289,3 +289,40 @@ void Class_Jx006()
 	//2.通过类名访问
 	PersonJx005::func();
 }
+//this指针返回本身	//链式编程
+class PersonJx006
+{
+public:
+	PersonJx006() {}	//如果用户定义有参构造函数，c++不再提供默认无参构造，但是会提供默认拷贝构造
+	PersonJx006(int age)
+	{
+		this->mAge = age;
+	}
+	/*无返回值*/
+	//void PersonAddAge(PersonJx006& p)
+	//{
+	//	this->mAge += p.mAge;
+	//}
+	/*返回对象的引用*/
+	PersonJx006& PersonAddAge(PersonJx006& p)
+	{
+		this->mAge += p.mAge;
+		//this指向实例化对象，而*this就是解引用，也就是实例化对象本体
+		return *this;
+	}
+	/*返回对象的拷贝*/
+	//PersonJx006 PersonAddAge(PersonJx006& p)
+	//	此时返回的时候会创建一个新的对象，注意区分
+
+	int mAge;
+};
+void Class_Jx007()
+{
+	PersonJx006 p1(10);
+	PersonJx006 p2(18);
+	p1.PersonAddAge(p2);	//这样当然是可以的
+	cout << p1.mAge << endl;
+	//如果想采用链式编程，调用的函数就得返回对象本身
+	p1.PersonAddAge(p2).PersonAddAge(p2).PersonAddAge(p2);
+	cout << p1.mAge << endl;
+}
