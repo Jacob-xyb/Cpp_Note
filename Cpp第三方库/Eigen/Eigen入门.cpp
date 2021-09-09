@@ -360,42 +360,57 @@ void Eigen_MatrixArithmetic_ReductionOperations_002()
 
 
 /*The Array class*/
-//	Array定义及四则运算
-void Eigen_introduction_ArrayClass_001()
+//Array定义及访问
+void Eigen_Introduction_ArrayClass_001()
+{
+	ArrayXXf a(2, 2);
+	ArrayXXf b(2, 2);
+	a(0, 0) = 1; a(0, 1) = 2;
+	a(1, 0) = 3; a(1, 1) = 4;
+	cout << "a\n" << a << endl;
+	b << 4, 3, 2, 1;
+	cout << "b\n" << b << endl;
+}
+//Array四则运算
+void Eigen_Introduction_ArrayClass_002()
 {
 	ArrayXXf a(3, 3);
 	ArrayXXf b(3, 3);
 	a << 1, 2, 3,
-		4, 5, 6,
-		7, 8, 9;
+		 4, 5, 6,
+		 7, 8, 9;
 	b << 1, 2, 3,
-		1, 2, 3,
-		1, 2, 3;
+		 1, 2, 3,
+		 1, 2, 3;
 	cout << "a + b = " << endl << a + b << endl;
 	cout << "a - 2 = " << endl << a - 2 << endl;
 	cout << "a * b = " << endl << a * b << endl;
 	cout << "a / b = " << endl << a / b << endl;
 }
-//	Array其他函数操作
-void Eigen_introduction_ArrayClass_002()
+//Array其他函数操作
+void Eigen_Introduction_ArrayClass_003()
 {
-	ArrayXXf a = ArrayXXf::Random(2, 2);     // 初始化2X2  Array
-	a *= 2;
-	cout << "a = " << endl
-		<< a << endl;
-	a = a.abs();
+	ArrayXf a = ArrayXf::Random(5);
+	ArrayXf b = ArrayXf::Random(5);
+	cout << "a = " << endl 
+		<< a.transpose() << endl;
+	cout << "b = " << endl
+		<< b.transpose() << endl;
 	cout << "a.abs() = " << endl
-		<< a << endl;
+		<< a.abs().transpose() << endl;				//绝对值
 	cout << "a.sqrt() =" << endl
-		<< a.sqrt() << endl;
+		<< a.abs().sqrt().transpose() << endl;		//开方	
 	cout << "a.minCoeff() = " << endl
-		<< a.minCoeff() << endl;
+		<< a.minCoeff() << endl;		//最小系数
 	cout << "a.maxCoeff() = " << endl
-		<< a.maxCoeff() << endl;
+		<< a.maxCoeff() << endl;		//最大系数
+	cout << "a.min(b)" << endl
+		<< a.min(b).transpose() << endl;			//对应最小值
+	cout << "a.max(b)" << endl
+		<< a.max(b).transpose() << endl;			//对应最大值
 }
-
 //Matrix和Array之间的相互转换
-void Eigen_introduction_MatrixToArray_001()
+void Eigen_Introduction_ArrayClass_004()
 {
 	Array44f a1, a2;
 	Matrix4f m1, m2;

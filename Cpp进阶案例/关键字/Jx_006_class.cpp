@@ -104,6 +104,7 @@ void Class_Permission01()
 	p1.setHobby("coding");
 }
 
+
 /*构造函数和析构函数*/
 //语法
 class PersonJx001
@@ -326,3 +327,260 @@ void Class_Jx007()
 	p1.PersonAddAge(p2).PersonAddAge(p2).PersonAddAge(p2);
 	cout << p1.mAge << endl;
 }
+//空指针访问成员函数
+class PersonJx007
+{
+public:
+	void showPersonClass()
+	{
+		cout << "This is Person class!" << endl;
+	}
+	void showPersonAge()
+	{
+		//添加一个判断
+		if (this == NULL)
+		{
+			return;
+		}
+		cout << "age = " << m_Age << endl;
+	}
+	int m_Age;
+};
+void Class_Jx008()
+{
+	PersonJx007* p = NULL;		//创建一个类的空指针
+	p->showPersonClass();		//可以正常调用
+	//p->showPersonAge();		//引发了异常: 读取访问权限冲突。
+								//**this** 是 nullptr。
+	//报错的原因是空指针无法访问属性，因为 this指针为空。
+	//在类中添加判断
+	p->showPersonAge();			//这样就不会报错了
+
+	//试试空对象
+	PersonJx007 p1;
+	//空对象均可以正常调用
+	p1.showPersonClass();
+	p1.showPersonAge();
+}
+//类中的常函数和常对象
+class PersonJx008
+{
+public:
+	//在成员函数后面加 const，修饰的是this指针，
+	//	this指针的本质 是指针常量 指针指向不可以修改	
+	void showPerson() const
+	{
+		//此时指针指向的值也不可以修改
+		//this->m_A = 100;
+
+		//mutable 变量在常函数中也可以修改
+		m_B = 20;
+		cout << "常函数的调用" << endl;
+	}
+
+	void func(){}
+
+	int m_A;
+	//如果想要在常函数中也可以修改，在变量前加 mutable
+	mutable int m_B;
+};
+void Class_Jx009()
+{
+	const PersonJx008 p;	//在对象前加const，变为常对象
+	//p.m_A = 100;			//常对象不能修改普通的成员变量
+	p.m_B = 18;				//但是常对象可以修改 mutable 成员变量
+	p.showPerson();			//常对象只能调用常函数
+	cout << p.m_B << endl;
+	//p.func()				//error:对象含有不兼容的类型限定符	
+}
+
+
+/*友元*/
+//全局函数做友元
+class BuildJx001;
+class ClassGoodGay001;
+class BuildJx001
+{
+	//GoodGay全局函数用friend声明	//甚至不用特意写在public作用域下
+	friend void func_GoodGay(BuildJx001* build);
+	//GoodGay类也是同样的方式声明
+	friend class ClassGoodGay;
+	//类的成员函数单独声明	//TODO：声明前后顺序并没有讲清，单纯这样写还是会报错
+	//friend void ClassGoodGay001::visit();
+public:
+	BuildJx001();
+
+public:
+	string m_LivingRoom;		//客厅
+private:
+	string m_BedRoom;			//卧室
+};
+BuildJx001::BuildJx001()
+{
+	m_LivingRoom = "客厅";
+	m_BedRoom = "卧室";
+}
+//	全局函数
+void func_GoodGay(BuildJx001* build)
+{
+	cout << "全局函数正在访问： " << build->m_LivingRoom << endl;
+	//cout << "全局函数正在访问： " << build->m_BedRoom << endl;	//私有属性不可访问
+
+	//在类中用friend声明全局函数后即可访问类中私有变量
+	cout << "全局函数正在访问： " << build->m_BedRoom << endl;
+}
+void Class_Jx010()
+{
+	BuildJx001 build;
+	func_GoodGay(&build);
+}
+//类做友元
+class ClassGoodGay
+{
+public:
+	ClassGoodGay();
+public:
+
+	void visit();	//访问 BuildJx001 类中的属性
+
+	BuildJx001* build;
+};
+ClassGoodGay::ClassGoodGay()
+{
+	//创建一个对象
+	build = new BuildJx001;		//new对象返回指针
+}
+void ClassGoodGay::visit()
+{
+	cout << "好基友类正在访问： " << build->m_LivingRoom << endl;
+	cout << "好基友类正在访问： " << build->m_BedRoom << endl;
+}
+//	test
+void Class_Jx011()
+{
+	ClassGoodGay gp;		//创建一个类
+	gp.visit();
+}
+//成员函数做友元
+class ClassGoodGay001
+{
+public:
+	ClassGoodGay001();
+	void visit();		//	让visit函数可以访问私有成员
+	void visit2();		//	让visit2函数不可以访问私有成员
+
+private:
+	BuildJx001* build;
+
+};
+ClassGoodGay001::ClassGoodGay001()
+{  
+	build = new BuildJx001;
+}
+void ClassGoodGay001::visit()
+{
+	cout << "好基友类正在访问： " << build->m_LivingRoom << endl;
+	//cout << "好基友类正在访问： " << build->m_BedRoom << endl;
+}
+void ClassGoodGay001::visit2()
+{
+	cout << "好基友类正在访问： " << build->m_LivingRoom << endl;
+	//cout << "好基友类正在访问： " << build->m_BedRoom << endl;	//visit2不可访问
+}
+//	test
+//void Class_Jx012()
+//{
+//	ClassGoodGay001 gp;
+//	gp.visit();
+//}
+
+
+/*运算符重载*/
+//加号运算符重载
+class PersonJx009
+{
+public:
+	PersonJx009& operator+(PersonJx009& p)
+	{
+		PersonJx009 temp;
+		temp.mA = p.mA + this->mA;
+		temp.mB = p.mB + this->mB;
+		return temp;
+	}
+public:
+	int mA;
+	int mB;
+private:
+};
+//	成员函数重载
+void Class_Operator001()
+{
+	PersonJx009 p1;
+	p1.mA = 10;
+	p1.mB = 100;
+	PersonJx009 p2;
+	p2.mA = 20;
+	p2.mB = 200;
+	PersonJx009 p3;
+	p3 = p1 + p2;		//重载运算符+
+	cout << p3.mA << " " << p3.mB << endl;
+}
+//	全局函数重载
+class PersonJx010
+{
+public:
+	int mA;
+	int mB;
+private:
+};
+PersonJx010& operator+(PersonJx010& p1, PersonJx010& p2)
+{
+	PersonJx010 temp;
+	temp.mA = p1.mA + p2.mA;
+	temp.mB = p1.mB + p2.mB;
+	return temp;
+}
+void Class_Operator002()
+{
+	PersonJx010 p1;
+	p1.mA = 10;
+	p1.mB = 100;
+	PersonJx010 p2;
+	p2.mA = 20;
+	p2.mB = 200;
+	PersonJx010 p3;
+	p3 = p1 + p2;		//重载运算符+
+	cout << p3.mA << " " << p3.mB << endl;
+}
+//左移运算符重载
+class PersonJx011
+{
+	//利用全局函数做友元访问私有属性
+	friend ostream& operator<<(ostream& cout, PersonJx011& p);
+public:
+	PersonJx011(int a, int b);
+
+	//通常不会利用成员函数重载 左移运算符， 因为无法实现 cout 在左侧
+	//void operator<< (PersonJx011& p);
+private:
+	int mA;
+	int mB;
+};
+PersonJx011::PersonJx011(int a, int b)
+{
+	this->mA = a;
+	this->mB = b;
+}
+//	只能利用全局函数重载左移运算符
+ostream& operator<<(ostream& cout, PersonJx011& p)
+{
+	cout << p.mA << " " << p.mB << endl;
+	//还需注意链式编程思想
+	return cout;
+}
+void Class_Operator003()
+{
+	PersonJx011 p(10, 20);
+	cout << p << endl;
+}
+//递增运算符重载

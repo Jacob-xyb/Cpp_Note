@@ -891,7 +891,172 @@ v = m * v; // Run-time assertion failure here: "invalid matrix product
 
 ## 数组（**The Array class**）
 
+数组是比较通用的类，不像矩阵专注于线性代数。
 
+此外，Array类提供了一种简单的方法来执行系数操作，这可能没有线性代数含义，例如向数组中的每个系数添加一个常数或将两个数组按系数相乘。
+
+### 数组类型
+
+Array是一个类模板，它采用与Matrix相同的模板参数。与Matrix 一样，前三个模板参数是必需的：
+
+`Array<typename Scalar, int RowsAtCompileTime, int ColsAtCompileTime>`
+
+后面三个参数和矩阵类完全相同，详情请参考 [矩阵类](https://blog.csdn.net/weixin_44560698/article/details/120000460)
+
+Eigen还为一些常见情况提供了 typedef，其方式类似于Matrix typedef，但有一些细微差别，因为“数组”一词用于一维和二维数组。
+
+Eigen采用这样的约定，即 ArrayNt 形式的 typedef 代表一维数组，其中 N 和 t 是大小和标量类型，如本页中解释的矩阵typedef所示。对于二维数组，我们使用 ArrayNNt 形式的 typedef。
+
+**示例：**
+
+| Type                          | Typedef  |
+| ----------------------------- | :------- |
+| Array<float,Dynamic,1>        | ArrayXf  |
+| Array<float,3,1>              | Array3f  |
+| Array<double,Dynamic,Dynamic> | ArrayXXd |
+| Array<double,3,3>             | Array33d |
+
+### 访问数组
+
+Eigen重载了括号运算符访问数组。
+
+同时，左移运算符也被重载用于(逗号)初始化，和打印输出。
+
+```cpp
+void Eigen_Introduction_ArrayClass_001()
+{
+	ArrayXXf a(2, 2);
+	ArrayXXf b(2, 2);
+	a(0, 0) = 1; a(0, 1) = 2;
+	a(1, 0) = 3; a(1, 1) = 4;
+	cout << "a\n" << a << endl;
+	b << 4, 3, 2, 1;
+	cout << "b\n" << b << endl;
+}
+```
+
+输出：
+
+```cpp
+a
+1 2
+3 4
+b
+4 3
+2 1
+```
+
+### 四则运算
+
+- 加减运算
+
+两个数组的加减与矩阵相同。如果两个数组具有相同的大小，并且加法或减法是按系数进行的，则该操作是有效的。
+
+数组还支持 `array + scalar` 将标量添加到数组中的每个系数的形式的表达式。`(这提供了不能直接用于Matrix对象的功能)`
+
+- 乘除运算
+
+首先，`array * scalar` 数组乘标量的运算当然是可行的，与矩阵完全一致。
+
+但是！！！，`array*array` 与 `matrix*matrix`是不一样的：
+
+​	矩阵相乘的结果为矩阵乘积；`(m,n)*(n,p)=(m,p)`
+
+​	数组相乘的结果为系数乘积；`(m,n)*(m,n)=(m,n)`
+
+```cpp
+//Array四则运算
+void Eigen_Introduction_ArrayClass_002()
+{
+	ArrayXXf a(3, 3);
+	ArrayXXf b(3, 3);
+	a << 1, 2, 3,
+		 4, 5, 6,
+		 7, 8, 9;
+	b << 1, 2, 3,
+		 1, 2, 3,
+		 1, 2, 3;
+	cout << "a + b = " << endl << a + b << endl;
+	cout << "a - 2 = " << endl << a - 2 << endl;
+	cout << "a * b = " << endl << a * b << endl;
+	cout << "a / b = " << endl << a / b << endl;
+}
+```
+
+输出：
+
+```cpp
+a + b =
+ 2  4  6
+ 5  7  9
+ 8 10 12
+a - 2 =
+-1  0  1
+ 2  3  4
+ 5  6  7
+a * b =
+ 1  4  9
+ 4 10 18
+ 7 16 27
+a / b =
+  1   1   1
+  4 2.5   2
+  7   4   3
+```
+
+### 其他函数操作
+
+`.abs()`、`.sqrt()`等等，
+
+`.min(.)`返回两个同规模数组对应系数最小值的新数组。
+
+```cpp
+//Array其他函数操作
+void Eigen_Introduction_ArrayClass_003()
+{
+	ArrayXf a = ArrayXf::Random(5);
+	ArrayXf b = ArrayXf::Random(5);
+	cout << "a = " << endl 
+		<< a.transpose() << endl;
+	cout << "b = " << endl
+		<< b.transpose() << endl;
+	cout << "a.abs() = " << endl
+		<< a.abs().transpose() << endl;				//绝对值
+	cout << "a.sqrt() =" << endl
+		<< a.abs().sqrt().transpose() << endl;		//开方	
+	cout << "a.minCoeff() = " << endl
+		<< a.minCoeff() << endl;		//最小系数
+	cout << "a.maxCoeff() = " << endl
+		<< a.maxCoeff() << endl;		//最大系数
+	cout << "a.min(b)" << endl
+		<< a.min(b).transpose() << endl;			//对应最小值
+	cout << "a.max(b)" << endl
+		<< a.max(b).transpose() << endl;			//对应最大值
+}
+```
+
+输出：
+
+```cpp
+a =
+ -0.113254  -0.110202   0.632496 -0.0588702  -0.971007
+b =
+ 0.851558  0.741935  0.148534  0.241005 -0.610828
+a.abs() =
+ 0.113254  0.110202  0.632496 0.0588702  0.971007
+a.sqrt() =
+0.336533 0.331967 0.795296 0.242632 0.985397
+a.minCoeff() =
+-0.971007
+a.maxCoeff() =
+0.632496
+a.min(b)
+ -0.113254  -0.110202   0.148534 -0.0588702  -0.971007
+a.max(b)
+ 0.851558  0.741935  0.632496  0.241005 -0.610828
+```
+
+### 数组和矩阵相互转换
 
 # 扩展内容
 

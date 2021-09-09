@@ -13,8 +13,8 @@ using namespace std;
 using namespace Eigen;
 
 // º¯ÊıÉùÃ÷
-void Eigen_NormalizationMatrix();
+void Eigen_Introduction_ArrayClass_003();
 
-#define test() Eigen_NormalizationMatrix()
+#define test() Eigen_Introduction_ArrayClass_003()
 
   
