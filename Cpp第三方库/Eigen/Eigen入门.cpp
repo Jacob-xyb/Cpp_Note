@@ -401,29 +401,32 @@ void Eigen_Introduction_ArrayClass_003()
 	cout << "a.sqrt() =" << endl
 		<< a.abs().sqrt().transpose() << endl;		//开方	
 	cout << "a.minCoeff() = " << endl
-		<< a.minCoeff() << endl;		//最小系数
+		<< a.minCoeff() << endl;					//最小系数
 	cout << "a.maxCoeff() = " << endl
-		<< a.maxCoeff() << endl;		//最大系数
+		<< a.maxCoeff() << endl;					//最大系数
 	cout << "a.min(b)" << endl
 		<< a.min(b).transpose() << endl;			//对应最小值
 	cout << "a.max(b)" << endl
 		<< a.max(b).transpose() << endl;			//对应最大值
 }
 //Matrix和Array之间的相互转换
+/*	Matrix to Array*/
 void Eigen_Introduction_ArrayClass_004()
 {
-	Array44f a1, a2;
-	Matrix4f m1, m2;
-	m1 = a1 * a2;                     //coeffwise乘积，从数组到矩阵的隐式转换。
-	std::cout << "m1: " << std::endl << m1 << std::endl;
-	a1 = m1 * m2;                     //矩阵乘积，从矩阵到数组的隐式转换。
-	std::cout << "a1: " << std::endl << a1 << std::endl;
+	Matrix2f m1, m2;
+	Matrix2f result;
+	Array22f a1, a2;
+	m1 << 1, 2,
+		  3, 4;
+	m2 << 2, 2,
+		  2, 2;
 
-	a2 = a1 + m1.array();             //禁止混合数组和矩阵，必须显式转换以后才可以相加
-	m2 = a1.matrix() + m1;    
-	std::cout << "a2: " << std::endl << a2 << std::endl;
-	std::cout << "m2: " << std::endl << m2 << std::endl;
-
-	ArrayWrapper<Matrix4f> m1a(m1);   // m1a是m1.array（）的别名，它们共享相同的系数
-	MatrixWrapper<Array44f> a1m(a1);
+	result = m1 * m2;
+	cout << "-- Matrix m*n: --" << endl << result << endl << endl;
+	result = m1.array() * m2.array();
+	cout << "-- Array m*n: --" << endl << result << endl << endl;
+	result = m1.cwiseProduct(m2);
+	cout << "-- With cwiseProduct: --" << endl << result << endl << endl;
+	result = m1.array() + 4;
+	cout << "-- Array m + 4: --" << endl << result << endl << endl;
 }

@@ -73,6 +73,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>D:\cppLib\eigen-3.4.0</IncludePath>
+    <ExternalIncludePath>D:\cppLib\eigen-3.4.0;D:\cppLib\eigen-3.4.0\unsupported;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -80,6 +81,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>D:\cpplib\Eigen\eigen-3.4.0;D:\cpplib\Eigen\eigen-3.4.0\unsupported</IncludePath>
+    <ExternalIncludePath>D:\cppLib\eigen-3.4.0;D:\cppLib\eigen-3.4.0\unsupported;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
