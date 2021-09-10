@@ -13,8 +13,8 @@ using namespace std;
 using namespace Eigen;
 
 // º¯ÊıÉùÃ÷
-void Eigen_Introduction_ArrayClass_004();
+void Eigen_Introduction_Block001();
 
-#define test() Eigen_Introduction_ArrayClass_004()
+#define test() Eigen_Introduction_Block001()
 
   

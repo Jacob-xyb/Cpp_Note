@@ -430,3 +430,51 @@ void Eigen_Introduction_ArrayClass_004()
 	result = m1.array() + 4;
 	cout << "-- Array m + 4: --" << endl << result << endl << endl;
 }
+/*	Array to Matrix*/
+void Eigen_Introduction_ArrayClass_005()
+{
+	//主要测一下矩阵怎么执行数组运算
+	Matrix2f m1, m2;
+	Matrix2f result;
+	m1 << 1, 2,
+		  3, 4;
+	m2 << 2, 2,
+		  2, 2;
+	result = (m1.array() + 4).matrix() * m2;
+	cout << "-- Combination 1: --" << endl << result << endl << endl;
+	result = (m1.array() * m2.array()).matrix() * m2;
+	cout << "-- Combination 2: --" << endl << result << endl << endl;
+}
+
+
+/*Block operations*/
+//using block as rvalues
+void Eigen_Introduction_Block()
+{
+	Eigen::MatrixXf m(4, 4);
+	m << 1, 2, 3, 4,
+		 5, 6, 7, 8,
+		 9, 10, 11, 12,
+		 13, 14, 15, 16;
+	cout << "Block in the middle" << endl;
+	cout << m.block<2, 2>(1, 1) << endl << endl;
+	for (int i = 1; i <= 3; ++i)
+	{
+		cout << "Block of size " << i << "x" << i << endl;
+		cout << m.block(0, 0, i, i) << endl << endl;
+	}
+}
+//using block as lvalues
+void Eigen_Introduction_Block001()
+{
+	Array22f m;
+	m << 1, 2,
+		 3, 4;
+	Array44f a = Array44f::Constant(0.6);
+	cout << "Here is the array a:" << endl << a << endl << endl;
+	a.block<2, 2>(1, 1) = m;
+	cout << "Here is now a with m copied into its central 2x2 block:" << endl << a << endl << endl;
+	a.block(0, 0, 2, 3) = a.block(2, 1, 2, 3);
+	cout << "Here is now a with bottom-right 2x3 block copied into top-left 2x3 block:" << endl << a << endl << endl;
+}
+

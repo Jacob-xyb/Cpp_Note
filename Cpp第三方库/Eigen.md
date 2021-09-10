@@ -1074,6 +1074,167 @@ Eigen禁止在表达式中混合矩阵和数组。例如，您不能直接添加
 
 事实上，这种用法非常普遍，以至于Eigen为矩阵提供了一个const .cwiseProduct(.)方法来计算系数乘积。
 
+```cpp
+/*	Matrix to Array*/
+void Eigen_Introduction_ArrayClass_004()
+{
+	Matrix2f m1, m2;
+	Matrix2f result;
+	Array22f a1, a2;
+	m1 << 1, 2,
+		  3, 4;
+	m2 << 2, 2,
+		  2, 2;
+
+	result = m1 * m2;
+	cout << "-- Matrix m*n: --" << endl << result << endl << endl;
+	result = m1.array() * m2.array();
+	cout << "-- Array m*n: --" << endl << result << endl << endl;
+	result = m1.cwiseProduct(m2);
+	cout << "-- With cwiseProduct: --" << endl << result << endl << endl;
+	result = m1.array() + 4;
+	cout << "-- Array m + 4: --" << endl << result << endl << endl;
+}
+/*	Array to Matrix*/
+void Eigen_Introduction_ArrayClass_005()
+{
+	//主要测一下矩阵怎么执行数组运算
+	Matrix2f m1, m2;
+	Matrix2f result;
+	m1 << 1, 2,
+		  3, 4;
+	m2 << 2, 2,
+		  2, 2;
+	result = (m1.array() + 4).matrix() * m2;
+	cout << "-- Combination 1: --" << endl << result << endl << endl;
+	result = (m1.array() * m2.array()).matrix() * m2;
+	cout << "-- Combination 2: --" << endl << result << endl << endl;
+}
+```
+
+输出
+
+```cpp
+/*	Matrix to Array*/
+-- Matrix m*n: --
+ 6  6
+14 14
+
+-- Array m*n: --
+2 4
+6 8
+
+-- With cwiseProduct: --
+2 4
+6 8
+
+-- Array m + 4: --
+5 6
+7 8
+
+/*	Array to Matrix*/
+-- Combination 1: --
+22 22
+30 30
+
+-- Combination 2: --
+12 12
+28 28
+```
+
+## 块操作
+
+快操作既可以作为右值，还可以作为左值！
+
+### 基本操作
+
+| **Block** **operation**                    | **dynamic-size block expression** | **fixed-size block expression** |
+| ------------------------------------------ | --------------------------------- | ------------------------------- |
+| Block of size `(p,q)`, starting at `(i,j)` | `matrix.block(i,j,p,q);`          | `matrix.block<p,q>(i,j);`       |
+
+两个版本都可用于固定大小和动态大小的矩阵和数组。这两个表达式在语义上是等价的。
+
+唯一的区别是，如果块大小很小，固定大小的版本通常会给你更快的代码，但需要在编译时知道这个大小。
+
+```cpp
+void Eigen_Introduction_Block()
+{
+	Eigen::MatrixXf m(4, 4);
+	m << 1, 2, 3, 4,
+		 5, 6, 7, 8,
+		 9, 10, 11, 12,
+		 13, 14, 15, 16;
+	cout << "Block in the middle" << endl;
+	cout << m.block<2, 2>(1, 1) << endl << endl;
+	for (int i = 1; i <= 3; ++i)
+	{
+		cout << "Block of size " << i << "x" << i << endl;
+		cout << m.block(0, 0, i, i) << endl << endl;
+	}
+}
+```
+
+输出
+
+```cpp
+Block in the middle
+ 6  7
+10 11
+
+Block of size 1x1
+1
+
+Block of size 2x2
+1 2
+5 6
+
+Block of size 3x3
+ 1  2  3
+ 5  6  7
+ 9 10 11
+```
+
+### 块的左值操作
+
+```cpp
+void Eigen_Introduction_Block001()
+{
+	Array22f m;
+	m << 1, 2,
+		 3, 4;
+	Array44f a = Array44f::Constant(0.6);
+	cout << "Here is the array a:" << endl << a << endl << endl;
+	a.block<2, 2>(1, 1) = m;
+	cout << "Here is now a with m copied into its central 2x2 block:" << endl << a << endl << endl;
+	a.block(0, 0, 2, 3) = a.block(2, 1, 2, 3);
+	cout << "Here is now a with bottom-right 2x3 block copied into top-left 2x3 block:" << endl << a << endl << endl;
+}
+```
+
+输出
+
+```cpp
+Here is the array a:
+0.6 0.6 0.6 0.6
+0.6 0.6 0.6 0.6
+0.6 0.6 0.6 0.6
+0.6 0.6 0.6 0.6
+
+Here is now a with m copied into its central 2x2 block:
+0.6 0.6 0.6 0.6
+0.6   1   2 0.6
+0.6   3   4 0.6
+0.6 0.6 0.6 0.6
+
+Here is now a with bottom-right 2x3 block copied into top-left 2x3 block:
+  3   4 0.6 0.6
+0.6 0.6 0.6 0.6
+0.6   3   4 0.6
+0.6 0.6 0.6 0.6
+```
+
+
+
 # 扩展内容
 
 ## 存储顺序

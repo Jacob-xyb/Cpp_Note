@@ -93,23 +93,6 @@ void Eigen_QuickCheck_005()
 	cout << "向量重设大小" << endl << v1 << endl;
 }
 
-//Vector块操作
-void Eigen_QuickCheck_006()
-{
-	RowVectorXd v(9);
-	v << 1, 2, 3, 4, 5, 6, 7, 8, 9;
-	//Eigen									// Matlab
-	//v.head(n) \ v.head<n>()				// v(1:n)	用于数组提取前n个[vector]
-	//v.tail(n) \ v.tail<n>()				// v(end - n + 1: end)同理
-	//v.segment(i, n) \ v.segment<n>(i)     // v(i+1 : i+n)同理
-
-	//操作
-	cout << "原向量： "		<< v				<< endl;
-	cout << "前三个： "		<< v.head(3)		<< endl;
-	cout << "后三个： "		<< v.tail(3)		<< endl;
-	cout << "中间三个："	<< v.segment(3, 3)	<< endl;
-	cout << MatrixXd(v.head(3).asDiagonal())    << endl;	//将向量设置为对角阵
-}
 
 //Matrix块操作
 void Eigen_QuickCheck_007()
@@ -150,6 +133,7 @@ void Eigen_QuickCheck_007()
 	cout << "中间两列"	<< endl << m.middleCols(1, 2)	<< endl;
 	cout << "后两列"	<< endl << m.rightCols(2)		<< endl;
 	cout << "子矩阵"	<< endl << m.block(0,0,2,2)		<< endl;
+	cout << "子矩阵"	<< endl << m.block<2,2>(0,0)	<< endl;
 	cout << "矩阵对角线向量" << endl << m.diagonal()	<< endl;
 
 	cout << "左上二阶子矩阵" << endl << m.topLeftCorner(2, 2)		<< endl;
@@ -158,6 +142,25 @@ void Eigen_QuickCheck_007()
 	cout << "右下二阶子矩阵" << endl << m.bottomRightCorner(2,2)	<< endl;
 
 }
+
+//Vector块操作
+void Eigen_QuickCheck_006()
+{
+	RowVectorXd v(9);
+	v << 1, 2, 3, 4, 5, 6, 7, 8, 9;
+	//Eigen									// Matlab
+	//v.head(n) \ v.head<n>()				// v(1:n)	用于数组提取前n个[vector]
+	//v.tail(n) \ v.tail<n>()				// v(end - n + 1: end)同理
+	//v.segment(i, n) \ v.segment<n>(i)     // v(i+1 : i+n)同理
+
+	//操作
+	cout << "原向量： "		<< v				<< endl;
+	cout << "前三个： "		<< v.head(3)		<< endl;
+	cout << "后三个： "		<< v.tail(3)		<< endl;
+	cout << "中间三个："	<< v.segment(3, 3)	<< endl;
+	cout << MatrixXd(v.head(3).asDiagonal())    << endl;	//将向量设置为对角阵
+}
+
 
 //Matrix元素操作
 void Eigen_QuickCheck_008()
