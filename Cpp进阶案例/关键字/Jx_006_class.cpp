@@ -574,7 +574,7 @@ PersonJx011::PersonJx011(int a, int b)
 //	只能利用全局函数重载左移运算符
 ostream& operator<<(ostream& cout, PersonJx011& p)
 {
-	cout << p.mA << " " << p.mB << endl;
+	cout << p.mA << " " << p.mB;
 	//还需注意链式编程思想
 	return cout;
 }
@@ -584,3 +584,172 @@ void Class_Operator003()
 	cout << p << endl;
 }
 //递增运算符重载
+class MyInteger
+{
+public:
+	MyInteger();
+	int getNum();
+
+	//重载前置++运算符	//返回值的话重复调用就会出现问题
+	MyInteger& operator++()
+	{
+		mNum++;
+		return *this;
+	}
+	//重载后置++运算符	//int代表占位参数，可以用于区分前置和后置递增，只认int！
+	MyInteger operator++(int)
+	{
+		//先 记录当时结果
+		MyInteger temp = *this;
+		//后 递增
+		mNum++;
+		//返回的是局部对象，因此不能返回引用
+		return temp;
+	}
+private:
+	int mNum;
+};
+MyInteger::MyInteger()
+{
+	this->mNum = 0;
+}
+int MyInteger::getNum()
+{
+	return this->mNum;
+}
+//	重载左移运算符打印输出
+ostream& operator<<(ostream& cout, MyInteger myint)
+{
+	cout << myint.getNum();
+	return cout;
+}
+void Class_Operator004()
+{
+	MyInteger myint;
+	cout << ++myint << endl;
+	MyInteger myint2;
+	cout << myint2++ << endl;
+}
+//赋值运算符重载
+class PersonJx012
+{
+public:
+	PersonJx012(int age);
+	~PersonJx012();
+
+	//浅拷贝会重复释放堆区内存
+	PersonJx012& operator=(PersonJx012& p);
+
+	int* getAge();
+private:
+	int* mAge;
+};
+PersonJx012::PersonJx012(int age)
+{
+	mAge = new int(age);
+}
+PersonJx012::~PersonJx012()
+{
+	if (mAge!=NULL)
+	{
+		delete mAge;
+		mAge = NULL;
+	}
+}
+//	还要考虑链式编程
+//void PersonJx012::operator=(PersonJx012& p)
+PersonJx012& PersonJx012::operator=(PersonJx012& p)
+{
+	/*编译器提供的浅拷贝*/
+	//mAge = p.mAge;
+
+	/*为了避免堆区重复释放，应该对赋值运算操作符进行重载*/
+	//先判断是否有属性在堆区，如果有先释放干净
+	if (mAge!=NULL)
+	{
+		delete mAge;
+		mAge = NULL;
+	}
+	//然后进行深拷贝
+	this->mAge = new int(*p.getAge());
+	return *this;
+}
+int* PersonJx012::getAge() { return mAge; }
+void Class_Operator005()
+{
+	PersonJx012 p1(18);
+	PersonJx012 p2(20);
+
+	p2 = p1;	//赋值操作
+
+	cout << *p1.getAge() << endl;
+	cout << *p2.getAge() << endl;
+}
+//关系运算符重载
+class PersonJx013
+{
+public:
+	PersonJx013(string name, int age);
+
+	bool operator==(PersonJx013& p);
+	bool operator!=(PersonJx013& p);
+
+	string getName() { return mName; }
+	int getAge() { return mAge; }
+private:
+	string mName;
+	int mAge;
+};
+PersonJx013::PersonJx013(string name, int age)
+{
+	mName = name;
+	mAge = age;
+}
+bool PersonJx013::operator==(PersonJx013& p)
+{
+	if (mName == p.getName() && mAge == p.getAge())
+	{
+		return true;
+	}
+	return false;
+}
+bool PersonJx013::operator!=(PersonJx013& p)
+{
+	if (mName == p.getName() && mAge == p.getAge())
+	{
+		return false;
+	}
+	return true;
+}
+void Class_Operator006()
+{
+	PersonJx013 p1("zhangsan", 18);
+	PersonJx013 p2("zhangsan", 18);
+	if (p1==p2)
+	{
+		cout << "p1和p2是相等的" << endl;
+	}
+	else { cout << "p1和p2是不相等的" << endl; }
+}
+//函数调用运算符重载
+class MyPrint
+{
+public:
+	//由于使用起来很像函数的调用，因此被称为仿函数
+	void operator()(string test);
+
+private:
+
+};
+void MyPrint::operator()(string test)
+{
+	cout << test << endl;
+}
+void Class_Operator007()
+{
+	MyPrint p;
+	p("hello world");
+
+	//匿名对象写法
+	MyPrint()("匿名对象方式调用");
+}

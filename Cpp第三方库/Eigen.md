@@ -1,4 +1,4 @@
-# 入门篇
+# the last `n` elements入门篇
 
 [Eigen官网](http://eigen.tuxfamily.org/index.php?title=Main_Page)
 
@@ -1112,7 +1112,7 @@ void Eigen_Introduction_ArrayClass_005()
 }
 ```
 
-输出
+输出：
 
 ```cpp
 /*	Matrix to Array*/
@@ -1174,7 +1174,7 @@ void Eigen_Introduction_Block()
 }
 ```
 
-输出
+输出：
 
 ```cpp
 Block in the middle
@@ -1231,6 +1231,220 @@ Here is now a with bottom-right 2x3 block copied into top-left 2x3 block:
 0.6 0.6 0.6 0.6
 0.6   3   4 0.6
 0.6 0.6 0.6 0.6
+```
+
+### 列和行
+
+单独的行和列是块的特殊情况，Eigen提供了对应的函数。
+
+`matrix.row(i);` 和 `matrix.col(j);`
+
+```cpp
+void Eigen_Introduction_Block002()
+{
+	Eigen::MatrixXf m(3, 3);
+	m << 1, 2, 3,
+		 4, 5, 6,
+		 7, 8, 9;
+	cout << "Here is the matrix m:" << endl << m << endl;
+	cout << "2nd Row: " << m.row(1) << endl;
+	m.col(2) += 3 * m.col(0);
+	cout << "After adding 3 times the first column into the third column, the matrix m is:\n";
+	cout << m << endl;
+}
+```
+
+输出：
+
+```cpp
+Here is the matrix m:
+1 2 3
+4 5 6
+7 8 9
+2nd Row: 4 5 6
+After adding 3 times the first column into the third column, the matrix m is:
+ 1  2  6
+ 4  5 18
+ 7  8 30
+```
+
+### 角操作
+
+| **Block** **operation**       | **dynamic-size block expression** | **fixed-size block expression** |
+| ----------------------------- | --------------------------------- | ------------------------------- |
+| Top-left p by q block         | `matrix.topLeftCorner(p,q);`      | `matrix.topLeftCorner<p,q>();`  |
+| Bottom-left p by q block      | `matrix.bottomLeftCorner(p,q);`   | `()  ->  <>()`                  |
+| Top-right p by q block        | `matrix.topRightCorner(p,q);`     | `()  ->  <>()`                  |
+| Bottom-right p by q block     | `matrix.bottomRightCorner(p,q);`  | `()  ->  <>()`                  |
+| the first q rows              | `matrix.topRows(q);`              | `()  ->  <>()`                  |
+| the last q rows               | `matrix.bottomRows(q);`           | `()  ->  <>()`                  |
+| the first p columns           | `matrix.leftCols(p);`             | `()  ->  <>()`                  |
+| the last q columns            | `matrix.rightCols(q);`            | `()  ->  <>()`                  |
+| the q columns starting from i | `matrix.middleCols(i,q);`         | `()  ->  <>()`                  |
+| the q rows starting from i    | `matrix.middleRows(i,q);`         | `()  ->  <>()`                  |
+
+```cpp
+void Eigen_Introduction_Block003()
+{
+	Eigen::Matrix4f m;
+	m << 1, 2, 3, 4,
+		5, 6, 7, 8,
+		9, 10, 11, 12,
+		13, 14, 15, 16;
+	cout << "m.leftCols(2) =" << endl << m.leftCols(2) << endl << endl;
+	cout << "m.bottomRows<2>() =" << endl << m.bottomRows<2>() << endl << endl;
+	m.topLeftCorner(1, 3) = m.bottomRightCorner(3, 1).transpose();
+	cout << "After assignment, m = " << endl << m << endl;
+}
+```
+
+输出：
+
+```cpp
+m.leftCols(2) =
+ 1  2
+ 5  6
+ 9 10
+13 14
+
+m.bottomRows<2>() =
+ 9 10 11 12
+13 14 15 16
+
+After assignment, m =
+ 8 12 16  4
+ 5  6  7  8
+ 9 10 11 12
+13 14 15 16
+```
+
+### 向量的块操作
+
+同样对一维向量和数组提供了块操作
+
+| **Block** **operation**                | **dynamic-size block expression** | **fixed-size block expression** |
+| -------------------------------------- | --------------------------------- | ------------------------------- |
+| the first `n` elements                 | `vector.head(n);`                 | `vector.head<n>();`             |
+| the last `n` elements                  | `vector.tail(n);`                 | `()  ->  <>()`                  |
+| `n` elements, starting at position `i` | `vector.segment(i,n);`            | `()  ->  <>()`                  |
+
+```cpp
+//Block operations for vectors
+void Eigen_Introduction_Block004()
+{
+	Eigen::ArrayXf v(6);
+	v << 1, 2, 3, 4, 5, 6;
+	cout << "v.head(3) =" << endl << v.head(3).transpose() << endl << endl;
+	cout << "v.tail<3>() = " << endl << v.tail<3>().transpose() << endl << endl;
+	v.segment(1, 4) *= 2;
+	cout << "after 'v.segment(1,4) *= 2', v =" << endl << v.transpose() << endl;
+}
+```
+
+输出：
+
+```cpp
+v.head(3) =
+1 2 3
+
+v.tail<3>() =
+4 5 6
+
+after 'v.segment(1,4) *= 2', v =
+ 1  4  6  8 10  6
+```
+
+## 切片和索引
+
+` operator() `重载赋值运算符提供切片和索引
+
+所有上述操作都通过通用 `DenseBase::operator()(const RowIndices&, const ColIndices&) `方法处理。每个参数可以是：
+
+- 索引单个行或列的整数，包括符号索引。
+- 符号[Eigen::all](http://eigen.tuxfamily.org/dox/group__Core__Module.html#ga790ab6c4226ef5f678b9eb532a3eab14)以递增的顺序表示整个行或列的集合。
+- 由[Eigen::seq](http://eigen.tuxfamily.org/dox/namespaceEigen.html#a0c04400203ca9b414e13c9c721399969)、[Eigen::seqN](http://eigen.tuxfamily.org/dox/namespaceEigen.html#a3a3c346d2a61d1e8e86e6fb4cf57fbda)或[Eigen::lastN](http://eigen.tuxfamily.org/dox/namespaceEigen.html#acc01e5c7293dd3af76e79ae68cc87f77)函数构造的[ArithmeticSequence](http://eigen.tuxfamily.org/dox/classEigen_1_1ArithmeticSequence.html)。
+- 任何一维向量/整数数组，包括 Eigen 的向量/数组、表达式、std::vector、std::array 以及普通的 C 数组：`int[N]`。
+
+### 基本切片
+
+通过`Eigen::seq`或`igen::seqN`函数获取矩阵或向量内均匀间隔的一组行、列或元素，其中“seq”代表算术序列。
+
+总结如下：
+
+| **功能**                      | 描述                                     |
+| ----------------------------- | ---------------------------------------- |
+| `seq (firstIdx,lastIdx)`      | from `firstIdx` to `lastIdx`             |
+| `seq (firstIdx,lastIdx,incr)` | 增量`incr`                               |
+| `seqN (firstIdx,size)`        | `size` integers starting from `firstIdx` |
+| `seqN (firstIdx,size,incr)`   | 增量`incr`                               |
+
+```cpp
+void Eigen_Introduction_Slicing()
+{
+	VectorXd v1 = VectorXd::LinSpaced(10, 0, 9);
+	cout << "v1\n"<< v1.transpose() << endl;
+	//seq (firstIdx,lastIdx)		// [fIdx,lIdx]
+	cout << "v1(seq(0,3))\n" << v1(seq(0, 3)).transpose() << endl;
+	VectorXd v2 = v1(seq(0, 9, 2));
+	cout << "v1(seq(0,9,2))\n" << v2.transpose() << endl;
+	cout << "v1(seqN(0, 4))\n" << v1(seqN(0, 4)).transpose() << endl;
+	v2 = v1(seqN(0, 4, 2));
+	cout << "v1(seqN(0, 4, 2))\n" <<v2.transpose() << endl;
+}
+```
+
+输出：
+
+```cpp
+v1
+0 1 2 3 4 5 6 7 8 9
+v1(seq(0,3))
+0 1 2 3
+v1(seq(0,9,2))
+0 2 4 6 8
+v1(seqN(0, 4))
+0 1 2 3
+v1(seqN(0, 4, 2))
+0 2 4 6
+```
+
+- **last**
+
+`Eigen::last` 可以在代表最后行，列或底层矩阵/向量的元素的索引，然后进行传递。
+
+| **Intent**                                               | Code                        | **Block-API equivalence**          |
+| -------------------------------------------------------- | --------------------------- | ---------------------------------- |
+| Bottom-left corner starting at row `i` with `n` columns  | `A(seq(i,last), seqN(0,n))` | `A.bottomLeftCorner(A.rows()-i,n)` |
+| Block starting at `i`,j having `m` rows, and `n` columns | `A(seqN(i,m), seqN(i,n))`   | `A.block(i,j,m,n)`                 |
+| Block starting at `i0`,`j0` and ending at `i1`,`j1`      | `A(seq(i0,i1), seq(j0,j1))` | `A.block(i0,j0,i1-i0+1,j1-j0+1)`   |
+| Even columns of A                                        | `A(all, seq(0,last,2))`     | ``                                 |
+| First `n` odd rows A                                     | `A(seqN(1,n,2), all)`       | ``                                 |
+| The last past one column                                 | `A(all, last-1)`            | `A.col(A.cols()-2)`                |
+| The middle row                                           | `A(last/2,all)`             | `A.row((A.rows()-1)/2)`            |
+| Last elements of v starting at i                         | `v(seq(i,last))`            | `v.tail(v.size()-i)`               |
+| Last `n` elements of v                                   | `v(seq(last+1-n,last))`     | `v.tail(n)`                        |
+
+```cpp
+//	Eigen::last
+void Eigen_Introduction_Slicing001()
+{
+	VectorXd v1 = VectorXd::LinSpaced(10, 0, 9);
+	cout << "v1(seq(0, last - 3))\n" << v1(seq(0, last - 3)).transpose() << endl;
+	cout << "v1(seq(0, 6))\n" << v1(seq(0, 6)).transpose() << endl;
+	//因此推断 last = 9
+	cout << "the middle of v1\n" << v1(last / 2) << endl;
+}
+```
+
+输出：
+
+```cpp
+v1(seq(0, last - 3))
+0 1 2 3 4 5 6
+v1(seq(0, 6))
+0 1 2 3 4 5 6
+the middle of v1
+4
 ```
 
 

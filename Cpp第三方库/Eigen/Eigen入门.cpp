@@ -477,4 +477,64 @@ void Eigen_Introduction_Block001()
 	a.block(0, 0, 2, 3) = a.block(2, 1, 2, 3);
 	cout << "Here is now a with bottom-right 2x3 block copied into top-left 2x3 block:" << endl << a << endl << endl;
 }
+//Columns and rows
+void Eigen_Introduction_Block002()
+{
+	Eigen::MatrixXf m(3, 3);
+	m << 1, 2, 3,
+		 4, 5, 6,
+		 7, 8, 9;
+	cout << "Here is the matrix m:" << endl << m << endl;
+	cout << "2nd Row: " << m.row(1) << endl;
+	m.col(2) += 3 * m.col(0);
+	cout << "After adding 3 times the first column into the third column, the matrix m is:\n";
+	cout << m << endl;
+}
+//Corner-related operations
+void Eigen_Introduction_Block003()
+{
+	Eigen::Matrix4f m;
+	m << 1, 2, 3, 4,
+		 5, 6, 7, 8,
+		 9, 10, 11, 12,
+		 13, 14, 15, 16;
+	cout << "m.leftCols(2) =" << endl << m.leftCols(2) << endl << endl;
+	cout << "m.bottomRows<2>() =" << endl << m.bottomRows<2>() << endl << endl;
+	m.topLeftCorner(1, 3) = m.bottomRightCorner(3, 1).transpose();
+	cout << "After assignment, m = " << endl << m << endl;
+}
+//Block operations for vectors
+void Eigen_Introduction_Block004()
+{
+	Eigen::ArrayXf v(6);
+	v << 1, 2, 3, 4, 5, 6;
+	cout << "v.head(3) =" << endl << v.head(3).transpose() << endl << endl;
+	cout << "v.tail<3>() = " << endl << v.tail<3>().transpose() << endl << endl;
+	v.segment(1, 4) *= 2;
+	cout << "after 'v.segment(1,4) *= 2', v =" << endl << v.transpose() << endl;
+}
 
+
+/*-- Slicing and Indexing --*/
+//Basic slicing
+void Eigen_Introduction_Slicing()
+{
+	VectorXd v1 = VectorXd::LinSpaced(10, 0, 9);
+	cout << "v1\n"<< v1.transpose() << endl;
+	//seq (firstIdx,lastIdx)		// [fIdx,lIdx]
+	cout << "v1(seq(0,3))\n" << v1(seq(0, 3)).transpose() << endl;
+	VectorXd v2 = v1(seq(0, 9, 2));
+	cout << "v1(seq(0,9,2))\n" << v2.transpose() << endl;
+	cout << "v1(seqN(0, 4))\n" << v1(seqN(0, 4)).transpose() << endl;
+	v2 = v1(seqN(0, 4, 2));
+	cout << "v1(seqN(0, 4, 2))\n" <<v2.transpose() << endl;
+}
+//	Eigen::last
+void Eigen_Introduction_Slicing001()
+{
+	VectorXd v1 = VectorXd::LinSpaced(10, 0, 9);
+	cout << "v1(seq(0, last - 3))\n" << v1(seq(0, last - 3)).transpose() << endl;
+	cout << "v1(seq(0, 6))\n" << v1(seq(0, 6)).transpose() << endl;
+	//Òò´ËÍÆ¶Ï last = 9
+	cout << "the middle of v1\n" << v1(last / 2) << endl;
+}
