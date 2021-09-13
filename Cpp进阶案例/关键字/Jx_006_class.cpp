@@ -753,3 +753,69 @@ void Class_Operator007()
 	//匿名对象写法
 	MyPrint()("匿名对象方式调用");
 }
+
+
+/*-- 继承 --*/
+//继承的基本语法
+/*	继承实现页面 */
+class BasePage
+{
+public:
+	void header()
+	{
+		cout << "首页、公开课、登陆、注册...(公共头部)" << endl;
+	}
+	void footer()
+	{
+		cout << "帮助中心、交流合作...(公共底部)" << endl;
+	}
+	void left()
+	{
+		cout << "Java、Python、C++...（公共列表）" << endl;
+	}
+};
+class WebJava : public BasePage
+{
+public:
+	void content()
+	{
+		cout << "Java学科视频" << endl;
+	}
+};
+class WebPython : public BasePage
+{
+public:
+	void content()
+	{
+		cout << "Python学科视频" << endl;
+	}
+};
+class WebCpp : public BasePage
+{
+public:
+	void content()
+	{
+		cout << "Cpp学科视频" << endl;
+	}
+};
+void Class_successor()
+{
+	cout << "这是Java页面" << endl;
+	WebJava webjava;
+	webjava.header();
+	webjava.footer();
+	webjava.left();
+	webjava.content();
+	cout << "\n这是Python页面" << endl;
+	WebPython webpy;
+	webpy.header();
+	webpy.footer();
+	webpy.left();
+	webpy.content();
+	cout << "\n这是Cpp页面" << endl;
+	WebCpp webcpp;
+	webcpp.header();
+	webcpp.footer();
+	webcpp.left();
+	webcpp.content();
+}

@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void Class_Operator007();
+void Class_successor();
 
-#define test() Class_Operator007()
+#define test() Class_successor()
 
 
 
