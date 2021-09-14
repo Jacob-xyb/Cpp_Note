@@ -538,3 +538,68 @@ void Eigen_Introduction_Slicing001()
 	//因此推断 last = 9
 	cout << "the middle of v1\n" << v1(last / 2) << endl;
 }
+//Fix<val>
+void Eigen_Introduction_Slicing002()
+{
+	VectorXd v1 = VectorXd::LinSpaced(10, 0, 9);
+	cout << v1(seqN(0, fix<4>)).transpose() << endl;
+	cout << v1(lastN(fix<4>)).transpose() << endl;
+}
+//Reverse order
+void Eigen_Introduction_Slicing003()
+{
+	VectorXd v1 = VectorXd::LinSpaced(10, 0, 9);
+	cout << v1(seq(last, 0, fix<-1>)).transpose() << endl;
+	cout << v1(lastN(last+1).reverse()).transpose() << endl;
+}
+//Array of indices
+void Eigen_Introduction_Slicing004()
+{
+	MatrixXi A = MatrixXi::Random(4, 6);
+	A = A - A / 10 * 10;		//resize in （-10, 10）
+	cout << "Initial matrix A:\n" << A << "\n\n";
+
+	//传入一个vector
+	std::vector<int> ind{0,2,4};
+	cout << "A(all,ind):\n" << A(all, ind) << "\n\n";
+
+	//或者直接用数组
+	cout << "A(all,{0,2,4}):\n" << A(all, { 0,2,4 }) << "\n\n";
+
+	//还可以用表达式
+	ArrayXi idx(3);
+	idx << 0, 2, 4;
+	cout << "A(all,idx+1):\n" << A(all, idx+1) << "\n\n";
+}
+//	static object in indices
+void Eigen_Introduction_Slicing005()
+{
+	Matrix4i A = Matrix4i::Random();
+	A = A - A / 10 * 10;		//resize in （-10, 10）
+	cout << "Initial matrix A:\n" << A << "\n\n";
+
+	ArrayXi idx(2);
+	idx << 0, 2;
+
+	//can't understand 
+	/*When passing an object with a compile-time size such as Array4i, std::array<int,N>, or a static array, then the returned expression also exhibit compile-time dimensions.*/
+	//A(all, idx).resize(3,3);
+}
+//Custom index list
+struct pad 
+{
+	Index size() const { return out_size; }
+	Index operator[] (Index i) const { return std::max<Index>(0, i - (out_size - in_size)); }
+	Index in_size, out_size;
+};
+void Eigen_Introduction_Slicing006()
+{
+	Matrix3i A;
+	A.reshaped() = VectorXi::LinSpaced(9, 1, 9);
+	cout << "Initial matrix A:\n" << A << "\n\n";
+	MatrixXi B(5, 5);
+	B = A(pad{ 3,5 }, pad{ 3,5 });
+	cout << "A(pad{3,N}, pad{3,N}):\n" << B << "\n\n";
+}
+
+

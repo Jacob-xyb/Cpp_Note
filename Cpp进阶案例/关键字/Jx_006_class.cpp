@@ -819,3 +819,22 @@ void Class_successor()
 	webcpp.left();
 	webcpp.content();
 }
+//继承中的对象模型
+class BaseTest
+{
+public:
+	int m_public_A;
+protected:
+	int m_protected_B;
+private:
+	int m_private_C;	//私有属性只是被隐藏了，但还是会继承下去
+};
+class SonTest : public BaseTest
+{
+public:
+	int m_D;
+};
+void Class_successor001()
+{
+	cout << sizeof(SonTest) << endl;		//16
+}

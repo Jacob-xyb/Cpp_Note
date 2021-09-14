@@ -1,4 +1,4 @@
-# the last `n` elements入门篇
+# 入门篇
 
 [Eigen官网](http://eigen.tuxfamily.org/index.php?title=Main_Page)
 
@@ -1144,7 +1144,7 @@ void Eigen_Introduction_ArrayClass_005()
 
 ## 块操作
 
-快操作既可以作为右值，还可以作为左值！
+块操作既可以作为右值，还可以作为左值！
 
 ### 基本操作
 
@@ -1447,7 +1447,149 @@ the middle of v1
 4
 ```
 
+- **lastN**
 
+| **Intent**                                     | Code                    | **Block-API equivalence**  |
+| ---------------------------------------------- | ----------------------- | -------------------------- |
+| Last `n` elements of v                         | `v(lastN(n))`           | `v.tail(n)`                |
+| Bottom-right corner of A of size `m` times `n` | `v(lastN(m), lastN(n))` | `A.bottomRightCorner(m,n)` |
+| Last `n` columns taking 1 column over 3        | `A(all, lastN(n,3))`    | ``                         |
+
+### 编译时间大小和增量
+
+在性能方面，Eigen 和编译器可以利用编译时大小和增量。为此，您可以使用[Eigen::fix](http://eigen.tuxfamily.org/dox/group__Core__Module.html#gac01f234bce100e39e6928fdc470e5194)强制执行编译时参数。这样的编译时值可以与[Eigen::last](http://eigen.tuxfamily.org/dox/group__Core__Module.html#ga2dd8b20d08336af23947e054a17415ee)符号结合使用：
+
+`v( seq ( last -fix<7>, last -fix<2>))`
+
+在上述例子中，Eigen知道在编译时会返回6个元素，等价于
+
+`v(seqN(last-7, fix<6>))`
+
+再来看看偶数列矩阵怎么写
+
+`A(all, seq(0,last,fix<2>))`
+
+```cpp
+//Fix<val>
+void Eigen_Introduction_Slicing002()
+{
+	VectorXd v1 = VectorXd::LinSpaced(10, 0, 9);
+	cout << v1(seqN(0, fix<4>)).transpose() << endl;
+	cout << v1(lastN(fix<4>)).transpose() << endl;
+}
+```
+
+### 逆序
+
+也可以使用负增量以降序枚举行/列索引。
+
+`A( seqN ( last , n, fix<-1>), all )`
+
+您还可以使用 ArithmeticSequence::reverse() 方法来反转其顺序。因此，前面的例子也可以写成：
+
+`A( lastN (n).reverse(), all )`
+
+### 索引数组
+
+`operator()`重载还提供了任意的 `ArrayXi, a std::vector<int>, std::array<int,N>, etc.`
+
+```cpp
+//Array of indices
+void Eigen_Introduction_Slicing004()
+{
+	MatrixXi A = MatrixXi::Random(4, 6);
+	A = A - A / 10 * 10;		//resize in [-10, 10]
+	cout << "Initial matrix A:\n" << A << "\n\n";
+
+	//传入一个vector
+	std::vector<int> ind{0,2,4};
+	cout << "A(all,ind):\n" << A(all, ind) << "\n\n";
+
+	//或者直接用数组
+	cout << "A(all,{0,2,4}):\n" << A(all, { 0,2,4 }) << "\n\n";
+
+	//还可以用表达式
+	ArrayXi idx(3);
+	idx << 0, 2, 4;
+	cout << "A(all,idx+1):\n" << A(all, idx+1) << "\n\n";
+}
+```
+
+输出：
+
+```cpp
+Initial matrix A:
+-5 -4 -1  3 -8  6
+-7  8  9 -8 -4  5
+-3 -7  4  0  6  7
+ 3 -6  0 -1 -8 -5
+
+A(all,ind):
+-5 -1 -8
+-7  9 -4
+-3  4  6
+ 3  0 -8
+
+A(all,{0,2,4}):
+-5 -1 -8
+-7  9 -4
+-3  4  6
+ 3  0 -8
+
+A(all,idx+1):
+-4  3  6
+ 8 -8  5
+-7  0  7
+-6 -1 -5
+```
+
+如果输入时是固定尺寸的对象，那么返回的也是固定尺寸的对象。
+
+### 自定义索引列表
+
+更一般地，`operator()`可以接受与以下`ind`类型`T`兼容的任何对象作为输入：
+
+```cpp
+Index s = ind.size(); or Index s = size(ind);
+Index i;
+i = ind[i];
+```
+
+这意味着您可以轻松构建自己的花哨序列生成器并将其传递给`operator()`. 这是一个放大给定矩阵的示例，同时通过重复填充额外的第一行和列：
+
+```
+struct pad {
+  Index size() const { return out_size; }
+  Index operator[] (Index i) const { return std::max<Index>(0,i-(out_size-in_size)); }
+  Index in_size, out_size;
+};
+ 
+void Eigen_Introduction_Slicing006()
+{
+	Matrix3i A;
+	A.reshaped() = VectorXi::LinSpaced(9, 1, 9);
+	cout << "Initial matrix A:\n" << A << "\n\n";
+	MatrixXi B(5, 5);
+	B = A(pad{ 3,5 }, pad{ 3,5 });
+	cout << "A(pad{3,N}, pad{3,N}):\n" << B << "\n\n";
+}
+```
+
+输出：
+
+```cpp
+Initial matrix A:
+1 4 7
+2 5 8
+3 6 9
+
+A(pad{3,N}, pad{3,N}):
+1 1 1 4 7
+1 1 1 4 7
+1 1 1 4 7
+2 2 2 5 8
+3 3 3 6 9
+```
 
 # 扩展内容
 

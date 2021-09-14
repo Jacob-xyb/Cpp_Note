@@ -1,6 +1,6 @@
 #include "../Jx_进阶案例.h"
 
-//float、double
+/*-- float、double --*/
 void dataType001()
 {
 	//float、double默认只显示6位有效数字
@@ -30,7 +30,7 @@ void scientific_notation001()
 	cout << b << endl;	//可以进行运算
 }
 
-//char
+/*-- char --*/
 void dataType002()
 {
 	char ch1 = 'a';	//注意：字符一定要用单引号
@@ -65,7 +65,7 @@ void dataType002()
 	cout << "查看ASCII码：" << (int)ch1 << endl;
 }
 
-//bool
+/*-- bool --*/
 void dataType003()
 {
 	bool flag = true;
@@ -89,7 +89,7 @@ void dataType003()
 	cout << "输入后flag的值：" << flag << endl;
 }
 
-//array
+/*-- array --*/
 //	一维数组
 void dataType004()
 {
