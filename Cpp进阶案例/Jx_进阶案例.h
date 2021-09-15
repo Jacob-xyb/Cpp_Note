@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void Class_successor001();
+void Class_successor003();
 
-#define test() Class_successor001()
+#define test() Class_successor003()
 
 
 

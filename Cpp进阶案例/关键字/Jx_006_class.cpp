@@ -838,3 +838,96 @@ void Class_successor001()
 {
 	cout << sizeof(SonTest) << endl;		//16
 }
+//继承中构造和析构顺序
+class BaseTest001
+{
+public:
+	BaseTest001();
+	~BaseTest001();
+public:
+	int m_public_A;
+protected:
+	int m_protected_B;
+private:
+	int m_private_C;	//私有属性只是被隐藏了，但还是会继承下去
+};
+BaseTest001::BaseTest001()
+{
+	cout << "父类的构造函数调用" << endl;
+}
+BaseTest001::~BaseTest001()
+{
+	cout << "父类的析构函数调用" << endl;
+}
+class SonTest001 : public BaseTest001
+{
+public:
+	SonTest001();
+	~SonTest001();
+public:
+	int m_D;
+};
+SonTest001::SonTest001()
+{
+	cout << "子类的构造函数调用" << endl;
+}
+SonTest001::~SonTest001()
+{
+	cout << "子类的析构函数调用" << endl;
+}
+void Class_successor002()
+{
+	SonTest001 son;
+	//父构造 子构造 子析构 父析构
+}
+//继承同名成员处理方式
+class BaseTest002
+{
+public:
+	BaseTest002();
+public:
+	int getA();
+public:
+	void func();
+	void func(int a);
+private:
+	int mA;
+};
+BaseTest002::BaseTest002() { mA = 30; }
+int BaseTest002::getA() { return mA; }
+void BaseTest002::func()
+{
+	cout << "父类同名成员函数的调用" << endl;
+}
+void BaseTest002::func(int a)
+{
+	cout << "父类有参的同名成员函数调用" << endl;
+}
+class SonTest002 : public BaseTest002
+{
+public:
+	SonTest002();
+public:
+	int getA();
+public:
+	void func();
+private:
+	int mA;
+};
+SonTest002::SonTest002() { mA = 18; }
+int SonTest002::getA() { return mA; }
+void SonTest002::func()
+{
+	cout << "子类同名成员函数的调用" << endl;
+}
+void Class_successor003()
+{
+	SonTest002 son;
+	cout << son.getA() << endl;						//子类同名成员直接访问即可
+	cout << son.BaseTest002::getA() << endl;		//父类同名成员加后缀即可访问
+
+	//如果子类中出现和父类同名的成员函数，子类的同名成员会隐藏掉父类的所有同名成员函数
+	son.func();					//cout:子类同名成员函数的调用
+	//son.func(1);				//error C2660: “SonTest002::func”: 函数不接受 1 个参数
+	son.BaseTest002::func(1);	//cout:父类有参的同名成员函数调用
+}
