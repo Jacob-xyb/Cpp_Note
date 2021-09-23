@@ -931,3 +931,46 @@ void Class_successor003()
 	//son.func(1);				//error C2660: “SonTest002::func”: 函数不接受 1 个参数
 	son.BaseTest002::func(1);	//cout:父类有参的同名成员函数调用
 }
+//菱形继承 or 砖石继承
+class Animal
+{
+public:
+	int mAge;
+};
+class Sheep :public Animal{};
+class Tuo :public Animal{};
+class SheepTuo :public Sheep, public Tuo{};
+void Class_successor004()
+{
+	SheepTuo st;
+	st.Sheep::mAge = 18;
+	st.Tuo::mAge = 28;
+	//当菱形继承，两个父类拥有相同数据，需要加以作用域区分
+	cout << "st.Sheep::mAge = " << st.Sheep::mAge << endl;
+	cout << "st.Tuo::mAge = " << st.Tuo::mAge << endl;
+	//这份数据我们知道，只需要有一份即可，菱形继承导致数据有两份，资源浪费
+}
+//	虚继承 解决菱形继承导致的资源浪费
+class Animal001
+{
+public:
+	int mAge;
+};
+//	Animal类被称为虚基类
+class Sheep001 :virtual public Animal001{};
+class Tuo001 :virtual public Animal001{};
+class SheepTuo001 :public Sheep001, public Tuo001{};
+void Class_successor005()
+{
+	SheepTuo001 st;
+	st.Sheep001::mAge = 18;
+	st.Tuo001::mAge = 28;
+	//当菱形继承，两个父类拥有相同数据，需要加以作用域区分
+	cout << "st.Sheep::mAge = " << st.Sheep001::mAge << endl;
+	cout << "st.Tuo::mAge = " << st.Tuo001::mAge << endl;
+	//这份数据我们知道，只需要有一份即可，菱形继承导致数据有两份，资源浪费
+	
+	//虚继承后的同名数据就为同一份数据
+	cout << "st.mAge = " << st.mAge << endl;
+	//此时两个父类的内容都是(vbptr -- 虚基类指针)
+}
