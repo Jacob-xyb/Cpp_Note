@@ -974,3 +974,27 @@ void Class_successor005()
 	cout << "st.mAge = " << st.mAge << endl;
 	//此时两个父类的内容都是(vbptr -- 虚基类指针)
 }
+
+
+/*-- 多态 --*/
+class Animal002
+{
+public:
+	Animal002();
+	~Animal002();
+public:
+	//speak函数就是虚函数
+	//函数前面加上virtual关键字，变成虚函数，那么编译器在编译的时候就不能确定函数调用了
+	virtual void speak();
+
+private:
+
+};
+
+Animal002::Animal002()
+{
+}
+
+Animal002::~Animal002()
+{
+}
