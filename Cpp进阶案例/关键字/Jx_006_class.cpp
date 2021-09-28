@@ -931,7 +931,7 @@ void Class_successor003()
 	//son.func(1);				//error C2660: “SonTest002::func”: 函数不接受 1 个参数
 	son.BaseTest002::func(1);	//cout:父类有参的同名成员函数调用
 }
-//菱形继承 or 砖石继承
+//菱形继承 or 钻石继承
 class Animal
 {
 public:
@@ -977,24 +977,50 @@ void Class_successor005()
 
 
 /*-- 多态 --*/
+//多态基本语法和实现
 class Animal002
 {
-public:
-	Animal002();
-	~Animal002();
 public:
 	//speak函数就是虚函数
 	//函数前面加上virtual关键字，变成虚函数，那么编译器在编译的时候就不能确定函数调用了
 	virtual void speak();
-
-private:
+};
+void Animal002::speak()
+{
+	cout << "动物在说话" << endl;
+}
+class Cat002 : public Animal002
+{
+public:
+	void speak();
 
 };
-
-Animal002::Animal002()
+void Cat002::speak()
 {
+	//重写 函数返回值类型 函数名 参数列表 完全相同
+	cout << "小猫在说话" << endl;
 }
-
-Animal002::~Animal002()
+//	地址早绑定 在编译阶段确定函数地址
+//	如果想执行让猫说话，那么这个函数地址就不能提前绑定，需要在运行阶段进行绑定，地址晚绑定
+void doSpeak(Animal002& animal)
 {
+	animal.speak();
+}
+//	动态多态满足条件
+//	1. 有继承关系
+//	2. 子类要重写父类中的虚函数
+//	动态多态使用
+//	父类指针或引用指向子类对象
+void Class_Polymorphism()
+{
+	Cat002 cat;
+	//C++默认允许父与子类间类型转换
+	doSpeak(cat);
+}
+//多态底层原理剖析
+void Class_Polymorphism001()
+{
+	cout << "sizeof(Animal) = " << sizeof(Animal002) << endl;	
+	//无virtual 1
+	//带virtual 8
 }
