@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void Class_Polymorphism001();
+void Class_Polymorphism005();
 
-#define test() Class_Polymorphism001()
+#define test() Class_Polymorphism005()
 
 
 

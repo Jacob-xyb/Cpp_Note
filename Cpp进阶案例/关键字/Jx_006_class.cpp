@@ -1024,3 +1024,216 @@ void Class_Polymorphism001()
 	//无virtual 1
 	//带virtual 8
 }
+/*多态案例一：计算器类*/
+//	普通写法
+class Calculator
+{
+public:
+	int getResult(string oper);
+	
+	int num1;
+	int num2;
+};
+int Calculator::getResult(string oper)
+{
+	if (oper == "+")
+	{
+		return num1 + num2;
+	}
+	else if (oper == "-")
+	{
+		return num1 - num2;
+	}
+	else if (oper == "*")
+	{
+		return num1 * num2;
+	}
+	//如果想扩展新的功能，需要修改源码
+	//在真实开发中 提倡 开闭原则
+	//开闭原则：对扩展进行开放，对修改进行关闭
+}
+void Class_Polymorphism002()
+{
+	Calculator c;
+	c.num1 = 20;
+	c.num2 = 10;
+	cout << c.num1 << " + " << c.num2 << " = " << c.getResult("+") << endl;
+	cout << c.num1 << " - " << c.num2 << " = " << c.getResult("-") << endl;
+	cout << c.num1 << " * " << c.num2 << " = " << c.getResult("*") << endl;
+}
+//	多态写法
+/*多态好处
+* 1.组织结构非常清晰
+* 2.可读性强
+* 3.对于前期和后期扩展以及维护性高
+*/
+//		实现计算器抽象类
+class AbstractCalculator
+{
+public:
+	virtual int getResult() { return 0; }
+	int num1;
+	int num2;
+};
+//		加法计算器类
+class AddCalculator :public AbstractCalculator
+{
+public:
+	int getResult()
+	{
+		return num1 + num2;
+	}
+};
+//		减法计算器类
+class SubCalculator :public AbstractCalculator
+{
+public:
+	int getResult()
+	{
+		return num1 - num2;
+	}
+};
+class MulCalculator :public AbstractCalculator
+{
+public:
+	int getResult() { return num1 * num2; }
+};
+void Class_Polymorphism003()
+{
+	//多态使用条件
+	//父类指针或引用指向子类对象
+	AbstractCalculator* abc = new AddCalculator;
+	abc->num1 = 20;
+	abc->num2 = 10;
+	cout << abc->num1 << " + " << abc->num2 << " = " << abc->getResult() << endl;
+	//用完后手动销毁
+	delete abc;
+
+	//减法运算
+	abc = new SubCalculator;
+	abc->num1 = 20;
+	abc->num2 = 10;
+	cout << abc->num1 << " - " << abc->num2 << " = " << abc->getResult() << endl;
+	//用完后手动销毁
+	delete abc;
+}
+//纯虚函数和抽象类
+class Abstract
+{
+	//纯虚函数
+	//只要有一个纯虚函数，这个类称为抽象类
+	//抽象类特点：
+	//1.无法实例化对象
+	//2.抽象类的子类，必须要重写父类中的纯虚函数，否则也属于抽象类
+	virtual void func() = 0;
+};
+//多态案例二：制作饮品
+class AbstractDrinking
+{
+public:
+	//煮水
+	virtual void Boil() { cout << "煮矿泉水" << endl; }
+	//冲泡
+	virtual void Brew() = 0;
+	//倒入杯中
+	virtual void PourInCup() = 0;
+	//加入辅料
+	virtual void PutSomething() = 0;
+	//制作饮品
+	void makeDrink()
+	{
+		Boil();
+		Brew();
+		PourInCup();
+		PutSomething();
+	}
+};
+class Coffee :public AbstractDrinking
+{	
+public:
+	//冲泡
+	virtual void Brew()
+	{
+		cout << "冲泡咖啡" << endl;
+	}
+	//倒入杯中
+	virtual void PourInCup()
+	{
+		cout << "倒入杯中" << endl;
+	}
+	//加入辅料
+	virtual void PutSomething()
+	{
+		cout << "加入糖和牛奶" << endl;
+	}
+};
+class Tea :public AbstractDrinking
+{
+public:
+	//冲泡
+	virtual void Brew()
+	{
+		cout << "冲泡茶叶" << endl;
+	}
+	//倒入杯中
+	virtual void PourInCup()
+	{
+		cout << "倒入杯中" << endl;
+	}
+	//加入辅料
+	virtual void PutSomething()
+	{
+		cout << "加入枸杞" << endl;
+	}
+};
+void doWork(AbstractDrinking* abs)
+{
+	abs->makeDrink();
+	delete abs;
+}
+void Class_Polymorphism004()
+{
+	doWork(new Coffee);
+	cout << "----" << endl;
+	doWork(new Tea);
+}
+//虚析构和纯虚析构
+class Animal003
+{
+public:
+	Animal003(){ cout << "Animal的构造函数调用" << endl; }
+	virtual ~Animal003(){ cout << "Animal的析构函数调用" << endl; }
+	//纯虚函数
+	virtual void speak() = 0;
+};
+class Cat003 :public Animal003
+{
+public:
+	Cat003(string name)
+	{
+		cout << "Cat的构造函数调用" << endl;
+		this->name = new string(name);
+	}
+	~Cat003()
+	{
+		if (name != NULL)
+		{
+			cout << "Cat的析构函数调用" << endl;
+			delete name;
+			name = NULL;
+		}
+	}
+	virtual void speak()
+	{
+		cout << *name << "小猫在说话" << endl;
+	}
+	string* name;	//创建在堆区
+};
+void Class_Polymorphism005()
+{
+	Animal003* animal = new Cat003("Tom");
+	animal->speak();
+	//父类指针在析构时候 不会调用子类中析构函数，导致子类如果有堆区属性，出现内存泄漏
+	//因此要采用虚析构来解决 父类指针释放子类对象时不干净的问题
+	delete animal;
+}
