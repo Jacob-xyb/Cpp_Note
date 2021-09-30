@@ -550,7 +550,7 @@ void vector_015()
 //二维数组的申明
 void vector_2dim001()
 {
-    //声明一维向量的方式：
+    /*声明一维向量的方式：*/
     //  `vector(n, elem);`
     vector<int> dim1_v1(10);
     cout << "如果不填elem，则初始化为0" << endl;
@@ -562,7 +562,7 @@ void vector_2dim001()
     //      n：指代vector<>中<>内的数量
     //      elem：指代vector<>中<>内的内容
 
-    //将一维数组的构造类比到二维数组的构造上
+    /*将一维数组的构造类比到二维数组的构造上*/
     //  创建m*n的数组
     //vector<vector<int>> dim2_v1(m, vector<int>(n));
     vector<vector<int>> dim2_v1(3, vector<int>(3));

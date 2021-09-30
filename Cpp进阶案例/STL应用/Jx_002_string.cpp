@@ -213,15 +213,15 @@ void string_009()
 
 
 
-// string子串
+// string子串	//substr
 /*`string substr(int pos = 0, inte n = npos) const;`		// 返回由pos开始的n个字符组装成的字符串*/
 void string_010()
 {
 	string str = "abcdefg";
 	string jx = str.substr(2, 2);
-	cout << "获得的子串：" << jx << endl;
+	cout << "获得的子串：" << jx << endl;			//cd
 	jx = str.substr(2);
-	cout << "只写起始位置参数：" << jx << endl;
+	cout << "只写起始位置参数：" << jx << endl;		//cdefg
 }
 
 /*==================================================*/
@@ -235,6 +235,8 @@ void string_transform001()
 	std::transform(str1.begin(), str1.end(), str1.begin(), toupper);
 	cout << str1 << endl;	//HELLO WORLD!
 
+							
+	/*-- Tips: --*/
 	//test:前后的begin必须一致，否则error
 	cout << endl;
 	//std::transform(str1.begin() + 1, str1.end(), str1.begin() + 1, tolower);
@@ -245,8 +247,8 @@ void string_transform001()
 
 
 
-// 小案例
-//		从邮箱地址中获取用户信息
+/*-- 小案例 --*/
+//	从邮箱地址中获取用户信息
 void stringEg_001()
 {
 	string email = "zhangsan@sina.cn";
