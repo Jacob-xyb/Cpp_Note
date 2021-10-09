@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void string_010();
+void string_007();
 
-#define test() string_010()
+#define test() string_007()
 
 
 

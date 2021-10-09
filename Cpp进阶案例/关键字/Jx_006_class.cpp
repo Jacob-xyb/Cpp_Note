@@ -106,7 +106,7 @@ void Class_Permission01()
 
 
 /*构造函数和析构函数*/
-//语法
+//语法·
 class PersonJx001
 {
 public:
