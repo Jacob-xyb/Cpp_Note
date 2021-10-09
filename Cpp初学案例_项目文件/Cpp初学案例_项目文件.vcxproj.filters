@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Project_001_通讯录管理系统\通讯录管理系统.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Jx_global.cpp">
       <Filter>资源文件</Filter>
     </ClCompile>

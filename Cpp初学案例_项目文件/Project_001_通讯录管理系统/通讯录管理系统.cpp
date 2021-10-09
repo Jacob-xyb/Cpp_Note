@@ -1,6 +1,6 @@
 // GB2312(936)
 #include <iostream>
-#include "..\function.h"
+#include "function.h"
 using namespace std;
 
 // global const

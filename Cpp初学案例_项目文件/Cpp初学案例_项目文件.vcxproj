@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Jx_global.cpp" />
-    <ClCompile Include="Project_001_通讯录管理系统\通讯录管理系统.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="function.h" />
