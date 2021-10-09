@@ -156,6 +156,7 @@ void string_006()
 - `int compare(const char* s) const;`*/
 void string_007()
 {
+	//0是相等，1是不相等
 	string str01 = "hello world";
 	string str02 = "hello ";
 	string str03 = "world";
@@ -210,8 +211,6 @@ void string_009()
 	cout << "只写起始位置删除：" << str << endl;
 	//		会删除pos后面所有的字符
 }
-
-
 
 // string子串	//substr
 /*`string substr(int pos = 0, inte n = npos) const;`		// 返回由pos开始的n个字符组装成的字符串*/
