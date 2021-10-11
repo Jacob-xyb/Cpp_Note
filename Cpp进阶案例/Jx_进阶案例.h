@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void Class_Polymorphism006();
+void Jx_rand_003();
 
-#define test() Class_Polymorphism006()
+#define test() Jx_rand_003()
 
 
 

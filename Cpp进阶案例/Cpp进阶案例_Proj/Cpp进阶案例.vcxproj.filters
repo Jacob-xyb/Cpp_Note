@@ -78,6 +78,9 @@
     <ClCompile Include="..\实用操作\Jx_001_IO操作.cpp">
       <Filter>资源文件\实用操作</Filter>
     </ClCompile>
+    <ClCompile Include="..\关键字\Jx_007_rand.cpp">
+      <Filter>资源文件\关键字</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Jx_进阶案例.h">
