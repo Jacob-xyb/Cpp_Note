@@ -687,3 +687,23 @@ void vector_exist()
     cout << idx - v1.begin() << endl;
     //挺奇怪，idx是一个指针，并且不能单独输出，idx-v1.begin()就变成了标签，太奇怪了
 }
+
+/*- delete element -*/
+void vector_delete_element()
+{
+    //只使用vector的erase函数，记住，该函数是迭代器失效，返回下一个迭代器。
+    vector<int> arr;
+    arr = { 1,2,3,4,5 };
+    vector<int>::iterator it;
+    for (it = arr.begin(); it != arr.end();)
+    {
+        if (*it == 3)
+        {
+            it = arr.erase(it);     //不能写成arr.erase(it);
+        }
+        else
+        {
+            ++it;
+        }
+    }
+}

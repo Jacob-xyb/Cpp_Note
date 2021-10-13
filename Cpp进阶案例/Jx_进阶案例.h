@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void Jx_rand_003();
+void Jx_IOStream_002();
 
-#define test() Jx_rand_003()
+#define test() Jx_IOStream_002()
 
 
 
