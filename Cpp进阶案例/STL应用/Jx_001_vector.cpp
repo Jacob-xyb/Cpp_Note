@@ -1,7 +1,7 @@
 #include "../Jx_进阶案例.h"
-//#include <vector>
-//#include <algorithm>
-
+#include <vector>
+#include <algorithm>
+#include <sstream>
 
 
 //创建一个一维向量，并打印出来
@@ -705,5 +705,36 @@ void vector_delete_element()
         {
             ++it;
         }
+    }
+}
+
+/*二维数组的内存空间*/
+void vector_2dim_space()
+{
+    /*
+    每个vector内有四个成员变量，其中有三个迭代器（vector的迭代器其实就是指针）和一个空间配置器，我求了sizeof(vector)为16，x86下的(x64下的大小为32)，大小是对应上了。
+    三个迭代器分别指向一块内存的三个位置，start指向目前使用空间的头，finish指向目前使用空间的尾，end_of_storage指向可用空间的尾部。
+    所以说结果中所示二维vector，刚好v[0]和v[1],v[1]和v[2]…的差距为32。也就是说每个v[]里保存的是一个vector类型，v[i]指向的是一个vector类型，v[i][j]才是具体的元素,sizeof(int)的为4，刚好v[i][0]和v[i][1]…的间隔是4。
+    每个子vector的元素保存在另外一块内存上，v[i]通过内部的迭代器找到v[i][j]。
+    对于二维vector的具体元素类型的改变，不会影响v[i]的大小，只会影响v[i][j]的内存大小。例如vector<vector>，在x64下，v[0]和v[1]间隔仍是32，但是v[1][0]和v[1][1]之间间隔却变成long的大小。vector类型的内部只有三个迭代器和一个空间配置器这四个成员变量。
+    */
+    int row = 5;
+    vector<vector<int>> v(row, { 1,2,3 });
+    for (int i = 0; i < row; i++)
+    {
+        string temp;
+        stringstream ss;
+        ss << "v[" << i << "]";
+        ss >> temp;
+
+        cout << temp << "地址：" << &v[i] << " ";
+        for (int j = 0; j < 3; j++)
+        {
+            ss.clear();
+            ss << "v[" << i << "]" << "[" << j << "]";
+            ss >> temp;
+            cout << temp << "地址：" << &v[i][j] << " ";
+        }
+        cout << endl;
     }
 }

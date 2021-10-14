@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void Jx_IOStream_004();
+void vector_2dim_space();
 
-#define test() Jx_IOStream_004()
+#define test() vector_2dim_space()
 
 
 
