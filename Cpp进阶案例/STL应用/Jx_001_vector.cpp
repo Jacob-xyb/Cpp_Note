@@ -667,12 +667,12 @@ void vector_bool001()
     //0 1 0 1 0 //这样也是可以的！
     //vector<bool> vbool4{ 0,1,2,1,0 };   //只能 0 1
     //vector<bool> vbool4{ 0,1,1.1,1,0 };   //只能 0 1
-    vector<bool> vbool4{ 0,1,1.0,1,0 };   //编译器有红线，但是可以执行
-    for (int i = 0; i < vbool4.size(); i++)
-    {
-        cout << vbool4[i] << " ";
-    }
-    cout << endl;
+    //vector<bool> vbool4{ 0,1,1.0,1,0 };   //编译器有红线，但是可以执行
+    //for (int i = 0; i < vbool4.size(); i++)
+    //{
+    //    cout << vbool4[i] << " ";
+    //}
+    //cout << endl;
 }
 
 //if x in vector?
