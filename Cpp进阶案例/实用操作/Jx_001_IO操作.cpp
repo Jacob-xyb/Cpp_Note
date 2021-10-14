@@ -90,3 +90,15 @@ void Jx_IOStream_003()
 	ofs.write( (const char *)&p, sizeof(p));
 	ofs.close();
 }
+//二进制文件 读文件
+void Jx_IOStream_004()
+{
+	ifstream ifs;
+	ifs.open("Person.txt", ios::in | ios::binary);
+	if (!ifs.is_open()) { cout << "文件打开失败" << endl; return; }
+	Person p;
+	ifs.read((char*)&p, sizeof(p));
+	ifs.close();
+	cout << p.m_Name << endl;
+	cout << p.m_Age << endl;
+}
