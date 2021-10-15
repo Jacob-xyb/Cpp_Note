@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <iostream>
 #include "../Proj/BookNotes_Head.h"
+using namespace std;
 
 void exp_1_1_pointer()
 {
@@ -66,5 +68,50 @@ void exp_1_4_array2()
 	}
 	printf("\n");
 }
+//快速排序
+/*
+快速排序基本思想
+1.从需要排序的数据中，找到一个适当的基准值（pivot）；
+2.从左向右，检索比pivot大的数据；
+3.从右向左，检索比pivot小的数据；
+4.如果两个方向都能检索到数据，将找到的数据交换；
+5.重复进行2~4的操作，直到从左开始检索的下标和从右开始检索的下标发生冲突为止。
+*/
+#define SWAP(a, b) {int temp; temp = a; a = b; b = temp;}
+void exp_2_6_QuickSort_Code(int* data, int left, int right)
+{
+	int left_index = left;
+	int right_index = right;
+	int pivot = data[(left + right) / 2];
 
+	while (left_index <= right_index)
+	{
+		for (; data[left_index] < pivot; left_index++);
+		for (; data[right_index] > pivot; right_index--);
+		if (left_index <= right_index)
+		{
+			SWAP(data[left_index], data[right_index]);
+			left_index++;
+			right_index--;
+		}
+	}
+	if (right_index > left)
+	{
+		exp_2_6_QuickSort_Code(data, left, right_index);
+	}
+	if (left_index < right)
+	{
+		exp_2_6_QuickSort_Code(data, left_index, right);
+	}
+}
+void exp_2_6_QuickSort_Test()
+{
+	int data[] = { 1,3,5,7,4,9,2 };
+	exp_2_6_QuickSort_Code(data, 0, 6);
+	for (int i = 0; i < 7; i++)
+	{
+		cout << data[i] << " ";
+	}
+	cout << endl;
+}
 

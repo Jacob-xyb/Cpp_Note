@@ -2,6 +2,6 @@
 
 
 // º¯ÊıÉùÃ÷
-void exp_1_4_array2();
+void exp_2_6_QuickSort_Test();
 
-#define test() exp_1_4_array2()
+#define test() exp_2_6_QuickSort_Test()
