@@ -1,4 +1,5 @@
 #include <fstream>
+#include <sstream> 
 #include "../Jx_进阶案例.h"
 
 //
@@ -60,10 +61,10 @@ void Jx_IOStream_002()
 		cout << buf << endl;
 	}*/
 	/*第三种*/
-	/*string buf;
-	while (getline(ifs,buf))
+	/*string line;
+	while (getline(ifs,line))
 	{
-		cout << buf << endl;
+		cout << line << endl;
 	}*/
 	/*第四种*/
 	//不推荐
@@ -101,4 +102,35 @@ void Jx_IOStream_004()
 	ifs.close();
 	cout << p.m_Name << endl;
 	cout << p.m_Age << endl;
+}
+
+void Jx_read_csv(string fileName)
+{
+	vector<double> data;
+
+	ifstream ifs;
+	ifs.open(fileName, ios::in);
+	if (!ifs.is_open()) { cout << "文件打开失败" << endl; return; }
+	string line;
+	int num = 0;
+	while (getline(ifs, line))
+	{
+		istringstream sin(line); //将整行字符串line读入到字符串流istringstream中
+		string field;
+		if (num == 0)
+		{
+			++num;
+			continue;
+		}
+		while (getline(sin, field, ',')) //将字符串流sin中的字符读入到field字符串中，以逗号为分隔符
+		{
+			double temp;
+			temp = stod(field);
+			data.push_back(temp); //将刚刚读取的字符串添加到向量fields中
+		}
+		++num;
+	}
+	ifs.close();
+
+	cout << data.size() << endl;
 }
