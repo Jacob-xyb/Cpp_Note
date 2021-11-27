@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{4ad627b2-40dd-463d-9b7c-fe05ec6382c1}</ProjectGuid>
-    <RootNamespace>Cpp第三方库</RootNamespace>
+    <ProjectGuid>{f9e7e3d0-7b7a-4c03-9644-e71bd1aa018a}</ProjectGuid>
+    <RootNamespace>第三方LibTorch</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -72,16 +72,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\cppLib\eigen-3.4.0</IncludePath>
-    <ExternalIncludePath>D:\cppLib\eigen-3.4.0;D:\cppLib\eigen-3.4.0\unsupported;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\cpplib\libtorch\include;D:\cpplib\libtorch\include\torch\csrc\api\include;D:\cpplib\Eigen\eigen-3.4.0;D:\cpplib\Eigen\eigen-3.4.0\unsupported;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>D:\cppLib\eigen-3.4.0;D:\cppLib\eigen-3.4.0\unsupported;$(ExternalIncludePath)</ExternalIncludePath>
+    <IncludePath>D:\cpplib\libtorch\include;D:\cpplib\libtorch\include\torch\csrc\api\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -120,14 +117,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>D:\cpplib\libtorch\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>c10.lib;libprotobufd.lib;mkldnn.lib;torch.lib;torch_cpu.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\cpplib\libtorch\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -147,13 +142,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Eigen\Eigen函数快查.cpp" />
-    <ClCompile Include="..\Eigen\Eigen入门.cpp" />
-    <ClCompile Include="..\Eigen\Eigen进阶.cpp" />
-    <ClCompile Include="..\第三方库测试.cpp" />
+    <ClCompile Include="..\LibTorch\LibTorch入门.cpp" />
+    <ClCompile Include="第三方_LibTorch.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\第三方库测试.h" />
+    <ClInclude Include="LibTorch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

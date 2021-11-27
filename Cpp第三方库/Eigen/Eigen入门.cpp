@@ -212,7 +212,7 @@ void Eigen_MatrixClass_Resizeing_001()
 	std::cout << "The matrix m is of size "
 		<< m.rows() << "x" << m.cols() << std::endl;
 	std::cout << "It has " << m.size() << " coefficients" << std::endl;
-	cout << "调整后:" << endl << m << endl;
+	cout << "调整后:" << endl << m << endl;		//调整后数据被改变了(初始化)
 	VectorXd v(2);
 	v.resize(5);
 	std::cout << "The vector v is of size " << v.size() << std::endl;
@@ -223,15 +223,24 @@ void Eigen_MatrixClass_Resizeing_002()
 {
 	MatrixXd m = Matrix2d::Ones();
 	cout << "调整前:" << endl << m << endl;
+	cout << "调整前地址：" << &m(0) << endl;
 	m.resize(2, 2);
+	cout << "调整后地址：" << &m(0) << endl;	//未破坏的前提下：resize()前后地址不变
 	cout << "不改变尺寸:" << endl << m << endl;
-	m.conservativeResize(4, 3);
+	//m.conservativeResize(4, 3);
+	m.resize(4, 3);
+	cout << "调整后地址：" << &m(0) << endl;	//破坏后，地址改变
 	cout << "保留调整后:" << endl << m << endl;
 
 	RowVectorXd v(2);
 	v << 1, 2;
 	v.conservativeResize(5);
 	cout << "保留调整后:" << endl << v << endl;
+
+	MatrixXd x = MatrixXd::Ones(5, 2);
+	//x.conservativeResize(2, 5);		//依旧会破坏数据
+	x.resize(2, 5);						//不会破坏数据
+	cout << "(5,2) -> (2,5):\n" << x << endl;		
 }
 //Optional template parameters
 void Eigen_MatrixClass_TemplateParameters_001()

@@ -1,18 +1,18 @@
 #include "../第三方库测试.h"
 
 //template + using 自定义数据类型
-template<typename T>
-using Mat2 = Matrix<T, 2, 2>;
-void Eigen_QuickCheck_001()
-{
-	Mat2<int> m1;
-	m1 << 1, 1,
-		1, 1;
-	cout << "m1:" << endl <<m1 << endl;
-	//用熟以后其实感觉就没必要了
-	Matrix<int, 2, 2> m2(m1);
-	cout << "m2:" << endl << m2 << endl;
-}
+//template<typename T>
+//using Mat2 = Matrix<T, 2, 2>;
+//void Eigen_QuickCheck_001()
+//{
+//	Mat2<int> m1;
+//	m1 << 1, 1,
+//		1, 1;
+//	cout << "m1:" << endl <<m1 << endl;
+//	//用熟以后其实感觉就没必要了
+//	Matrix<int, 2, 2> m2(m1);
+//	cout << "m2:" << endl << m2 << endl;
+//}
 
 //Eigen矩阵定义
 void Eigen_QuickCheck_002()

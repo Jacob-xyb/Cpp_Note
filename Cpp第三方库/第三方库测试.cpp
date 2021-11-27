@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     srand(time(NULL)); /*根据当前时间设置“随机数种子”*/
-    test();
+    test_Jx();
     system("pause");
     return 0;
 }
