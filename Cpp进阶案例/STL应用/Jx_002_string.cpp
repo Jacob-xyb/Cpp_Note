@@ -254,3 +254,23 @@ void stringEg_001()
 	int endIndex = email.find('@');
 	cout << "邮箱用户名为：" << email.substr(0, endIndex) << endl;
 }
+
+/*-- String后缀 --*/
+void stringEg_Find()
+{
+	string path = "xxx.txt";
+	// find()如果没找到返回-1，但是这个-1并不是正在的-1，如果不进行转换，就是最大值。
+	//	64位下打印输出：
+	cout << "64bit:\n" << path.find(".csv") << endl;
+	// 但是可以与-1进行判断
+	if (path.find(".csv") == -1)
+	{
+		cout << "is not .csv" << endl;
+	}
+
+	// 需要注意的是64位的unsigned int 是4位 与默认的 npos 8位不匹配。
+	string::size_type pos = path.find(".csv");
+	unsigned int uint = path.find(".csv");
+	int idx = path.find(".csv");
+	cout << pos << endl << uint << endl << idx << endl << string::npos << endl;
+}

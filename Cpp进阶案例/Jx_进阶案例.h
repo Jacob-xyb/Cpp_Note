@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void vector_2dim_space();
+void stringEg_Find();
 
-#define test() vector_2dim_space()
+#define test() stringEg_Find()
 
 
 
