@@ -86,7 +86,20 @@ void dataType003()
 
 	cout << "请输入flag的值：" << endl;
 	cin >> flag;	//数字除了0外都是真，除了数字外都是假
-	cout << "输入后flag的值：" << flag << endl;
+	cout << "输入后flag的值：" << !flag << endl;
+}
+
+bool dataType_boolFunc()
+{
+	int info = 0;
+	return !info;
+}
+
+void dataType_bool()
+{
+	bool flag;
+	flag = dataType_boolFunc();
+	cout << flag << endl;
 }
 
 /*-- array --*/
@@ -142,4 +155,21 @@ void dataType005()
 	cout << "v5.size(): " << sizeof(v5) / sizeof(int) << endl;	//5
 	int v5_1[][5] = { 1,2,3,4,5,6 };	//猜测有10个坑位
 	cout << "v5_1.size(): " << sizeof(v5_1) / sizeof(int) << endl;	//10
+}
+
+void dataType_TypeConversion()
+{
+	// num to string
+	int numI = 100;
+	double numD = 100;
+	float numF = 100;
+	string strI = to_string(numI);
+	string strD = to_string(numD);
+	string strF = to_string(numF);
+
+	// string to num
+	string str = "100";
+	numI = stoi(str);
+	numD = stod(str);
+	numF = stof(str);
 }
