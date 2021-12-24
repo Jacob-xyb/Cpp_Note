@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void stringEg_Find();
+void dataType_bool();
 
-#define test() stringEg_Find()
+#define test() dataType_bool()
 
 
 
