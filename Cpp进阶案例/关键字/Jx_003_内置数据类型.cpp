@@ -6,11 +6,12 @@ void dataType001()
 	//float、double默认只显示6位有效数字
 	//	float最多有7位有效数字
 	//	double最多有15位有效数字
-	float a = 3.1415926124;
+	float a = 3.1415926124f;
+	// 需要注意小数后不写f的话，编译器会自动生成double类型数据，然后再进行转换。
 	cout << a << endl;
 	double b = 3.1415926124;
 	cout << b << endl;
-	cout << "均只显示6位有效数字" << endl;
+	cout << "默认均只显示6位有效数字" << endl;
 }
 
 void scientific_notation001()
@@ -31,8 +32,9 @@ void scientific_notation001()
 }
 
 /*-- char --*/
-void dataType002()
+void dataType_char()
 {
+	// 字符类型只占用一个字节，存放的是ASCII码值，A(65), a(97)
 	char ch1 = 'a';	//注意：字符一定要用单引号
 	cout << sizeof(ch1) << endl;
 	char ch2 = '好';
@@ -62,13 +64,17 @@ void dataType002()
 	ch1 = 'abc ';
 	cout << "abcspace会输出什么：" << ch1 << endl;
 	//查看ASCII码
-	cout << "查看ASCII码：" << (int)ch1 << endl;
+	cout << "查看ASCII码：" << endl;
+	char a = 'a';
+	char A = 'A';
+	cout << (int)a << " " << (int)A << "\n";
 }
 
 /*-- bool --*/
-void dataType003()
+void dataType_bool()
 {
-	bool flag = true;
+	// 数字除了0外都是真
+	bool flag = 0;
 	cout << flag << endl;	//true是1，bool是0
 
 	if (flag == 1)	//结论是只能是1和true
@@ -83,10 +89,17 @@ void dataType003()
 			cout << "是否可以成为所有非0" << endl;
 		}
 	}
-
-	cout << "请输入flag的值：" << endl;
-	cin >> flag;	//数字除了0外都是真，除了数字外都是假
-	cout << "输入后flag的值：" << !flag << endl;
+	while (true)
+	{
+		cout << "请输入flag的值：" << endl;
+		cin >> flag;	// cin 字符 给 bool 变量时， bool 变量均为 false.
+		// 当cin对象时bool时，bool只能接受一位字符的对象，
+		// 1.1会分别载入 1. 和 1, 0.1会分别载入 0. 和 1。使用时注意区分
+		// 但是 flag = 0.1 时，会判定为真！
+		cout << "输入后flag的值：" << flag << endl;
+		cin.clear();	// 无效
+		cin.ignore();	// 无效
+	}	
 }
 
 bool dataType_boolFunc()
@@ -95,7 +108,7 @@ bool dataType_boolFunc()
 	return !info;
 }
 
-void dataType_bool()
+void dataType_boolFuncTest()
 {
 	bool flag;
 	flag = dataType_boolFunc();

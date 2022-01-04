@@ -12,6 +12,7 @@ int main()
     //vector<double> data = JxTool_GetData<double>(fileName);
     //cout << data.size() << endl;
 
-    system("pause");
+    std::cout << "press [ENTER] to continue " << std::endl;
+    std::cin.get();
     return 0;
 }
