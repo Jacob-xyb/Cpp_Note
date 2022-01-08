@@ -73,7 +73,7 @@ void Eigen_introduction_started_004()
 	std::cout << "joined = " << joined << std::endl;
 }
 //常用的初始化方法
-void Eigen_introduction_started_005()
+void Eigen_introduction_CommonInit()
 {
 	//随机初始化初始化的值在[-1,1]区间内,矩阵大小3X3
 	MatrixXd m0 = MatrixXd::Random(3, 3);    
