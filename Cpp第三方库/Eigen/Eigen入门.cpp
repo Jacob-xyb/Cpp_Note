@@ -13,7 +13,6 @@ void Eigen_introduction_started_001()
 	m(1, 1) = m(1, 0) + m(0, 1);
 	std::cout << m << std::endl;
 }
-
 //Matrices and vectors:Eg001
 void Eigen_introduction_started_002()
 {
