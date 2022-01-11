@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void dataType_bool();
+void arithmetic_operator_division();
 
-#define test() dataType_bool()
+#define test() arithmetic_operator_division()
 
 
 

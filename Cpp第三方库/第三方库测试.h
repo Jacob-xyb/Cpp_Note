@@ -13,8 +13,8 @@ using namespace std;
 using namespace Eigen;
 
 // º¯ÊıÉùÃ÷
-void Eigen_Introduction_Slicing();
+void Eigen_introduction_started_006();
 
-#define test_Jx() Eigen_Introduction_Slicing()
+#define test_Jx() Eigen_introduction_started_006()
 
   

@@ -134,3 +134,17 @@ void Jx_read_csv(string fileName)
 
 	cout << data.size() << endl;
 }
+
+template<typename T_>
+void Jx_ReadTxt(std::string& path, std::vector<T_>& data)
+{
+	std::ifstream ifs;
+	ifs.open(path, std::ios::in);
+	if (!ifs.is_open()) { std::cout << "文件打开失败" << std::endl; return; }
+	T_ temp;
+	while (ifs >> temp)
+	{
+		data.push_back(temp);
+	}
+	ifs.close();
+}

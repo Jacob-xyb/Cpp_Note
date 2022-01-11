@@ -1731,4 +1731,4 @@ In memory (row-major):
 
 - 您的用户可能希望您使用特定的存储顺序。或者，您可以使用[Eigen](http://eigen.tuxfamily.org/dox/namespaceEigen.html)以外的其他库，并且这些其他库可能需要特定的存储顺序。在这些情况下，在整个程序中使用此存储顺序可能是最简单和最快的。
 - 由于更好的数据局部性，当矩阵以行优先顺序存储时，逐行遍历矩阵的算法将运行得更快。类似地，对于列主矩阵，逐列遍历速度更快。进行一些试验以找出对您的特定应用程序来说更快的方法可能是值得的。
-- [Eigen 中](http://eigen.tuxfamily.org/dox/namespaceEigen.html)的默认值是列[优先](http://eigen.tuxfamily.org/dox/namespaceEigen.html)。自然，[Eigen](http://eigen.tuxfamily.org/dox/namespaceEigen.html)库的大部分开发和测试都是使用列主矩阵完成的。这意味着，即使我们的目标是透明地支持列优先和行[优先](http://eigen.tuxfamily.org/dox/namespaceEigen.html)存储顺序，[Eigen](http://eigen.tuxfamily.org/dox/namespaceEigen.html)库也可能最适合列优先矩阵。
+- [Eigen 中](http://eigen.tuxfamily.org/dox/namespaceEigen.html)的默认值是列[优先](http://eigen.tuxfamily.org/dox/namespaceEigen.html)。自然，[Eigen](http://eigen.tuxfamily.org/dox/namespaceEigen.html)库的大部分开发和测试都是使用列主矩阵完成的。这意味着，即使我们的目标是透明地支持列优先和行[优先](http://eigen.tuxfamily.org/dox/namespaceEigen.html)存储顺序，[Eigen](http://eigen.tuxfamily.org/dox/namespaceEigen.html)库也可能最适合列优先矩阵。 
