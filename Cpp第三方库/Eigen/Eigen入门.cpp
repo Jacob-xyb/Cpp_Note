@@ -106,7 +106,7 @@ void Eigen_introduction_started_006()
 	MatrixXd m1 = Matrix2d::Zero();
 	cout << "m1 = " << endl << m1 << endl;
 	//意思就是Xd可以很随意的被定义
-
+	
 	//方阵可以被同尺寸的Xd定义
 	Matrix2d m2 = MatrixXd::Ones(2, 2);
 	cout << "m2 = " << endl << m2 << endl;
