@@ -138,6 +138,10 @@ void dataType004()
 	//		长度会依据输入的数据个数而定
 	int arr3[] = { 5,4,3,2,1 };
 	cout << arr3[0] << endl;
+
+	// 4.新特性，{}初始化 通用于很多场景。
+	int arr4[]{ 5,4,3,2,1 };
+	cout << arr4[0] << endl;
 }
 //	二维数组
 void dataType005()
