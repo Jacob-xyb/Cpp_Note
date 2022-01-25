@@ -204,7 +204,15 @@ void array_index_002()
 	// 试验一下别的方式释放指针
 	cout << "double方式释放int指针：" << *(double*)a << endl;
 }
-
+// 测试一下两种指针的不同之处
+void array_index_003()
+{
+	int a[] = { 1,2,3,4,5 };
+	cout << "查看数组的大小：" << sizeof(a) << endl;
+	int* p = a;
+	cout << "查看指针的大小：" << sizeof(p) << endl;
+	cout << "查看指针的值的大小：" << sizeof(*p) << endl;
+}
 
 /*探索一下计算机内存实现原理*/
 //float
