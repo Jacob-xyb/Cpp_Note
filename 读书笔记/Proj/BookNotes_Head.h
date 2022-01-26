@@ -2,6 +2,6 @@
 
 
 // º¯ÊıÉùÃ÷
-void exp_2_6_QuickSort_Test();
+void CSDN_douhaoyunsuanfu();
 
-#define test() exp_2_6_QuickSort_Test()
+#define test() CSDN_douhaoyunsuanfu()

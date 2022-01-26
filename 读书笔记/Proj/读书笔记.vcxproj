@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\heima_cpp\heima_cpp.cpp" />
     <ClCompile Include="..\征服C指针\Example_Conquer_C_pointer.cpp" />
     <ClCompile Include="BookNotes_Main.cpp" />
   </ItemGroup>

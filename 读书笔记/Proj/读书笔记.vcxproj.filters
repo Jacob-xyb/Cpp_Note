@@ -21,6 +21,9 @@
     <ClCompile Include="..\征服C指针\Example_Conquer_C_pointer.cpp">
       <Filter>资源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\heima_cpp\heima_cpp.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BookNotes_Head.h">

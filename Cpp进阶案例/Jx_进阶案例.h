@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void arithmetic_operator_division();
+void array_index_003();
 
-#define test() arithmetic_operator_division()
+#define test() array_index_003()
 
 
 
