@@ -54,9 +54,6 @@
     <ClCompile Include="..\实现原理\Jx_004_变量类型.cpp">
       <Filter>资源文件\实现原理</Filter>
     </ClCompile>
-    <ClCompile Include="..\实现原理\Jx_005_函数参数.cpp">
-      <Filter>资源文件\实现原理</Filter>
-    </ClCompile>
     <ClCompile Include="..\关键字\Jx_001_sizeof.cpp">
       <Filter>资源文件\关键字</Filter>
     </ClCompile>
@@ -80,6 +77,9 @@
     </ClCompile>
     <ClCompile Include="..\关键字\Jx_007_rand.cpp">
       <Filter>资源文件\关键字</Filter>
+    </ClCompile>
+    <ClCompile Include="..\实现原理\Jx_005_函数参数.cpp">
+      <Filter>资源文件\实现原理</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

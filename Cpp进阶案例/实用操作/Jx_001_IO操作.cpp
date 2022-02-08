@@ -23,6 +23,30 @@
 //    return Array;
 //}
 
+/*-- 简易读取txt文件 --*/
+void read_txt_001(std::string& path, std::vector<double>& data)
+{
+	std::ifstream ifs;
+	ifs.open(path, std::ios::in);
+	double temp;
+	while (ifs >> temp)
+	{
+		data.push_back(temp);
+	}
+	ifs.close();
+}
+
+void call_read_txt_001()
+{
+	std::string path = "D:\\1.company\\GitLab\\DA_Test\\Test-DA-Jx-Proj\\nk.txt";
+	std::vector<double> data;
+	read_txt_001(path, data);
+	for (size_t i = 0; i < data.size(); i+=3)
+	{
+		std::cout << data[i] << "\t" << data[i + 1] << "\t" << data[i + 2] << std::endl;
+	}
+}
+
 /*-- 简易读写教程 --*/
 void Jx_IOStream_001()
 {

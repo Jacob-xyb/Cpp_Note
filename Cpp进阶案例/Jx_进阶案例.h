@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void array_index_003();
+void call_read_txt_001();
 
-#define test() array_index_003()
+#define test() call_read_txt_001()
 
 
 
