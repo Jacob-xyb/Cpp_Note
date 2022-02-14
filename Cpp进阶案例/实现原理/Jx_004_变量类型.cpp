@@ -27,6 +27,8 @@ public:
         cout << "static void func 调用" << endl;
     }
     static int count;
+    void func_test();
+    int m_test = 10;
 private:
     string m_name;
 };
@@ -38,6 +40,12 @@ void static_object_001()
     Dog dog02("Henry");
     Dog::func();
     cout << "现在有 " << Dog::count << " 只狗：" << endl;
+}
+void Dog::func_test()
+{
+    std::cout << m_test << std::endl;
+    //std::cout << ::m_test << std::endl;     // 类中 :: 并不能调用类中实例
+    std::cout << Dog::m_test << std::endl;     // 类中 :: 必须带类名才能调用类中实例
 }
 
 
