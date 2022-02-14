@@ -80,6 +80,15 @@ void ParamType_001()
 
     //总结:局部不在全局区，其余(全局变量、静态变量、常量)都在全局区
 }
+void ParamType_002()
+{
+    // 如果函数类同时存在全局变量和局部变量，可以用 :: 调用全局变量
+    int global_a = 10;
+    std::cout << global_a << std::endl;
+    std::cout << ::global_a << std::endl;
+}
+
+
 //栈区    //存放函数的参数值，局部变量等
 int* func_Stack_001()
 {
