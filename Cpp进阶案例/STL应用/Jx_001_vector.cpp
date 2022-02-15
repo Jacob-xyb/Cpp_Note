@@ -266,11 +266,13 @@ void vector_009_branchAt20210824()
     vector<int> v6(66666,1);
     cout << "赋值前：" << endl;
     cout << "v5-size: " << v5.size() << " v5.addr: " << &v5 << endl;
+    cout << " v5[0].addr: " << &v5[0] << endl;
     cout << "v6-size: " << v6.size() << " v6.addr: " << &v6 << endl;
     //v5 = v6;
     v5.assign(v6.begin(), v6.end());
     cout << "赋值后：" << endl;
     cout << "v5-size: " << v5.size() << " v5.addr: " << &v5 << endl;
+    cout << " v5[0].addr: " << &v5[0] << endl;
     cout << "v6-size: " << v6.size() << " v6.addr: " << &v6 << endl;
 }
 
