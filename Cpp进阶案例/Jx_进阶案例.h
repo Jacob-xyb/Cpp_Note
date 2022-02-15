@@ -9,9 +9,9 @@ using namespace std;
 
 
 // º¯ÊıÉùÃ÷
-void call_read_txt_001();
+void vector_009_branchAt20210824();
 
-#define test() call_read_txt_001()
+#define test() vector_009_branchAt20210824()
 
 
 

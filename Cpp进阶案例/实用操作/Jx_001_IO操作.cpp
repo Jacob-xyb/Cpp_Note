@@ -28,6 +28,7 @@ void read_txt_001(std::string& path, std::vector<double>& data)
 {
 	std::ifstream ifs;
 	ifs.open(path, std::ios::in);
+	if (!ifs.is_open()) { std::cout << "文件打开失败" << std::endl; return; }
 	double temp;
 	while (ifs >> temp)
 	{
@@ -159,16 +160,39 @@ void Jx_read_csv(string fileName)
 	cout << data.size() << endl;
 }
 
-template<typename T_>
-void Jx_ReadTxt(std::string& path, std::vector<T_>& data)
+
+void read_csv(vector<float>& data, string fileName, int MaxLine, bool head)
 {
-	std::ifstream ifs;
-	ifs.open(path, std::ios::in);
-	if (!ifs.is_open()) { std::cout << "文件打开失败" << std::endl; return; }
-	T_ temp;
-	while (ifs >> temp)
+	//清空data
+	data.clear();
+
+	ifstream ifs;
+	ifs.open(fileName, ios::in);
+	if (!ifs.is_open()) { cout << "文件打开失败" << endl; return; }
+	string line;
+	int num = 0;
+
+	if (head)
 	{
-		data.push_back(temp);
+		getline(ifs, line);
+		istringstream sin(line);
+	}
+
+	while (getline(ifs, line))
+	{
+		istringstream sin(line); //将整行字符串line读入到字符串流istringstream中
+		string field;
+		if (num == MaxLine) break;
+		while (getline(sin, field, ',')) //将字符串流sin中的字符读入到field字符串中，以逗号为分隔符
+		{
+			if (field == "" or field == "?") { continue; }
+			float temp;
+			temp = stof(field);
+			data.push_back(temp);
+		}
+		++num;
 	}
 	ifs.close();
+
+	return;
 }
