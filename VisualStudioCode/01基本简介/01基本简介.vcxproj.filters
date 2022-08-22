@@ -21,6 +21,9 @@
     <ClCompile Include="test.cpp">
       <Filter>资源文件</Filter>
     </ClCompile>
+    <ClCompile Include="所属关系运算符.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Transfer.h">

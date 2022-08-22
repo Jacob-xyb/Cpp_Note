@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
 
-void test_function();
+void Call_OwnershipOperator();
 
-#define test_Jx() test_function()
+#define test_Jx() Call_OwnershipOperator()

@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="01基本简介.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="所属关系运算符.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Transfer.h" />
