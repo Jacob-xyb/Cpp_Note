@@ -81,6 +81,9 @@
     <ClCompile Include="..\实现原理\Jx_005_函数参数.cpp">
       <Filter>资源文件\实现原理</Filter>
     </ClCompile>
+    <ClCompile Include="..\实用操作\Jx_002_获取exe可执行文件的绝对路径.cpp">
+      <Filter>资源文件\实用操作</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Jx_进阶案例.h">

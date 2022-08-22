@@ -9,7 +9,8 @@ using namespace std;
 
 //Eigen
 #include <Eigen/Dense>
-#include <Eigen/NonLinearOptimization>
+#include <Eigen/Eigen>
+//#include <Eigen/NonLinearOptimization>
 using namespace Eigen;
 
 // º¯ÊıÉùÃ÷
