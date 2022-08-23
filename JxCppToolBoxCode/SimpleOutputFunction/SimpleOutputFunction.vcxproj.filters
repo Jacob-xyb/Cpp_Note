@@ -15,27 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="02语法简介.cpp">
+    <ClCompile Include="SimpleOutputFunction.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>资源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="字符型.cpp">
-      <Filter>资源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="字符串.cpp">
-      <Filter>资源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="基础数据类型转换.cpp">
-      <Filter>资源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="运算符.cpp">
+    <ClCompile Include="PrintEverything.cpp">
       <Filter>资源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Transfer.h">
+    <ClInclude Include="SimpleOutputFunction.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

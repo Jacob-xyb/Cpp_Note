@@ -144,6 +144,8 @@
     <ClCompile Include="字符串.cpp" />
     <ClCompile Include="字符型.cpp" />
     <ClCompile Include="基础数据类型转换.cpp" />
+    <ClCompile Include="数组.cpp" />
+    <ClCompile Include="程序选择结构.cpp" />
     <ClCompile Include="运算符.cpp" />
   </ItemGroup>
   <ItemGroup>
