@@ -1,9 +1,9 @@
 #pragma once
 #include <iostream>
 
-void ArrayVariableName();
+void test_function();
 
-#define test_Jx() ArrayVariableName()
+#define test_Jx() test_function()
 
 template <typename arrT>
 void PrintArrry(arrT arr[], int num, int start = 0, int end = 0, int step = 1);
