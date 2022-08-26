@@ -5,8 +5,8 @@
 
 void ArithmeticOperator() {
 	// ËãÊõÔËËã·û£º +  -  *  /  %  ^  !
-	float fA = 10.18;
-	float fB = 08.28;
+	float fA = 10.18f;
+	float fB = 08.28f;
 	int iA = 777;
 	int iB = 2;
 	

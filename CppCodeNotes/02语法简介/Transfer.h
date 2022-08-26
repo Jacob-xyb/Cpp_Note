@@ -1,9 +1,10 @@
 #pragma once
 #include <iostream>
+#include <stdio.h>
 
-void test_function();
+void Research_CharArray1();
 
-#define test_Jx() test_function()
+#define test_Jx() Research_CharArray1()
 
 template <typename arrT>
 void PrintArrry(arrT arr[], int num, int start = 0, int end = 0, int step = 1);
