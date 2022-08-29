@@ -2,9 +2,9 @@
 #include <iostream>
 #include <stdio.h>
 
-void Research_CharArray1();
+void Call_point_and_array();
 
-#define test_Jx() Research_CharArray1()
+#define test_Jx() Call_point_and_array()
 
 template <typename arrT>
 void PrintArrry(arrT arr[], int num, int start = 0, int end = 0, int step = 1);

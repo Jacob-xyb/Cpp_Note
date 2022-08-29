@@ -39,6 +39,9 @@
     <ClCompile Include="数组.cpp">
       <Filter>资源文件</Filter>
     </ClCompile>
+    <ClCompile Include="指针和数组.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Transfer.h">

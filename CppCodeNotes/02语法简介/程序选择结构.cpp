@@ -1,7 +1,6 @@
 #include "Transfer.h"
 
-
-// 三目运算符 Exp1 ? Exp2 : Exp3;
+#pragma region 三目运算符 Exp1 ? Exp2 : Exp3;
 
 void TripletOperator() {
 	int a = 10; int b = 20; int c = 0;
@@ -14,3 +13,6 @@ void TripletOperator() {
 	(a > b ? a : b) = 100;
 	std::cout << b << std::endl;	// 100
 }
+
+#pragma endregion
+
