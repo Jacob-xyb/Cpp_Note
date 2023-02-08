@@ -102,7 +102,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
@@ -129,6 +129,15 @@
   <ItemGroup>
     <ClCompile Include="01_初识C语言.cpp" />
     <ClCompile Include="02_基础数据类型.cpp" />
+    <ClCompile Include="03_流程控制.cpp" />
+    <ClCompile Include="04_指针.cpp" />
+    <ClCompile Include="05_函数.cpp" />
+    <ClCompile Include="06_数组.cpp" />
+    <ClCompile Include="07_字符串.cpp" />
+    <ClCompile Include="08_内存管理.cpp" />
+    <ClCompile Include="09_结构体.cpp" />
+    <ClCompile Include="10_typedef.cpp" />
+    <ClCompile Include="11_union.cpp" />
     <ClCompile Include="C_Basic_main.cpp" />
   </ItemGroup>
   <ItemGroup>

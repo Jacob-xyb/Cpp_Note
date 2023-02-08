@@ -24,6 +24,33 @@
     <ClCompile Include="02_基础数据类型.cpp">
       <Filter>资源文件</Filter>
     </ClCompile>
+    <ClCompile Include="03_流程控制.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="04_指针.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="05_函数.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="06_数组.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="07_字符串.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="08_内存管理.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="09_结构体.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="10_typedef.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="11_union.cpp">
+      <Filter>资源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C_Basic_main.h">
