@@ -14,13 +14,27 @@ void func_DataType_Char() {
 	// 还可以作加法运算
 	printf("%d\n", c + c); // 130
 }
+// 字符的运算
+void func_DataType_Char_Calculation() {
+	char a = 20;
+	char b = 45;
+	char c = a + b;
+	printf("%d\n", c); // 65
+	printf("%c\n", c); // A
+	int x = c;
+	printf("%d\n", x); // 65
+}
+
 // 字符的其他表示方法
 void func_DataType_Char_OtherRepresentation() {
 	// 转义写法还能使用八进制和十六进制表示一个字符。
 	char x;
 	x = 'B';
+	printf("%c\n", x);
 	x = 66;
+	printf("%c\n", x);
 	x = '\102'; // 八进制
+	printf("%c\n", x);
 	x = '\x42'; // 十六进制
 	printf("%c\n", x);
 }
@@ -152,6 +166,13 @@ void func_DataType_sizeof() {
 	sizeof(i);
 	// 参数为数值
 	sizeof(3.14);
+
+	printf("sizeof(char)=%zu\n", sizeof(char));
+	printf("sizeof(short)=%zu\n", sizeof(short));
+	printf("sizeof(int)=%zu\n", sizeof(int));
+	printf("sizeof(long)=%zu\n", sizeof(long));
+	printf("sizeof(float)=%zu\n", sizeof(float));
+	printf("sizeof(double)=%zu\n", sizeof(double));
 }
 #pragma endregion
 
@@ -166,15 +187,29 @@ void func_DataType_AutoConversion_Assignment() {
 // 混合类型的运算
 void func_DataType_AutoConversion_MixedCalculation() {
 	// signed 和 unsigned 比较时，会将 signed 转换为 unsigned
-	int a = -5;
-	unsigned b = 4;
-	if (a < b)
+	int a = -2;      // 0xfffffffe
+	unsigned b = 1;  // 0x00000001
+	unsigned c = a;
+	if (a + b == -1)
 	{
-		printf("a < b");
+		// -1补码是0xFFFFFFFF
+		// ++ 但是 -1 时 signed，表达式中变量b是unsigned
+		// ++ 所以-1当作unsigned时，为4294967295
+		printf("a + b == -1\n"); // 会输出这条
 	}
 	else
 	{
-		printf("a >= b"); // 会输出这条
+		printf("a + b != -1\n");
 	}
+
+	if (a + b == 4294967295)
+	{
+		printf("a + b == 4294967295\n"); // 会输出这条
+	}
+	else
+	{
+		printf("a + b != 4294967295\n");
+	}
+	printf("%u", c);  // 4294967294
 }
 #pragma endregion
