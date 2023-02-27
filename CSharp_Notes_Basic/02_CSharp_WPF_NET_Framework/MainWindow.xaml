@@ -1,0 +1,23 @@
+﻿<Window x:Class="_02_CSharp_WPF_NET_Framework.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_02_CSharp_WPF_NET_Framework"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
+        mc:Ignorable="d"
+        Title="Demo" Height="160" Width="400" ShowInTaskbar="True" WindowStartupLocation="Manual"
+        WindowState="Normal" Topmost="False">
+    <Grid Background="BlueViolet">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="GridTest" Command="{Binding BtnClick}" CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}"/>
+        <Button Content="BindingTest" Command="{Binding BtnClick}" CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}" Grid.Row="1"/>
+    </Grid>
+</Window>
