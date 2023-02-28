@@ -9,5 +9,11 @@
     <StackPanel>
         <TextBox x:Name="textBoxName" BorderBrush="Black" Margin="5"/>
         <Button Content="Add Age" Margin="5" Click="Button_Click1"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Num1" Margin="5"/>
+            <TextBox x:Name="textNum1" Width="40" Margin="5"/>
+            <TextBlock Text="Num2" Margin="5"/>
+            <TextBox Width="40" Margin="5" Text="{Binding Path=Text, ElementName=textNum1}" IsEnabled="False"/>
+        </StackPanel>
     </StackPanel>
 </Window>

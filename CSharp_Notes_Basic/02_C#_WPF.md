@@ -216,6 +216,15 @@ private void Button_Click(object sender, RoutedEventArgs e)
 
 # Binding
 
+## 把控件作为 Binding 的源
+
+```c#
+<TextBlock Text="Num1" Margin="5"/>
+<TextBox x:Name="textNum1" Width="40" Margin="5"/>
+<TextBlock Text="Num2" Margin="5"/>
+<TextBox Width="40" Margin="5" Text="{Binding Path=Text, ElementName=textNum1}" IsEnabled="False"/>
+```
+
 ## 控制 Binding 的方向及数据更新
 
 Binding 在源与目标之间架起了沟通的桥梁，默认情况下数据既能通过 Binding 送达目标，也能够从目标返回源（收集用户对数据的修改）。

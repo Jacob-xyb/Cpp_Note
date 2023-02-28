@@ -11,9 +11,11 @@ using System.Windows.Media;
 
 using _02_CSharp_WPF_NET_Framework;
 
+using CommunityToolkit.Mvvm.ComponentModel;
+
 namespace _02_CSharp_WPF_NET_Framework
 {
-    public class MainViewModel : NotifyObject
+    public class MainViewModel : ObservableObject
     {
         private MainWindow _mainWindow = null;
 

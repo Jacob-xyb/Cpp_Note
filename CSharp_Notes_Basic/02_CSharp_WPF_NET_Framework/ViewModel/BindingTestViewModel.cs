@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace _02_CSharp_WPF_NET_Framework
 {
-    internal class BindingTestViewModel
+    public class BindingTestViewModel : NotifyObject
     {
+
     }
 }
