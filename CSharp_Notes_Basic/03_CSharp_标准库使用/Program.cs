@@ -13,9 +13,7 @@ namespace _03_CSharp_标准库使用
         [STAThread]
         static void Main(string[] args)
         {
-            OpenFileDialogTest test = new OpenFileDialogTest();
-            test.TestFunc_OpenFileDialog();
-            
+            StringBuilderTest.TestFunc_StringBuilder();
             Console.ReadKey();
         }
     }

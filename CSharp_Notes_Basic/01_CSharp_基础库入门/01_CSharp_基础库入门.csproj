@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassTest\ClassBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="01_LearnProjects\01_GameFlyingChess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,6 +101,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataTypeTest\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

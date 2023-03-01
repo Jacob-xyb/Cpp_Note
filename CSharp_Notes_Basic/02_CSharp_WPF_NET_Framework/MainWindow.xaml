@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_02_CSharp_WPF_NET_Framework"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
         d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
         mc:Ignorable="d"
         Title="Demo" Height="160" Width="400" ShowInTaskbar="True" WindowStartupLocation="Manual"
@@ -19,5 +20,7 @@
         </Grid.ColumnDefinitions>
         <Button Content="GridTest" Command="{Binding BtnClick}" CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}"/>
         <Button Content="BindingTest" Command="{Binding BtnClick}" CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}" Grid.Row="1"/>
+        <Fluent:Ribbon AutomaticStateManagement="True" x:Name="ribbon" Grid.ColumnSpan="2" VerticalAlignment="Center"></Fluent:Ribbon>
+        
     </Grid>
 </Window>

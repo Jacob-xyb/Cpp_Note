@@ -44,9 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OpenFileDialog.cs" />
+    <Compile Include="OpenFileDialogTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringBuilderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

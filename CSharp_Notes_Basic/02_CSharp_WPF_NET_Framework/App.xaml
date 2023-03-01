@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:_02_CSharp_WPF_NET_Framework"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="pack://application:,,,/Fluent;Component/Themes/Generic.xaml"/>
     </Application.Resources>
 </Application>
