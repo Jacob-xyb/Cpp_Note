@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassTest\ClassBase.cs" />
+    <Compile Include="DataTypeTest\StringBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="01_LearnProjects\01_GameFlyingChess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,8 +103,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataTypeTest\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

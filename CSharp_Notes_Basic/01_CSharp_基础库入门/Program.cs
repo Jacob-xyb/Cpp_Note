@@ -12,13 +12,14 @@ namespace _01_CSharp_基础库入门
     internal class Program
     {
 
+        static void Test(params char[] arr)
+        {
+            Console.WriteLine(arr.Length);
+        }
+
         static void Main(string[] args)
         {
-            int num = 5;
-            string str1 = "zhangsan";
-            string str2 = str1;
-            str1 = "lisi";
-            Console.WriteLine(str1 + " " + str2);
+            DataTypeTest.StringBase.StringBaseFunction();
             Console.ReadKey();
         }
     }
