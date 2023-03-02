@@ -19,7 +19,7 @@ namespace _01_CSharp_基础库入门
 
         static void Main(string[] args)
         {
-            DataTypeTest.StringBase.StringBaseFunction();
+            DataTypeTest.HashtableBase.HashtableBaseFunction();
             Console.ReadKey();
         }
     }
