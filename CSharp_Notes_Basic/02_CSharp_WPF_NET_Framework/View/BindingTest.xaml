@@ -13,7 +13,13 @@
             <TextBlock Text="Num1" Margin="5"/>
             <TextBox x:Name="textNum1" Width="40" Margin="5"/>
             <TextBlock Text="Num2" Margin="5"/>
-            <TextBox Width="40" Margin="5" Text="{Binding Path=Text, ElementName=textNum1}" IsEnabled="False"/>
+            <TextBox x:Name="textNum2" Width="40" Margin="5" Text="{Binding Path=Text, ElementName=textNum1, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"/>
+            <TextBox x:Name="textNum3" Width="40" Margin="5" Text="{Binding Text, ElementName=textNum1}"/>
         </StackPanel>
-    </StackPanel>
+        <StackPanel Orientation="Horizontal" x:Name="CollectionPanel">
+            <TextBlock Text="{Binding [0]}" Margin="5"/>
+            <TextBlock Text="{Binding [1][5]}" Margin="5"/>
+            <TextBlock Text="{Binding Count}" Margin="5"/>
+        </StackPanel>
+        </StackPanel>
 </Window>

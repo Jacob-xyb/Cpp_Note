@@ -118,6 +118,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ClassBase.cs" />
     <Compile Include="ViewModel\ItemControlClanViewModel.cs" />
     <Compile Include="View\ItemControlClan.xaml.cs">
       <DependentUpon>ItemControlClan.xaml</DependentUpon>

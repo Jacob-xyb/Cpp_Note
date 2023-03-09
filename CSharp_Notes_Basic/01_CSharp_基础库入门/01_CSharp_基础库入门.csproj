@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTypeTest\ArrayTest.cs" />
     <Compile Include="ClassTest\ClassBase.cs" />
     <Compile Include="ClassTest\ClassInherit.cs" />
     <Compile Include="DataTypeTest\ArrayListBase.cs" />

@@ -226,16 +226,79 @@ private void Button_Click(object sender, RoutedEventArgs e)
 
 # Binding
 
-## 把控件作为 Binding 的源
+## 原始的 Binding 方式
 
 ```c#
+public class Student : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    private string _Name;
+
+    public string m_Name
+    {
+        get { return _Name; }
+        set
+        {
+            _Name = value;
+
+            //if (this.PropertyChanged != null)
+            //{
+            //    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs("m_Name"));
+            //}
+
+            //简化
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("m_Name"));
+        }
+    }
+
+}
+
+// ...
+    
+public void TheOriginalBindingMode()
+{
+    this._stu = new Student();
+
+    Binding binding = new Binding();
+    binding.Source = this._stu;
+    binding.Path = new PropertyPath("m_Name");
+
+    BindingOperations.SetBinding(this.textBoxName, TextBox.TextProperty, binding);
+}
+
+// 简写（因为Binding构造器有默认Path参数）
+public void TheOriginalBindingMode()
+{
+    this._stu = new Student();
+
+    Binding binding = new Binding("m_Name") {Source=this._stu};
+    BindingOperations.SetBinding(this.textBoxName, TextBox.TextProperty, binding);
+}
+```
+
+## Binding的源和路径
+
+```xaml
+<TextBox Width="40" Margin="5" Text="{Binding Path=Text, ElementName=textNum1}" IsEnabled="False"/>
+```
+
+这一句使用了 Binding 语法，因为 Binding 类的构造器本身可以接收 Path 作为参数，所以会有这种简写方法：
+
+```xaml
+<TextBox Width="40" Margin="5" Text="{Binding Text, ElementName=textNum1}" IsEnabled="False"/>
+```
+
+### 把控件作为 Binding 的源
+
+```xaml
 <TextBlock Text="Num1" Margin="5"/>
 <TextBox x:Name="textNum1" Width="40" Margin="5"/>
 <TextBlock Text="Num2" Margin="5"/>
 <TextBox Width="40" Margin="5" Text="{Binding Path=Text, ElementName=textNum1}" IsEnabled="False"/>
 ```
 
-## 控制 Binding 的方向及数据更新
+### 控制 Binding 的方向及数据更新
 
 Binding 在源与目标之间架起了沟通的桥梁，默认情况下数据既能通过 Binding 送达目标，也能够从目标返回源（收集用户对数据的修改）。
 
@@ -247,6 +310,28 @@ Binding 在源与目标之间架起了沟通的桥梁，默认情况下数据既
 
   Default 这里指的是 Binding 的模式会根据目标的实际情况来确定：比如是可编辑的（如 TextBox.Text 属性），Default 就采用双向模式；若是只读的（如 TextBlock.Text）则采用单向模式。
 
+  **OneWay:**
+
+  textNum1 变化时，textNum2 实时变化；textNum2变化时，textNum1不变化。
+
+  可以理解为，自身随着绑定的源变化，但并不能改变源。
+
+  ```xaml
+  <TextBox x:Name="textNum1" Width="40" Margin="5"/>
+  <TextBox x:Name="textNum2" Width="40" Margin="5" Text="{Binding Path=Text, ElementName=textNum1, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+  ```
+
+  **OneWayToSource:**
+
+  textNum1 变化时，textNum2 不变化；textNum2变化时，textNum1实时变化。
+
+  可以理解为，自身能改变源，但是源不能影响自己。
+
+  ```xaml
+  <TextBox x:Name="textNum1" Width="40" Margin="5"/>
+  <TextBox x:Name="textNum2" Width="40" Margin="5" Text="{Binding Path=Text, ElementName=textNum1, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+  ```
+
 - **UpdateSourceTrigger**
 
   类型是 UpdateSourceTrigger 枚举。
@@ -254,6 +339,94 @@ Binding 在源与目标之间架起了沟通的桥梁，默认情况下数据既
   枚举取值为：PropertyChanged、LostFocus、Explicit 和 Default。
 
   显然，TextBox 默认 Default 的行为与 LostFocus 一致。
+  
+  - **PropertyChanged** ：实时更新
+  
+- **NotifyOnSourceUpdated** 、**NotifyOnTargetUpdated** 
+
+  如果设为 true，则当源或目标被更新后 Binding 会激发相应的 `SourceUpdated` 和 `TargetUpdated` 事件。
+
+  实际工作中，可以通过监听这两个事件找出有哪些数据或控件被更新了。
+
+### Binding 的路径
+
+Bing的路径支持多级路径，即 `Text="{Binding Path=Text.Length, ElementName=textBox1}"`
+
+---
+
+对于集合类型，集合类型的索引器（Indexer）又称为带参属性。既然是属性，那么索引器也能作为Path使用。
+
+首先用 DataContext 可以为控件设置数据源：
+
+```c#
+public List<string> labelArray = new List<string> { "label1", "label2", "label3" };
+//...
+	this.CollectionPanel.DataContext = this.labelArray;
+```
+
+```xaml
+<StackPanel Orientation="Horizontal" x:Name="CollectionPanel">
+    <TextBlock Text="{Binding [0]}" Margin="5"/>
+</StackPanel>
+```
+
+1. 直接使用索引
+
+   `Property.[index]` ，简写 `Property[index]`
+
+   ```xaml
+   <TextBlock Text="{Binding [0]}" Margin="5"/>
+   ```
+
+   显示：`label1`
+
+2. 可以多级索引
+
+   ```xaml
+   <TextBlock Text="{Binding [1][5]}" Margin="5"/>
+   ```
+
+   显示：`2`
+
+3. 默认元素作为 Path 使用
+
+   ```xaml
+   <TextBlock Text="{Binding /}" Margin="5"/>
+   <TextBlock Text="{Binding /Length}" Margin="5"/>
+   <TextBlock Text="{Binding /[5]}" Margin="5"/>
+   ```
+
+   显示：`label1` 和  `6` 和 `1`
+
+4. 直接写Path就是调用自身属性
+
+   ```xaml
+   <TextBlock Text="{Binding Count}" Margin="5"/>
+   ```
+
+   显示：`3`
+
+5. 没有 “PATH” 的 Binding
+
+   其实就是调用 Binding 源本身，因为 Binding 源本身就是数据，所以不需要 Path 来指明属性。
+
+   正规写法是 `Path=.` ，在 xaml 中可以省略，但是 C# 中不能省略。
+
+   类似于：
+
+   ```xaml
+   Text="{Binding ., Source={StaticResource ResourceKey=myString}}"
+   ```
+
+   可以简写成
+
+   ```xaml
+   Text="{Binding Source={StaticResource ResourceKey=myString}}"
+   ```
+
+### 为 Binding 指定源（Source）的几种方法
+
+
 
 # Window 窗口
 

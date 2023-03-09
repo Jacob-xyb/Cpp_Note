@@ -21,5 +21,6 @@
             <Button x:Name="buttonMess" Content="Mess"/>
             <Button x:Name="buttonOwen" Content="Owen" Click="buttonOwen_Click"/>
         </ListBox>
+        <ListBox x:Name="listBoxEmployee" Margin="5" Grid.Column="1"></ListBox>
     </Grid>
 </Window>

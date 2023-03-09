@@ -15,26 +15,6 @@ using System.Windows.Shapes;
 
 namespace _02_CSharp_WPF_NET_Framework
 {
-    public class Student : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private string _Name;
-
-        public string m_Name
-        {
-            get { return _Name; }
-            set
-            {
-                _Name = value;
-                if (this.PropertyChanged != null)
-                {
-                    this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs("m_Name"));
-                }
-            }
-        }
-
-    }
 
     /// <summary>
     /// BindingTest.xaml 的交互逻辑
@@ -46,6 +26,9 @@ namespace _02_CSharp_WPF_NET_Framework
             InitializeComponent();
 
             TheOriginalBindingMode();
+
+            this.CollectionPanel.DataContext = this.labelArray;
+            Console.WriteLine(this.labelArray);
         }
 
 
@@ -65,5 +48,7 @@ namespace _02_CSharp_WPF_NET_Framework
         {
             this._stu.m_Name += "Name";
         }
+
+        public List<string> labelArray = new List<string> { "label1", "label2", "label3" };
     }
 }

@@ -15,9 +15,7 @@ namespace _01_CSharp_基础库入门
 
         static void Main(string[] args)
         {
-            //DataTypeTest.HashtableBase.HashtableBaseFunction();
-            PublicClassObject obj1 = new PublicClassObject();
-            InternalClassObject obj2 = new InternalClassObject();
+            DataTypeTest.ArrayTest.FuncTest_ArrayBase();
             Console.ReadKey();
         }
     }
