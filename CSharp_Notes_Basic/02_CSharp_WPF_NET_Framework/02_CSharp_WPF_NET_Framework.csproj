@@ -118,6 +118,47 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\ItemControlClanViewModel.cs" />
+    <Compile Include="View\ItemControlClan.xaml.cs">
+      <DependentUpon>ItemControlClan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemControlClan\ListBoxTest.xaml.cs">
+      <DependentUpon>ListBoxTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComboBoxTest.xaml.cs">
+      <DependentUpon>ComboBoxTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\DockPanelTestViewModel.cs" />
+    <Compile Include="View\DataBingTest.xaml.cs">
+      <DependentUpon>DataBingTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DockPanelTest.xaml.cs">
+      <DependentUpon>DockPanelTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ProgressBarTestViewModel.cs" />
+    <Compile Include="View\ProgressBarTest.xaml.cs">
+      <DependentUpon>ProgressBarTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\DispatcherTestViewModel.cs" />
+    <Compile Include="View\DispatcherTest.xaml.cs">
+      <DependentUpon>DispatcherTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\TextBoxViewModel.cs" />
+    <Compile Include="View\TextBoxTest.xaml.cs">
+      <DependentUpon>TextBoxTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ButtonTestViewModel.cs" />
+    <Compile Include="View\ButtonTest.xaml.cs">
+      <DependentUpon>ButtonTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\LabelTestViewModel.cs" />
+    <Compile Include="View\LabelTest.xaml.cs">
+      <DependentUpon>LabelTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\TextBlockTestViewModel.cs" />
+    <Compile Include="View\TextBlockTest.xaml.cs">
+      <DependentUpon>TextBlockTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\BindingTestViewModel.cs" />
     <Compile Include="View\BindingTest.xaml.cs">
       <DependentUpon>BindingTest.xaml</DependentUpon>
@@ -131,6 +172,50 @@
     <Compile Include="View\GridTest.xaml.cs">
       <DependentUpon>GridTest.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\ItemControlClan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemControlClan\ListBoxTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ComboBoxTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DataBingTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DockPanelTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProgressBarTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DispatcherTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TextBoxTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ButtonTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LabelTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TextBlockTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\BindingTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

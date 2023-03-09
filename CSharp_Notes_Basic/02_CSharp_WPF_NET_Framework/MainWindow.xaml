@@ -8,19 +8,12 @@
         xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
         d:DataContext="{d:DesignInstance Type=local:MainViewModel}"
         mc:Ignorable="d"
-        Title="Demo" Height="160" Width="400" ShowInTaskbar="True" WindowStartupLocation="Manual"
+        Title="Demo" Height="160" Width="400" ShowInTaskbar="True" WindowStartupLocation="CenterScreen"
+        ShowActivated="True"
         WindowState="Normal" Topmost="False">
-    <Grid Background="BlueViolet">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="20"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+    <StackPanel>
         <Button Content="GridTest" Command="{Binding BtnClick}" CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}"/>
-        <Button Content="BindingTest" Command="{Binding BtnClick}" CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}" Grid.Row="1"/>
-        <Fluent:Ribbon AutomaticStateManagement="True" x:Name="ribbon" Grid.ColumnSpan="2" VerticalAlignment="Center"></Fluent:Ribbon>
-        
-    </Grid>
+        <Button Content="BindingTest" Command="{Binding BtnClick}" CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}"/>
+        <Button Content="TextBlockTest" Command="{Binding BtnClick}" CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}"/>
+    </StackPanel>
 </Window>

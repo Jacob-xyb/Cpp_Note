@@ -1,0 +1,12 @@
+﻿<Window x:Class="_02_CSharp_WPF_NET_Framework.TextBoxTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_02_CSharp_WPF_NET_Framework"
+        mc:Ignorable="d"
+        Title="TextBox" Height="450" Width="800">
+    <Grid>
+        <TextBox Width="60" TextWrapping="NoWrap" Height="200" Text="d\nsaddsadadad" VerticalContentAlignment="Center"/>
+    </Grid>
+</Window>

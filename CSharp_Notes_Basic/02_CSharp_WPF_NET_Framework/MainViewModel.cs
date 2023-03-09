@@ -21,7 +21,7 @@ namespace _02_CSharp_WPF_NET_Framework
 
         public MainViewModel(MainWindow mainWindow)
         {
-            _mainWindow = mainWindow;
+            this._mainWindow = mainWindow;
         }
 
         private ICommand _BtnClick = null;
@@ -52,6 +52,11 @@ namespace _02_CSharp_WPF_NET_Framework
             else if (_content == "BindingTest")
             {
                 BindingTest dialog = new BindingTest();
+                dialog.ShowDialog();
+            }
+            else if (_content == "TextBlockTest")
+            {
+                TextBlockTest dialog = new TextBlockTest();
                 dialog.ShowDialog();
             }
             //Console.WriteLine(_content);

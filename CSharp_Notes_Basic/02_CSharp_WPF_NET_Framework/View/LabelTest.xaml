@@ -1,0 +1,21 @@
+﻿<Window x:Class="_02_CSharp_WPF_NET_Framework.LabelTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_02_CSharp_WPF_NET_Framework"
+        mc:Ignorable="d"
+        Title="LabelTest" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Label x:Name="Label1" Content="Hello WPF" FontSize="30" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 10, 0, 0"
+               Background="LightCyan" Padding="20, 0"/>
+        <Label x:Name="Label2" FontSize="30" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 80, 0, 0"
+               Background="LightCyan" Padding="20, 0">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Hello"/>
+                <TextBlock Text="Label"/>
+            </StackPanel>
+        </Label>
+    </Grid>
+</Window>

@@ -87,6 +87,7 @@
     <Compile Include="DataTypeTest\ArrayListBase.cs" />
     <Compile Include="DataTypeTest\HashtableBase.cs" />
     <Compile Include="DataTypeTest\StringBase.cs" />
+    <Compile Include="ModifierTest\AccessModifierTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="01_LearnProjects\01_GameFlyingChess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

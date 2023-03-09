@@ -1,0 +1,18 @@
+﻿<Window x:Class="_02_CSharp_WPF_NET_Framework.ComboBoxTest"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_02_CSharp_WPF_NET_Framework"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ComboBoxTest">
+
+    <Grid>
+        <ComboBox Margin="30,30,0,375" IsDropDownOpen="False" Height="30" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="220">
+            <ComboBoxItem Content="Item1" IsSelected="True"/>
+            <ComboBoxItem Content="Item2"/>
+            <ComboBoxItem Content="Item3"/>
+        </ComboBox>
+    </Grid>
+</Window>

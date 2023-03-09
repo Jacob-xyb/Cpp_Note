@@ -6,6 +6,10 @@ Windows系统平台上 GUI 程序员的开发工具经历了 Win32 API -> MFC ->
 
 https://learn.microsoft.com/zh-cn/previous-versions/dotnet/netframework-4.0/
 
+## 相关资料
+
+[入门教程-博客园](https://www.cnblogs.com/zh7791/category/1528742.html)
+
 ## 控件分类
 
 **布局控件：** `Panel`
@@ -40,7 +44,7 @@ https://learn.microsoft.com/zh-cn/previous-versions/dotnet/netframework-4.0/
 
 - **App.xaml**
 
-  程序的主体。
+  程序的主体。**设置应用程序起始文件与系统级资源**
 
   Windows系统中，一个程序就是一个进程（Process）；一个GUI进程需要有一个窗口（Window）作为 "主窗口"。
 
@@ -108,7 +112,7 @@ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:local="clr-namespace:_02_CSharp_WPF_NET_Framework"
 ```
 
-xmlns: XML-Namespace，定义命名空间的好处就是，当来源不同的类重名时，可以使用名称加空间加以区分。
+**xmlns: XML-Namespace，定义命名空间的好处就是，当来源不同的类重名时，可以使用名称加空间加以区分。**
 
 语法：`xmlns[:可选的映射前缀]="名称空间"`
 
@@ -142,6 +146,12 @@ Window 和 Grid 都来自默认的命名空间， Class 来自 x 前缀对应的
 在XAML中引用名称空间的语法是：
 
 `xmlns:映射名="clr-namesapce:类库中名称空间的名字;assembly=类库文件名"`
+
+xmal 的命名空间与.NET中的命名空间不是一一对应的，而是一对多的。
+
+`xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"` ： 默认命名空间（所有wpf类，包括构建用户界面使用的控件）
+
+`xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"` : 对应一些与XAML语法和编译相关的 **CLR名称空间**
 
 # x 命名空间详解
 
@@ -253,6 +263,10 @@ WPF的主界面
 
 **Window 继承自 ContentControl 因此里面只能有一个 Content**： 所以一般在window里面创建一个StackPanel、Grid 等布局控件来容纳其他控件。
 
+## Window 生存期
+
+**SourceInitiated** -> **Activated** -> **Loaded** -> **ContentRendered**（If a window has content）-> 【Deactivated ↔ Activated】 -> **Closing** -> **Deactivated** -> **Closed**
+
 ## 注解
 
 用户与独立应用程序之间的交互点是一个窗口。 Windows Presentation Foundation (WPF) 窗口由两个不同的区域组成：
@@ -275,9 +289,15 @@ WPF的主界面
 
 **WindowState**： 窗口状态
 
+**WindowStyle** ： 窗口的边框样式
+
 **Topmost** : 是否一直处于最顶层
 
 **Icon** : 图标设置
+
+**ShowActivated** ：首次显示时是否激活窗口，默认 true。
+
+**ResizeMode** ： 设置调整尺寸的模式
 
 ## C# 对象
 
@@ -297,11 +317,37 @@ WPF的主界面
 
 **Show** ：窗体窗口显示为无模式窗口，直到关闭对话框后，才执行后面的代码。
 
+## 自定义窗口时允许窗口拖动
+
+```xaml
+<TextBlock x:Name="TitleRoot" TextAlignment="Center" FontSize="25" Text="{Binding TitleText}" MouseLeftButtonDown="TitleRoot_MouseLeftButtonDown"/>
+```
+
+```c#
+private void TitleRoot_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+{
+    this.DragMove();
+}
+```
+
 # 布局控件
 
 可以容纳多个控件或嵌套其他布局控件，用于在UI上组织和排列控件。
 
 有 **Grid、StackPanel、DockPanel** 等控件，他们拥有共同的父类 **Panel**。
+
+- WPF布局原则
+  - 一个窗口中只能包含一个元素
+  - 不应显示设置元素尺寸
+  - 不应使用坐标设置元素的位置
+  - 可以嵌套布局容器
+- WPF布局容器
+  - *StackPanel*: 水平或垂直排列元素、Orientation属性分别: Horizontal / Vertical
+  - *WrapPanel* : 水平或垂直排列元素、针对剩余空间不足会进行换行或换列进行排列
+  - *DockPanel* : 根据容器的边界、元素进行Dock.Top、Left、Right、Bottom设置
+  - *Grid* : 类似table表格、可灵活设置行列并放置控件元素、比较常用
+  - *UniformGrid* : 指定行和列的数量, 均分有限的容器空间
+  - *Canvas* : 使用固定的坐标设置元素的位置、不具备锚定停靠等功能。
 
 ## 布局的基本原则
 
@@ -323,11 +369,90 @@ WPF的主界面
 
 Auto 表示自动适应显示内容的宽度, 如自动适应文本的宽度,文本有多长,控件就显示多长.
 
+## StackPanel
+
+将子元素排列成水平或垂直的一行。超出部分将隐藏，不能自动切换到下一行，子元素是依次排列，位置不能随意拖动，但可以通过Margin设置各子元素的间隔。
+
+### 属性
+
+**FlowDirection** ：流动方向，只对 Orientation = “Horizontal” 有效，可选择从左至右、从右至左。
+
+## WrapPanel
+
+环绕面板，显示不够时，后续元素显示将 **自动换行**
+
+### 属性
+
+**Orientation**
+
+**ItemWidth**
+
+**ItemHeight**
+
+## Canvas
+
+定义一个区域，可在其中使用相对于 Canvas 区域的坐标来显式定位子元素。
+
+两个元素重叠，后添加的会显示在上面。
+
+### 属性
+
+**Left、Right、Top、Bottom**
+
+**ClipToBounds** : 是否剪切此元素内容。
+
+**Panel.Index** ：值大的，显示在上层。
+
+## DockPanel
+
+定义一个区域，从中可以按 相对位置 水平或垂直排列各个子元素。
+
+**特征**：
+
+- 按照添加的顺序进行堆叠，所有空间不会堆叠；
+- 最后一个控件必填充整个剩余空间，除非在 `DockPanel` 中设置 `LastChildFill=False`；（其实意义不大，不设置宽高的均填充，不填充的也不会设置宽高）
+
+### 属性
+
+**.Dock**：设置停靠的位置
+
+**LastChildFill**： 最后一个子元素是否拉伸填充剩余空间
+
+## TabControl
+
+选项卡页面，包含多个共享相同的空间。
+
+父类：`Selector` 其中的项：`TabItem` 的父类是：`HeaderedContentControl`
+
+可以根据视觉树结构，重写控件模板，改变 TabControl 的外观显示，可定义控件模板或样式或重写 TabItem 的样式或模板，也可以重写 TabItem 的 HeaderTemplate
+
+### 属性
+
+**TabStripPlacement**： 选项卡标题栏显示的位置
+
+**SelectedContent** ：选择的选项卡的Content
+
+**ContentTemplate** ： TabItem的内容模板
+
+**SelectedItem**：TabControl 中选中的 TabItem
+
 # 内容控件
 
 只能容纳一个其他控件或布局控件作为它的内容。
 
 有 **Window、Button** 等控件，他们拥有共同的父类 **ContentControl** 。
+
+## Label
+
+## [Border](https://learn.microsoft.com/zh-cn/dotnet/api/system.windows.controls.border?view=windowsdesktop-7.0)
+
+```xaml
+<Border Background="LightBlue" 
+        BorderBrush="Black" 
+        BorderThickness="2" 
+        CornerRadius="45" 
+        Padding="25">
+```
 
 ## Button
 
@@ -343,15 +468,71 @@ Auto 表示自动适应显示内容的宽度, 如自动适应文本的宽度,文
 
 ### 属性
 
+**Content**： 内容
+
 **GroupName** ： 设置组名，同组成员互斥。
+
+**isChecked**：单选按钮的选中状态
+
+**Tag**： 控件上Tag值。
 
 ### 事件
 
 **Checked** : 勾选时触发事件
 
+**Click**：
+
+**Unchecked** ：
+
 ## CheckBox
 
 **IsThreeState** ： True/False 允许出现第三种状态
+
+## GroupBox
+
+分组容器 创建具有边框和标题的容器
+
+父类：`HeaderedContentControl`
+
+### 属性
+
+**Header**：标题
+
+**HeaderTemplate**：标题模板
+
+## Expander
+
+可折叠内容的控件
+
+父类：`HeaderedContentControl`
+
+### 属性
+
+**Header**
+
+**ExpandDirection** ：展开方向
+
+**IsExpanded**：是否展开内容
+
+## Frame
+
+支持导航的内容控件
+
+父类：`ContentControl`
+
+### 属性
+
+**BackStack/ForwardStack**：枚举 后退/前进 导航历史记录中的条目
+
+**NavigationUIVisibility**：是否可以显示其导航UI
+
+**Source**：包含 URI 当前的内容
+
+**NavigationService**：Frame相关。提供导航服务
+
+### 方法
+
+**.Navigate()** ：导航到指定的内容。（可以传入 URI 或者 页面对象）
 
 # 带标题内容控件
 
@@ -381,7 +562,140 @@ Auto 表示自动适应显示内容的宽度, 如自动适应文本的宽度,文
 
 **Image** 容纳图片类型数据。
 
-## Label
+## TextBox
+
+默认是单行文本框
+
+### 事件
+
+**TextChanged** : 文本改变事件
+
+## PasswordBox 控件
+
+### 属性
+
+**Password** ：密码文本信息
+
+**PasswordChar** ： 密码字符
+
+### 事件
+
+**PasswordChanged**
+
+## TextBlock
+
+### 控件介绍
+
+简单的使用方式：
+
+```xaml
+<TextBlock Text="This is a TextBlock" FontSize="30"/>
+```
+
+如果标签内设置了内容，内容会紧跟 Text:
+
+```xaml
+<TextBlock Text="This is a TextBlock" FontSize="30">标签内的内容</TextBlock>
+```
+
+显示：This is a TextBlock标签内的内容
+
+### 追加流元素
+
+此方法不常用
+
+```c#
+tbText.inlines.Add("aaa");
+Label lbl = new Label();
+lbl.Content = "xxx";
+tbText.inlines.Add(lbl);
+```
+
+## Image
+
+图像控件
+
+### 属性
+
+**Stretch** ： 拉伸方式
+
+- **Fill**：不保持纵横比全部填充
+- **Uniform** ：保持纵横比
+- **UniformToFill** ： 保持纵横比填充，如果不一致则进行裁剪
+
+**StretchDirection** ：如何缩放
+
+- **DownOnly** ：仅缩小
+- **UpOnly** ： 仅放大
+- **Both** ： 根据 Stretch 模式进行拉伸
+
+### C# 方法
+
+Source 图片文件路径
+
+```c#
+img0.Source = new BitmapImage(new Uri("images/xx.png", UriKind.Relative));
+```
+
+## ProgressBar
+
+进度条；父类 **RangeBase**
+
+### 属性
+
+**Orientation** ： 进度条方向
+
+**Maximum/Minimum**
+
+**IsIndeterminate** : 是否隐藏当前值；True，就会一直滚动。
+
+### 事件
+
+**ValueChanged**
+
+### 使用
+
+显示循环修改进度的动态过程，而不卡UI线程：
+
+```c#
+Task.Run(()=>{
+    for (int i = 0; i < 100; i++){
+        pbar1.Dispatcher.Invoke(()=>{
+            pbar1.Value = i;
+        });
+        Thread.Sleep(100);
+    }
+});
+```
+
+如果只是想显示进度条滚动，那么直接更改属性即可：
+
+```c#
+private void btnStart_Click(object sender, RoutedEventArgs e)
+{
+    Task.Run(() =>
+    {
+        this.proceeBar.Dispatcher.Invoke(() =>
+        {
+            this.proceeBar.IsIndeterminate = !this.proceeBar.IsIndeterminate;
+        });
+    });
+}
+```
+
+## ComboBox
+
+### 属性
+
+**IsDropDownOpen**：是否打开下拉菜单，默认 false。
+
+**SelectedValue**：选择项的对应的值
+
+**SelectedIndex**：选择项的索引
+
+**ItemSource** ：用于显示的项的集合
+
+**IsEditable**：是否可编辑
 
 # RelativeSource 属性
 
@@ -390,6 +704,84 @@ Auto 表示自动适应显示内容的宽度, 如自动适应文本的宽度,文
 （1）控件关联自身的属性——Self
 
 `CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}"`
+
+# Dispatcher
+
+Dispatcher 用于管理线程工作项队列。
+
+以下方式调用线程方式是错误的，因为几乎所有的UI控件都继承于 **DispatcherObject**，由 Dispatcher 线程管理，不能在新的线程中直接修改UI元素。
+
+```c#
+private void btnLogin_Click(object sender, RoutedEventArgs e)
+{
+    Thread th = new Thread(() =>
+    {
+       this.lbShow.Content = "Welcome to WPF";
+    });
+    th.Start();
+}
+```
+
+利用 **Dispatcher** 的 `Invoke` 和 `BegInInvoke` ，作用是把委托放到界面元素关联的 Dispatcher 里的工作项里，然后此 Dispatcher 关联的线程进行执行。
+
+`Invoke` 是在关联的线程里 **同步执行** 委托；`BegInInvoke` 是在关联的线程里 **异步执行** 委托。
+
+```c#
+private void btnLogin_Click(object sender, RoutedEventArgs e)
+{
+    Thread th = new Thread(() =>
+    {
+        this.Dispatcher.Invoke(() =>
+        {
+            this.lbShow.Content = "Welcome to WPF";
+        });
+    });
+    th.Start();
+}
+```
+
+# 浅谈布局
+
+## Margin
+
+**VerticalAlignment** 和 **HorizontalAlignment** 属性是计算 Margin 后生效的。
+
+# WPF数据绑定
+
+## 元素绑定
+
+```xaml
+<Grid>
+    <StackPanel>
+        <Slider x:Name="sd" Width ="200" />
+        <TextBox Text ="{Binding ElementName=sd, Path=Value}" />
+    </StackPanel>
+</Grid>
+```
+
+## 非元素绑定（绑定到静态资源）
+
+```xaml
+<Window.Resources>
+    <TextBox x:Key="txt">Hello,WPF</TextBox>
+</Window.Resources>
+
+<TextBox Text ="{Binding Source={StaticResource txt},Path=Text}"/>
+```
+
+# 数据模板
+
+https://devblogs.microsoft.com/?WT.mc_id=DT-MVP-5003986
+微软文档与学习:
+https://docs.microsoft.com/zh-cn/?WT.mc_id=DT-MVP-5003986
+微软开发者平台:
+https://developer.microsoft.com/en-us/?WT.mc_id=DT-MVP-5003986
+
+数据模板常用在3种类型的控件, 下图形式:
+
+![](https://img2020.cnblogs.com/blog/1161656/202012/1161656-20201228130825259-95107469.png)
+
+
 
 # VS 代码片段
 
