@@ -20,6 +20,7 @@
             <TextBlock Text="{Binding [0]}" Margin="5"/>
             <TextBlock Text="{Binding [1][5]}" Margin="5"/>
             <TextBlock Text="{Binding Count}" Margin="5"/>
+            <TextBlock Text="{Binding Name, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}}" Margin="5"/>
         </StackPanel>
         </StackPanel>
 </Window>

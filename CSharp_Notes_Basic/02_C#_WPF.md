@@ -426,7 +426,39 @@ public List<string> labelArray = new List<string> { "label1", "label2", "label3"
 
 ### 为 Binding 指定源（Source）的几种方法
 
+- 把容器的 DataContext 指定为 Source（WPF Data Binding 的默认行为）
 
+  有时候会遇到这样的情况，明确知道将从哪个 **属性** 获取数据，但具体把哪个对象作为 Binding 源还不知道。这时候，只能先建立一个 Binding，只设置 Path 而不设置 Source，让这个 Binding 自己去寻找 Source。这时候，Binding 会自动把控件的 DataContext 当作自己的 Source（沿着控件树一层一层向外找，直到找到带有 Path 指定属性的对象为止）
+
+### 使用集合对象作为列表控件的 ItemsSource
+
+**注意：**在使用集合类型作为列表控件的 ItemsSource 时一般会考虑使用 ObservableCollection\<T> 代替 List\<T>，因为ObservableCollection\<T> 实现了 INotifyCollectionChanged 和 INotifyPropertyChanged 接口，能把集合的变化立刻通知显示她它的列表控件，改变实时显示。
+
+### 使用 Binding 的 RelativeSource
+
+- **RelativeSourceMode**：枚举：
+
+  - **FindAncestor** : 在UI结构树上找寻祖先元素
+
+    ```xaml
+    <TextBlock Text="{Binding Name, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}}" Margin="5" x:Name=textBlock/>
+    ```
+
+    C# 代码：
+
+    ```c#
+    RelativeResource rs = new RelativeResource(RelativeSourceMode.FindAncestor);
+    rs.AncestorLevel = 1;
+    rs.AncestorType = typeof(StackPanel);
+    Binding binding = new Binding("Name"){ RelativeSource = rs };
+    this.textBlock.SetBinding(TextBlock.TextProperty, binding);
+    ```
+
+    其中：
+
+    **AncestorLevel**：以 Binding 目标控件为起点的层级偏移量
+
+    **AncestorType**: 寻找的类型
 
 # Window 窗口
 
@@ -911,6 +943,48 @@ private void btnLogin_Click(object sender, RoutedEventArgs e)
     });
     th.Start();
 }
+```
+
+# Convert
+
+构造一个 Convert 类 继承 `IValueConverter`
+
+```c#
+public class BoolToVisibilityConvert : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        bool bValue = (bool)value;
+
+        if (bValue)
+        {
+            return Visibility.Visible;
+        }
+        else
+        {
+            return Visibility.Collapsed;
+        }
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        throw new NotImplementedException();
+    }
+}
+```
+
+Resource 中引入类
+
+```xaml
+<Window.Resources>
+    <local:BoolToVisibilityConvert x:Key="BoolToVisibilityConvert"/>
+</Window.Resources>
+```
+
+再使用 Convert 类
+
+```xaml
+<Button Content="Load Thick" Margin="5" Visibility="{Binding Path=IsChecked, ElementName=radioButtonSimulate, Converter={StaticResource BoolToVisibilityConvert}}"/>
 ```
 
 # 浅谈布局
