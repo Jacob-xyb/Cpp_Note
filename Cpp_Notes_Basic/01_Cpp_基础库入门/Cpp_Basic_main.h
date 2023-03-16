@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
+#include "DataType.h"
 
-void func_union_Intro();
+void DataType::Func_Test();
 
-#define test() func_union_Intro()
+#define test() DataType::Func_Test()
