@@ -51,6 +51,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringBuilderTest.cs" />
+    <Compile Include="XmlSerializerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

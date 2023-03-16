@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _02_CSharp_WPF_NET_Framework
+namespace _02_CSharp_WPF_NET_Framework.ContenControlClan
 {
     /// <summary>
-    /// ButtonTest.xaml 的交互逻辑
+    /// NavigationWindowTest.xaml 的交互逻辑
     /// </summary>
-    public partial class ButtonTest : Window
+    public partial class NavigationWindowTest : NavigationWindow
     {
-        public ButtonTest()
+        public NavigationWindowTest()
         {
             InitializeComponent();
         }

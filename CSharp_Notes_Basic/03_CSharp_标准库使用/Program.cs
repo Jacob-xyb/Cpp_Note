@@ -14,7 +14,10 @@ namespace _03_CSharp_标准库使用
         [STAThread]
         static void Main(string[] args)
         {
-            FileStreamTest.FuncTest_StreamReaderAndWriter();
+            //FileStreamTest.FuncTest_FileStreamModeTest();
+
+            XmlSerializerTest.FuncTest_SerializerBase();
+
             Console.ReadKey();
         }
     }

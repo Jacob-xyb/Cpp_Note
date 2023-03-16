@@ -24,6 +24,270 @@ https://learn.microsoft.com/zh-cn/previous-versions/dotnet/netframework-4.0/
 
 **特殊内容控件：** 常用的空间：`TextBox` 、`PasswordBox` 、`TextBlock`
 
+# [WPF 中的树](https://learn.microsoft.com/zh-cn/dotnet/desktop/wpf/advanced/trees-in-wpf?view=netframeworkdesktop-4.8)
+
+ WPF 中有两中“树”：一种叫逻辑树（**Logical Tree**）;一种叫可视化元素树（**Visual Tree**）。
+
+## 逻辑树 和 LogicalTreeHelper
+
+逻辑树在 WPF 框架级别定义。这意味着，与逻辑树操作关系最密切的 WPF 基元素是 [FrameworkElement](https://learn.microsoft.com/zh-cn/dotnet/api/system.windows.frameworkelement) 或 [FrameworkContentElement](https://learn.microsoft.com/zh-cn/dotnet/api/system.windows.frameworkcontentelement)。 但是你会发现，如果实际使用 [LogicalTreeHelper](https://learn.microsoft.com/zh-cn/dotnet/api/system.windows.logicaltreehelper) API，则逻辑树有时会包含既不是 [FrameworkElement](https://learn.microsoft.com/zh-cn/dotnet/api/system.windows.frameworkelement)，也不是 [FrameworkContentElement](https://learn.microsoft.com/zh-cn/dotnet/api/system.windows.frameworkcontentelement) 的节点。 例如，逻辑树会报告 [TextBlock](https://learn.microsoft.com/zh-cn/dotnet/api/system.windows.controls.textblock) 的 [Text](https://learn.microsoft.com/zh-cn/dotnet/api/system.windows.controls.textblock.text) 值，该值是一个字符串。
+
+| 方法                                                         | 介绍                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [BringIntoView](https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.logicaltreehelper.bringintoview?view=netframework-4.7.2#System_Windows_LogicalTreeHelper_BringIntoView_System_Windows_DependencyObject_) | 尝试将请求的用户界面元素放入视图                             |
+| FindLogicalNode                                              | 尝试查找并返回具有指定的名称的对象。 搜索从指定的对象开始，并持续到逻辑树的子节点。 |
+| GetChildren                                                  | 通过处理逻辑树返回指定的对象的即时子对象集合。               |
+| GetParent                                                    | 通过处理逻辑树中返回指定对象的父对象。                       |
+
+## 可视化树 和 VisualTreeHelper 
+
+| 方法                                                         | 介绍                                             |
+| ------------------------------------------------------------ | ------------------------------------------------ |
+| [GetChild](https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.media.visualtreehelper.getchild?view=netframework-4.7.2#System_Windows_Media_VisualTreeHelper_GetChild_System_Windows_DependencyObject_System_Int32_) | 返回子可视对象从指定的父级范围内指定的集合索引。 |
+| [GetChildrenCount](https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.media.visualtreehelper.getchildrencount?view=netframework-4.7.2#System_Windows_Media_VisualTreeHelper_GetChildrenCount_System_Windows_DependencyObject_) | 返回的包含指定的可视对象的子级的个数。           |
+
+## 测试和说明
+
+```xaml
+<Window x:Class="WpfAppResource1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppResource1" xmlns:system="clr-namespace:System;assembly=mscorlib" 
+        mc:Ignorable="d" Loaded="Window_Loaded"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid x:Name="grid">
+        <TextBox x:Name="textBox">
+            <TextBox.Template>
+                <ControlTemplate TargetType="TextBox">
+                    <Rectangle x:Name="rectangle"/>
+                </ControlTemplate>
+            </TextBox.Template>
+        </TextBox>
+ 
+        <StackPanel x:Name="stackPanel">
+            <Button x:Name="button" >
+                <CheckBox x:Name="checkBox"/>
+            </Button>
+        </StackPanel>
+ 
+        <DockPanel x:Name="dockPanel">
+            <ToggleButton x:Name="toggleButton">
+                <TextBlock x:Name="textBlock"/>
+            </ToggleButton>
+        </DockPanel>
+ 
+        <Border x:Name="border">
+            <RepeatButton x:Name="repeatButton"/>
+        </Border>
+    </Grid>
+</Window>
+```
+
+```c#
+namespace WpfAppResource1
+{
+    using System.Text;
+    using System.Windows;
+    using System.Windows.Media;
+ 
+    /// <summary>
+    /// MainWindow.xaml 的交互逻辑
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+ 
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+ 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+        }
+ 
+        string getTree(FrameworkElement container)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("********Logical Tree********");
+            getLogicalChildren(container, sb, 0);
+            sb.AppendLine();
+ 
+            sb.AppendLine("********Visual Tree********");
+            getVisualChildren(container, sb, 0);
+            sb.AppendLine();
+ 
+            return sb.ToString();
+        }
+ 
+        void appendLine(FrameworkElement frameworkElement, StringBuilder sb, int num)
+        {
+            sb.Append("".PadLeft(num));
+            string name = frameworkElement.Name;
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                name = $"({frameworkElement.GetType().Name})";
+            }
+            sb.AppendLine($"{num}.{name}");
+        }
+ 
+        void getLogicalChildren(FrameworkElement container, StringBuilder sb, int num)
+        {
+            appendLine(container, sb, num);
+            foreach (var child in LogicalTreeHelper.GetChildren(container))
+            {
+                FrameworkElement frameworkElement = child as FrameworkElement;
+                if (frameworkElement != null)
+                {
+                    getLogicalChildren(frameworkElement, sb, num + 1);
+                }
+            }
+        }
+ 
+        void getVisualChildren(FrameworkElement container, StringBuilder sb, int num)
+        {
+            appendLine(container, sb, num);
+            int count = VisualTreeHelper.GetChildrenCount(container);
+            for (int i = 0; i < count; i++)
+            {
+                FrameworkElement frameworkElement = VisualTreeHelper.GetChild(container, i) as FrameworkElement;
+                if (frameworkElement != null)
+                {
+                    getVisualChildren(frameworkElement, sb, num + 1);
+                }
+            }
+        }
+ 
+    }
+}
+```
+
+构造函数里遍历两个树(Window)
+
+```c#
+public MainWindow()
+{
+    InitializeComponent();
+    string tree = getTree(this);
+}
+```
+
+```c#
+********Logical Tree********
+0.(MainWindow)
+ 1.grid
+  2.textBox
+  2.stackPanel
+   3.button
+    4.checkBox
+  2.dockPanel
+   3.toggleButton
+    4.textBlock
+  2.border
+   3.repeatButton
+ 
+ 
+********Visual Tree********
+0.(MainWindow)
+```
+
+构造函数里遍历两个树(Grid)
+
+```c#
+ public MainWindow()
+ {
+     InitializeComponent();
+     string tree = getTree(this.grid);
+ }
+```
+
+```c#
+********Logical Tree********
+0.grid
+ 1.textBox
+ 1.stackPanel
+  2.button
+   3.checkBox
+ 1.dockPanel
+  2.toggleButton
+   3.textBlock
+ 1.border
+  2.repeatButton
+ 
+ 
+********Visual Tree********
+0.grid
+ 1.textBox
+ 1.stackPanel
+  2.button
+ 1.dockPanel
+  2.toggleButton
+ 1.border
+  2.repeatButton
+```
+
+Loaded完成后遍历两个树
+
+```c#
+ private void Window_Loaded(object sender, RoutedEventArgs e)
+ {
+     string tree = getTree(this);
+ }
+```
+
+```c#
+********Logical Tree********
+0.(MainWindow)
+ 1.grid
+  2.textBox
+  2.stackPanel
+   3.button
+    4.checkBox
+  2.dockPanel
+   3.toggleButton
+    4.textBlock
+  2.border
+   3.repeatButton
+ 
+ 
+********Visual Tree********
+0.(MainWindow)
+ 1.(Border)
+  2.(AdornerDecorator)
+   3.(ContentPresenter)
+    4.grid
+     5.textBox
+      6.rectangle
+     5.stackPanel
+      6.button
+       7.border
+        8.contentPresenter
+         9.checkBox
+          10.templateRoot
+           11.checkBoxBorder
+            12.markGrid
+             13.optionMark
+             13.indeterminateMark
+           11.contentPresenter
+     5.dockPanel
+      6.toggleButton
+       7.border
+        8.contentPresenter
+         9.textBlock
+     5.border
+      6.repeatButton
+       7.border
+        8.contentPresenter
+   3.(AdornerLayer)
+```
+
+ 通过对比可以发现：
+
+- 逻辑树只能遍历出非模板的元素，可视化树可以遍历出所有属于Visual的元素
+- 可视化树在界面未加载前不能遍历Window，但可以遍历Window中的元素
+- 逻辑树的遍历在整个过程都可以的，而可视化树在界面没有加载显示完成后不能遍历出Content中和Template中的元素
+
 # VS WPF .NET Framework 项目文件介绍
 
 ## 分支
@@ -224,7 +488,29 @@ private void Button_Click(object sender, RoutedEventArgs e)
 
 ## x 名称空间中的扩展标记
 
+# 事件
+
+## 附加事件
+
+元素可以响应由 XAML 树中的其他元素引发的事件，即使元素本身并不定义这些事件也可以。 例如，包含 [Button](https://msdn.microsoft.com/zh-cn/library/ms609089(v=vs.100)) 控件的 [Window](https://msdn.microsoft.com/zh-cn/library/ms590112(v=vs.100)) 可以响应由该 [Button](https://msdn.microsoft.com/zh-cn/library/ms609089(v=vs.100)) 引发的 [Click](https://msdn.microsoft.com/zh-cn/library/ms521565(v=vs.100)) 事件，即使 [Window](https://msdn.microsoft.com/zh-cn/library/ms590112(v=vs.100)) 本身并不定义 [Click](https://msdn.microsoft.com/zh-cn/library/ms521565(v=vs.100)) 事件也可以。 这是通过在 [Window](https://msdn.microsoft.com/zh-cn/library/ms590112(v=vs.100)) 定义中为 Button.Click（或 ButtonBase.Click）事件指定处理程序来实现的。 每当该窗口 XAML 树中的 [Button](https://msdn.microsoft.com/zh-cn/library/ms609089(v=vs.100))（或从 [ButtonBase](https://msdn.microsoft.com/zh-cn/library/ms611651(v=vs.100)) 继承的任何控件）被单击时，都将执行此处理程序。 下面的过程和示例演示如何使用附加事件。
+
+```xaml
+<Window x:Class="_02_CSharp_WPF_NET_Framework.View.ContenControlClan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_02_CSharp_WPF_NET_Framework.View"
+        mc:Ignorable="d"
+        Title="ContenControlClan" Height="450" Width="800"
+        ButtonBase.Click="Button_Click">
+```
+
+此 Window 下的所有 Button 都会响应 Button_Click 事件，但是**响应对象均是 ContenControlClan 本身。**
+
 # Binding
+
+[wpf数据绑定](https://learn.microsoft.com/zh-cn/dotnet/desktop/wpf/data/?view=netdesktop-7.0&viewFallbackFrom=netdesktop-5.0)
 
 ## 原始的 Binding 方式
 
@@ -669,6 +955,8 @@ Auto 表示自动适应显示内容的宽度, 如自动适应文本的宽度,文
 
 **IsCancel** ：True/False 窗体的取消默认按钮，可以敲击ESC键来触发
 
+**ClickMode** ：Hover、Press、Release
+
 ## RadioButton
 
 ### 属性
@@ -681,7 +969,7 @@ Auto 表示自动适应显示内容的宽度, 如自动适应文本的宽度,文
 
 **Tag**： 控件上Tag值。
 
-### 事件
+### [事件](https://learn.microsoft.com/zh-cn/dotnet/api/system.windows.controls.button?view=windowsdesktop-7.0#events)
 
 **Checked** : 勾选时触发事件
 

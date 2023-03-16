@@ -15,7 +15,10 @@ namespace _01_CSharp_基础库入门
 
         static void Main(string[] args)
         {
-            DataTypeTest.ArrayTest.FuncTest_ArrayBase();
+            //DataTypeTest.ArrayTest.FuncTest_ArrayBase();
+
+            ClassTest.ClassPolymorphic.FuncTest_ClassPolymorphicBase();
+
             Console.ReadKey();
         }
     }

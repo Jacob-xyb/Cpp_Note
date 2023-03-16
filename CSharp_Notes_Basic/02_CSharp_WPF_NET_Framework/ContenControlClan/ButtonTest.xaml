@@ -1,0 +1,15 @@
+﻿<Window x:Class="_02_CSharp_WPF_NET_Framework.ContenControlClan.ButtonTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_02_CSharp_WPF_NET_Framework"
+        mc:Ignorable="d"
+        Title="ButtonTest" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <WrapPanel>
+        <Button Content="单击按钮" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10, 10, 0, 0" Width="100" Click="Button_Click"/>
+        <Button Content="双击按钮" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10, 10, 0, 0" Width="100" MouseDoubleClick="Button_MouseDoubleClick"/>
+        <Button Content="右键鼠标" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10, 10, 0, 0" Width="100" MouseRightButtonUp="Button_MouseRightButtonUp"/>
+        <Button Content="鼠标进入按钮" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10, 10, 0, 0" Width="100" MouseEnter="Button_MouseEnter"/>
+    </WrapPanel>
+</Window>

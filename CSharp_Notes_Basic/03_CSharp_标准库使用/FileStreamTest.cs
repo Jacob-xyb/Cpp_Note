@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace _03_CSharp_标准库使用
@@ -27,11 +28,29 @@ namespace _03_CSharp_标准库使用
             
             //写入数据
             //将创建文件流对象的过程中写在 using 中，会自动释放资源
-            using (FileStream fsWrite = new FileStream(FileStreamTest.path, FileMode.OpenOrCreate, FileAccess.Write))
+            using (FileStream fsWrite = new FileStream(FileStreamTest.path, FileMode.Create, FileAccess.Write))
             {
                 string str = "字节流写入文件";
                 byte[] buffers = Encoding.Default.GetBytes(str);
                 fsWrite.Write(buffers, 0, buffers.Length);
+            }
+        }
+
+        public static void FuncTest_FileStreamModeTest()
+        {
+            using (FileStream fs = new FileStream(FileStreamTest.path, FileMode.Create, FileAccess.Write))
+            {
+                ////读取数据
+                //byte[] buffer = new byte[1024 * 1024 * 5];
+                //// 返回本次实际读取到的有效字节数
+                //int rst = fs.Read(buffer, 0, buffer.Length);
+                //string content = Encoding.Default.GetString(buffer, 0, rst);
+                //Console.WriteLine(content);
+
+                //写入数据
+                string str = "字节流读取写入文件";
+                byte[] buffers = Encoding.Default.GetBytes(str);
+                fs.Write(buffers, 0, buffers.Length);
             }
         }
 
