@@ -75,7 +75,35 @@ C++ 广泛用于教学和研究。
 | 2003     | C++03                   | 第二个C++标准              |
 | 1998     | C++98                   | 第一个C++标准              |
 
-# 基本语法
+# C++ 和 C 的区别
+
+- 强转类型
+
+```cpp
+char* p = (char*)malloc(100);
+char* q = static_cast<char*>(malloc(100));
+// 显然C语言的强转方式更简洁，C++是不推荐进行强转的。
+```
+
+- C++不能将 const 变量赋值给变量
+
+```cpp
+const int a = 100;  //C++ 中 const 类型必须初始化
+int b = a;	//C++ 会报错
+```
+
+- C语言没有 Boolean 类型
+- 输出格式化
+
+```cpp
+printf("%-5c%-5d%-5.2f\n", 'c', 100, 120.34);
+
+#include <iomanip>
+//...
+cout << setiosflags(ios::left) << setw(5) << 'c' << setw(5) << 100 << setprecision(2) << setiosflags(ios::fixed) << setw(5) << 120.34 << endl; 
+```
+
+# 基本语法 +++++++
 
 C++ 程序可以定义为对象的集合，这些对象通过调用彼此的方法进行交互。现在让我们简要地看一下什么是类、对象，方法、即时变量。
 
@@ -526,6 +554,31 @@ void dataType_TypeConversion()
 	numF = stof(str);
 }
 ```
+
+# 输入输出
+
+## 输入
+
+- cin >> int
+
+```cpp
+int age;
+cin >> age;
+
+// 123 -> 123
+// 123a -> 123
+// a123 -> 0
+// 0123 -> 123
+// 123.5 -> 123
+```
+
+## 输出
+
+### 方法
+
+`#include <iomanip>`
+
+**setw(int num)** : 设置预宽
 
 # 运算符
 
