@@ -29,6 +29,8 @@ namespace _02_CSharp_WPF_NET_Framework
 
             this.CollectionPanel.DataContext = this.labelArray;
             Console.WriteLine(this.labelArray);
+
+            this.TextBlockBindingTest.DataContext = this.BindingName;
         }
 
 
@@ -49,6 +51,7 @@ namespace _02_CSharp_WPF_NET_Framework
             this._stu.m_Name += "Name";
         }
 
+        public string BindingName = "BindingTest";
         public List<string> labelArray = new List<string> { "label1", "label2", "label3" };
     }
 }

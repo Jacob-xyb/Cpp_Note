@@ -121,13 +121,15 @@
     <Compile Include="ContenControlClan\NavigationWindowTest.xaml.cs">
       <DependentUpon>NavigationWindowTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ItemControlClan\DataGridTest.xaml.cs">
+      <DependentUpon>DataGridTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\ClassBase.cs" />
-    <Compile Include="ViewModel\ItemControlClanViewModel.cs" />
     <Compile Include="View\ContenControlClan.xaml.cs">
       <DependentUpon>ContenControlClan.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ItemControlClan.xaml.cs">
-      <DependentUpon>ItemControlClan.xaml</DependentUpon>
+    <Compile Include="View\ItemControlClanTest.xaml.cs">
+      <DependentUpon>ItemControlClanTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="ItemControlClan\ListBoxTest.xaml.cs">
       <DependentUpon>ListBoxTest.xaml</DependentUpon>
@@ -182,11 +184,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ItemControlClan\DataGridTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ContenControlClan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ItemControlClan.xaml">
+    <Page Include="View\ItemControlClanTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

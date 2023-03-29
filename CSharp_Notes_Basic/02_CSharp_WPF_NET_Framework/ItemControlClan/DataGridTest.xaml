@@ -1,0 +1,36 @@
+﻿<Window x:Class="_02_CSharp_WPF_NET_Framework.ItemControlClan.DataGridTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_02_CSharp_WPF_NET_Framework.ItemControlClan"
+        mc:Ignorable="d"
+        Title="DataGridTest" Height="1040" Width="1440" WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:GenerateIndexConvert x:Key="GenerateIndexConvert"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="27*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="46*"/>
+            <RowDefinition Height="239*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <Button Content="Add Uers" Width="200" Click="Button_Click"/>
+            <DataGrid x:Name="dataGrid1" MaxHeight="140" ItemsSource="{Binding}" VerticalScrollBarVisibility ="Auto" AutoGenerateColumns="False" CanUserSortColumns="False" CanUserAddRows="False"
+                      AlternatingRowBackground="LightBlue" AlternationCount="2">
+                <DataGrid.Columns>
+                    <!--<DataGridTextColumn Header="" Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Converter={StaticResource GenerateIndexConvert}}"/>-->
+                    <DataGridTextColumn Header="" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+    </Grid>
+</Window>

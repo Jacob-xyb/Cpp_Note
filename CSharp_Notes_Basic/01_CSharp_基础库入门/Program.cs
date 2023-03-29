@@ -21,12 +21,11 @@ namespace _01_CSharp_基础库入门
             //DataTypeTest.ArrayTest.FuncTest_ArrayBase();
 
             //ClassTest.ClassPolymorphic.FuncTest_ClassPolymorphicBase();
-
-            Stopwatch sw= new Stopwatch();
-            sw.Start();
-            Thread.Sleep(1000);
-            sw.Stop();
-            Console.WriteLine($"{string.Format("{0:.00}", sw.ElapsedMilliseconds / 1000.0)}");
+            byte[] dest = new byte[1024];
+            byte[] bts = new byte[0];
+            byte[] cts = Encoding.Default.GetBytes("");
+            Console.WriteLine(bts.Length);
+            Array.Copy(cts, 0, dest, 512, cts.Length);
 
             Console.ReadKey();
         }

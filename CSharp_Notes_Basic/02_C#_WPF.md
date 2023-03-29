@@ -746,6 +746,163 @@ public List<string> labelArray = new List<string> { "label1", "label2", "label3"
 
     **AncestorType**: 寻找的类型
 
+# Command
+
+需要继承接口 `ICommand`
+
+主流的有两种形式：
+
+- 用类的字段属性传入
+
+  ```c#
+  public class CommandBase : ICommand
+  {
+      public event EventHandler CanExecuteChanged;
+  
+      public bool CanExecute(object parameter)
+      {
+          //throw new NotImplementedException();
+          if (DoCanExecute == null) return true;
+          return DoCanExecute(parameter);
+      }
+  
+      public void Execute(object parameter)
+      {
+          //throw new NotImplementedException();
+          DoAction?.Invoke(parameter);
+      }
+  
+      public Action<object> DoAction { get; set; }
+      public Func<object, bool> DoCanExecute { get; set; }
+  }
+  ```
+
+  ```c#
+  private ICommand _BtnClick = null;
+  public ICommand BtnClick
+  {
+      get
+      {
+          if (_BtnClick == null)
+          {
+              _BtnClick = new CommandBase(){
+                  DoAction = new Action<object>(FuncBtnClick)
+              };
+          }
+          return _BtnClick;
+      }
+  }
+  
+  public void FuncBtnClick(object value){...}
+  ```
+
+- 用构造函数直接传入
+
+  ```c#
+  public class MyCommand : ICommand
+  {
+      /// <summary>
+      /// 检查命令是否可以执行的事件，在UI事件发生导致控件状态或数据发生变化时触发
+      /// </summary>
+      public event EventHandler CanExecuteChanged
+      {
+          add
+          {
+              if (_canExecute != null)
+              {
+                  CommandManager.RequerySuggested += value;
+              }
+          }
+          remove
+          {
+              if (_canExecute != null)
+              {
+                  CommandManager.RequerySuggested -= value;
+              }
+          }
+      }
+  
+      /// <summary>
+      /// 判断命令是否可以执行的方法
+      /// </summary>
+      private Func<object, bool> _canExecute;
+  
+      /// <summary>
+      /// 命令需要执行的方法
+      /// </summary>
+      private Action<object> _execute;
+  
+      /// <summary>
+      /// 创建一个命令
+      /// </summary>
+      /// <param name="execute">命令要执行的方法</param>
+      public MyCommand(Action<object> execute) : this(execute, null)
+      {
+      }
+  
+      /// <summary>
+      /// 创建一个命令
+      /// </summary>
+      /// <param name="execute">命令要执行的方法</param>
+      /// <param name="canExecute">判断命令是否能够执行的方法</param>
+      public MyCommand(Action<object> execute, Func<object, bool> canExecute)
+      {
+          _execute = execute;
+          _canExecute = canExecute;
+      }
+  
+      /// <summary>
+      /// 判断命令是否可以执行
+      /// </summary>
+      /// <param name="parameter">命令传入的参数</param>
+      /// <returns>是否可以执行</returns>
+      public bool CanExecute(object parameter)
+      {
+          if (_canExecute == null) return true;
+          return _canExecute(parameter);
+      }
+  
+      /// <summary>
+      /// 执行命令
+      /// </summary>
+      /// <param name="parameter"></param>
+      public void Execute(object parameter)
+      {
+          if (_execute != null && CanExecute(parameter))
+          {
+              _execute(parameter);
+          }
+      }
+  }
+  ```
+  
+  ```c#
+  private MyCommand m_DataGridRightMenuCommand;
+  public MyCommand DataGridRightMenuCommand
+  {
+      get
+      {
+          if (m_DataGridRightMenuCommand == null)
+          {
+              m_DataGridRightMenuCommand = new MyCommand(new Action<object>(Func_DataGridRightMenu));
+          }
+          return m_DataGridRightMenuCommand;
+      }
+  }
+  
+  private void Func_DataGridRightMenu(object value){...}
+  ```
+
+## CommandParameter
+
+- binding自身
+
+  ```xaml
+  CommandParameter="{Binding RelativeSource={x:Static RelativeSource.Self}}"
+  ```
+
+  
+
 # Window 窗口
 
 WPF的主界面
@@ -1038,6 +1195,110 @@ Auto 表示自动适应显示内容的宽度, 如自动适应文本的宽度,文
 可以显示一列数据，一般情况下这列数据的类型相同。
 
 有 **ListBox、ComboBox** 等，共同父类是 **ItemControl**。
+
+## DataGrid
+
+最后默认会多一行。
+
+### 字标签
+
+**DataGrid.Columns** ：定义的是数据表的列(行头)
+
+```xaml
+<DataGrid.Columns>
+    <DataGridTextColumn Width="Auto" MinWidth="25" Binding="{Binding UserID}" Header=""/>
+    <DataGridTextColumn Width="*" Binding="{Binding UserName}" Header="用户名"/>
+    <DataGridTextColumn Width="*" Binding="{Binding UserAccount}" Header="帐号"/>
+    <DataGridTextColumn Width="*" Binding="{Binding UserPasswd}" Header="密码"/>
+    <DataGridTextColumn Width="*" Binding="{Binding UserPhone}" Header="电话"/>
+    <DataGridTextColumn Width="*" Binding="{Binding UserEmail}" Header="邮箱"/>
+    <DataGridTextColumn Width="0.6*" Binding="{Binding UserSex}" Header="性别"/>
+</DataGrid.Columns>
+```
+
+- **Header** : 行头名
+
+- **DataGridTextColumn** ：具体列的设置
+
+  检查DataGridTextColumn（ <DataGridTextColumn ***Binding="{Binding }"*** />）绑定的的是不是属性，一定要绑定的是属性，属性是有{get；set；}的！！`Binding 一定要是属性！`
+
+- **Auto**：列宽根据列表内容自适应
+
+### 属性
+
+**AutoGenerateColumns** ：默认 True，会根据 ItemsSource 自动生成表格，一般设置为 False。
+
+**CanUserSortColumns** ：默认 True，允许用户排序。
+
+**CanUserResizeColumns** ：默认 True，允许用户调整列宽。
+
+**CanUserDeleteRows** : 默认 True，允许用户用 Delete 键删除行。
+
+- （的确会删除数据，但是如果自定义 Index，要想办法解决 Index刷新问题。）
+
+**CanUserAddRows** ：默认 True，允许用户增加行。一般设置为 False。
+
+- （增加行的方式很奇葩，而且会导致最后一行永远会空行）
+
+**AlternatingRowBackground 、AlternationCount** ：隔行换色。
+
+### 自动生成 Index
+
+- 这种方法不会动态刷新 Index
+
+```c#
+class GenerateIndexConvert : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        DataGridRow row = value as DataGridRow;
+        if (row != null)
+            return row.GetIndex() + 1;
+        else
+            return -1;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        throw new NotImplementedException();
+    }
+}
+```
+
+```xaml
+<Window.Resources>
+    <local:GenerateIndexConvert x:Key="GenerateIndexConvert"/>
+</Window.Resources>
+
+//...
+
+<DataGridTextColumn Header="" Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Converter={StaticResource GenerateIndexConvert}}"/>
+```
+
+### 滚动条问题
+
+`MaxHeight` + `VerticalScrollBarVisibility ="Auto"` 可以显示滚动条。
+
+### DataGridTemplateColumn Binding 不生效问题
+
+DataGridColumns不是可视化树的一部分，所以无法进行相对绑定，因此它们不连接到DataGrid
+
+```xaml
+<DataGridTemplateColumn Header="Select" Width="70" >
+    <DataGridTemplateColumn.CellTemplate>
+        <DataTemplate>
+            <CheckBox HorizontalAlignment="Center"
+                      IsChecked="{Binding DataContext.Selected, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=DataGridRow}}"></CheckBox>
+        </DataTemplate>
+    </DataGridTemplateColumn.CellTemplate>
+</DataGridTemplateColumn>
+```
+
+但是 **CheckBox** 是生效的
+
+```xaml
+<DataGridCheckBoxColumn Header="Select" Width="70" Binding="{Binding Selected}"/>
+```
 
 # 带标题条目控件
 

@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace _02_CSharp_WPF_NET_Framework
+namespace _02_CSharp_WPF_NET_Framework.ItemControlClan
 {
     /// <summary>
     /// ListBoxTest.xaml 的交互逻辑
