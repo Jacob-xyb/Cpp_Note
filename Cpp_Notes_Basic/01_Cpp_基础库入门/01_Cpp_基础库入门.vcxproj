@@ -118,6 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,10 +130,12 @@
   <ItemGroup>
     <ClCompile Include="Cpp_Basic_main.cpp" />
     <ClCompile Include="DataType.cpp" />
+    <ClCompile Include="SpecialTopic.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cpp_Basic_main.h" />
     <ClInclude Include="DataType.h" />
+    <ClInclude Include="SpecialTopic.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

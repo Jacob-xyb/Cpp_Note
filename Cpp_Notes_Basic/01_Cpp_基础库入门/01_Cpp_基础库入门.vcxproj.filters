@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="专题">
+      <UniqueIdentifier>{9221e030-a151-415a-b370-143e4756f987}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cpp_Basic_main.cpp">
@@ -21,6 +24,9 @@
     <ClCompile Include="DataType.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="SpecialTopic.cpp">
+      <Filter>专题</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cpp_Basic_main.h">
@@ -28,6 +34,9 @@
     </ClInclude>
     <ClInclude Include="DataType.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SpecialTopic.h">
+      <Filter>专题</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
