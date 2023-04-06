@@ -3,5 +3,6 @@
 using namespace std;
 
 int main() {
-	SpecialTopic::Func_memset();
+	SpecialTopic::Func_access();
+	getchar();
 }

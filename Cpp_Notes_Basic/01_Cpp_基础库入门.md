@@ -516,6 +516,8 @@ void Research_CharArray1() {
 
 字符串名后面需要加一个`[]`；字符是单引号，字符串是双引号。
 
+#### [关于LPSTR、LPCSTR、LPTSTR和LPCTSTR](https://blog.csdn.net/weixin_42899088/article/details/106013197)
+
 ### C++风格字符串
 
 - `string 变量名 = ""`
@@ -533,6 +535,14 @@ void CStyleString() {
 	std::cout << CppString << std::endl;
 }
 ```
+
+#### 常用方法
+
+**c_str()** ：可以将 const string* 类型 转化为 cons char* 类型，返回了一个指向常量数组的指针。
+
+**int rfind(char)** : 从右往左查找，返回查找的 index
+
+**string substr(size_t off, size_t end)**: 返回 [off, end) 的字符串切片
 
 ## 基础数据类型转换
 
