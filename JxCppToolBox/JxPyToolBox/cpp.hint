@@ -1,0 +1,1 @@
+#define JxPy_DLL extern "C" _declspec(dllimport)

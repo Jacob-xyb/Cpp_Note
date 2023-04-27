@@ -15,16 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SimpleOutputFunction.cpp">
+    <ClCompile Include="JxPyToolBox.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="PrintEverything.cpp">
-      <Filter>资源文件</Filter>
+    <ClCompile Include="JxPy.cpp">
+      <Filter>头文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SimpleOutputFunction.h">
+    <ClInclude Include="JxPy.h">
       <Filter>头文件</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

@@ -130,11 +130,15 @@
   <ItemGroup>
     <ClCompile Include="Cpp_Basic_main.cpp" />
     <ClCompile Include="DataType.cpp" />
+    <ClCompile Include="OperatorNotes.cpp" />
+    <ClCompile Include="PointNotes.cpp" />
     <ClCompile Include="SpecialTopic.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cpp_Basic_main.h" />
     <ClInclude Include="DataType.h" />
+    <ClInclude Include="OperatorNotes.h" />
+    <ClInclude Include="PointNotes.h" />
     <ClInclude Include="SpecialTopic.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

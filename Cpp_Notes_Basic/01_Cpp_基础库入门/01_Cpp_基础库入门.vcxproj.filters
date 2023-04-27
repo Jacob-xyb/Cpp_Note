@@ -21,11 +21,17 @@
     <ClCompile Include="Cpp_Basic_main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DataType.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="SpecialTopic.cpp">
       <Filter>专题</Filter>
+    </ClCompile>
+    <ClCompile Include="DataType.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="OperatorNotes.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PointNotes.cpp">
+      <Filter>头文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -37,6 +43,12 @@
     </ClInclude>
     <ClInclude Include="SpecialTopic.h">
       <Filter>专题</Filter>
+    </ClInclude>
+    <ClInclude Include="OperatorNotes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PointNotes.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

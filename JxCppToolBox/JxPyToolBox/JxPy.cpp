@@ -1,8 +1,7 @@
-#include "SimpleOutputFunction.h"
+#include "JxPy.h"
 
 
-//递归输出二进制函数 
-void BinaryRecursion(int n)
+void JxTool::BinaryRecursion(int n)
 {
 	int a = n % 2;
 	n >>= 1;
@@ -12,4 +11,3 @@ void BinaryRecursion(int n)
 	}
 	std::cout << a;
 }
-

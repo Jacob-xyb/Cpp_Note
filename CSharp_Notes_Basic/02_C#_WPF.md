@@ -488,6 +488,12 @@ private void Button_Click(object sender, RoutedEventArgs e)
 
 ## x 名称空间中的扩展标记
 
+## XAML 中 DataContext 的显式绑定
+
+显式绑定可以在 VS 中自动跳转到绑定元素。
+
+`d:DataContext="{d:DesignInstance Type=local:MainViewModel}"`
+
 # 事件
 
 ## 附加事件
