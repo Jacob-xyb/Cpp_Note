@@ -3,6 +3,7 @@
 #include "DataType.h"
 #include "OperatorNotes.h"
 #include "PointNotes.h"
+#include "ConstantQuantity.h"
 
 #include "SpecialTopic.h"
 

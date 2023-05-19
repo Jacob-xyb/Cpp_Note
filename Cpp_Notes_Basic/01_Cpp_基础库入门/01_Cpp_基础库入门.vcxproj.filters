@@ -33,11 +33,11 @@
     <ClCompile Include="PointNotes.cpp">
       <Filter>头文件</Filter>
     </ClCompile>
+    <ClCompile Include="ConstantQuantity.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cpp_Basic_main.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="DataType.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -48,6 +48,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="PointNotes.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Cpp_Basic_main.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantQuantity.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,12 +8,38 @@
 
 using namespace std;
 
+template<typename T>
+void py_print(T* arr, int length) {
+	cout << "[ ";
+	for (int i = 0; i < length; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << "]" << endl;
+}
+
 void SpecialTopic::Func_memset() {
 	char cFilePath[_MAX_PATH];
 	//std::string res = std::string(cFilePath);	// 未添加字符串零终止符
 	memset(cFilePath, 0, _MAX_PATH);
 	string res = string(cFilePath);
 	std::cout << res << std::endl;
+}
+
+void SpecialTopic::Func_memset_Advance() {
+	int a[6];
+	int len = sizeof(a);
+	// 只取最后一个字节来初始化
+	py_print(a, 6);
+
+	memset(a, -1, len);
+	py_print(a, 6);
+
+	memset(a, 1, len);
+	py_print(a, 6);
+
+	memset(a, 0, len);
+	py_print(a, 6);
 }
 
 void SpecialTopic::Func_GetModuleFileName() {

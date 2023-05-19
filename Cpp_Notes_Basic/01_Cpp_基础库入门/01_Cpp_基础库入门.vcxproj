@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ConstantQuantity.cpp" />
     <ClCompile Include="Cpp_Basic_main.cpp" />
     <ClCompile Include="DataType.cpp" />
     <ClCompile Include="OperatorNotes.cpp" />
@@ -135,6 +136,7 @@
     <ClCompile Include="SpecialTopic.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConstantQuantity.h" />
     <ClInclude Include="Cpp_Basic_main.h" />
     <ClInclude Include="DataType.h" />
     <ClInclude Include="OperatorNotes.h" />
