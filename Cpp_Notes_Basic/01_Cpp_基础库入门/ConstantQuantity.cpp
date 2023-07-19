@@ -29,3 +29,15 @@ void Constant_Const::Func_ConstAndQuote()
 	const int& val2 = a;	//因为 const 必须引用一个合法空间，原理是 int temp = a; const int& val2 = temp;
 	cout << val2 << endl;	// 3
 }
+
+//const_cast 常见用法
+void Constant_Const::Func_ConstCast()
+{
+	const int val = 100;
+	//int n = const_cast<int>(val);	// const_cast 中的类型必须是指针
+
+	int* p = const_cast<int*>(&val);
+	*p = 200;
+	cout << "val=" << val << endl;	//Out:100;
+	//const_cast并不能改变指针的常量性质，常用作于可以符合函数的传参条件。
+}

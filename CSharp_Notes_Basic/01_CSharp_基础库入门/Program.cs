@@ -21,11 +21,14 @@ namespace _01_CSharp_基础库入门
             //DataTypeTest.ArrayTest.FuncTest_ArrayBase();
 
             //ClassTest.ClassPolymorphic.FuncTest_ClassPolymorphicBase();
-            byte[] dest = new byte[1024];
-            byte[] bts = new byte[0];
-            byte[] cts = Encoding.Default.GetBytes("");
-            Console.WriteLine(bts.Length);
-            Array.Copy(cts, 0, dest, 512, cts.Length);
+
+            double d1 = 0;
+            double d2 = 0;
+            double d3 = 0;
+            double[] dArray = new double[3] { d1, d2, d3};
+
+            dArray[0] = 100;
+            Console.WriteLine(d1);
 
             Console.ReadKey();
         }
