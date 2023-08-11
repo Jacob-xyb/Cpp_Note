@@ -16,19 +16,32 @@ namespace _01_CSharp_基础库入门
     internal class Program
     {
 
+        class People
+        {
+            public double num = 0.0;
+        }
+
         static void Main(string[] args)
         {
             //DataTypeTest.ArrayTest.FuncTest_ArrayBase();
 
             //ClassTest.ClassPolymorphic.FuncTest_ClassPolymorphicBase();
 
-            double d1 = 0;
-            double d2 = 0;
-            double d3 = 0;
-            double[] dArray = new double[3] { d1, d2, d3};
+            //double d1 = 0;
+            //double d2 = 0;
+            //double d3 = 0;
+            int len = 200 * 5 * 1044;
+            People[] dArray = new People[len];
 
-            dArray[0] = 100;
-            Console.WriteLine(d1);
+            List<double> l = new List<double>();
+            for (int i = 0; i < len; i++)
+            {
+                dArray[i] = new People();
+                l.Add(dArray[i].num);
+            }
+
+            Console.WriteLine("success");
+            Console.WriteLine(l.Count);
 
             Console.ReadKey();
         }
