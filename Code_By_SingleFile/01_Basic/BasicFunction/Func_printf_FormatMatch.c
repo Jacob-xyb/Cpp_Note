@@ -21,8 +21,5 @@ void Func_d_print_char()
 
 int main(int argc, char const *argv[])
 {
-
-    Func_d_print_char();
-
     return 0;
 }
