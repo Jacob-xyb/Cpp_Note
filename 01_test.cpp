@@ -4,13 +4,20 @@
 
 using namespace std;
 
+void assign(int *p)
+{
+	for (int i = 0; i < 10; i++)
+	{
+		p[i] = i;
+	}
+}
+
 int main()
 {
-	int x = 0;
-	cout << (x ^ 1) << endl;
-	string ip = "192.168.1.110";
+	unsigned int x = 10;
+	int y = x;
 
-	cout << ip.c_str() << endl;
+	cout << y << endl;
 
 	return 0;
 }
