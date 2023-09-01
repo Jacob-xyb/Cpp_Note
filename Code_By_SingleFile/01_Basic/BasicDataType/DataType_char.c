@@ -3,6 +3,8 @@
 
 void char_assignment()
 {
+    // \nn: 字符的八进制写法
+    // \xnn: 字符的十六进制写法
     int c_a = 0x61;
     printf("c_a = %c\n", c_a);
 
@@ -11,6 +13,7 @@ void char_assignment()
     printf("%d", '\111' == 73); // 1
 }
 
+/// @brief 用整数赋值
 void char_assigned_by_int()
 {
     char x1 = 300;
@@ -35,6 +38,11 @@ void char_assigned_by_int()
 
 int main(int argc, char const *argv[])
 {
-    char_assigned_by_int();
+    // char_assigned_by_int();
+
+    char x = 'A';
+    char c = x;
+    printf("%c, size=%d", c, sizeof c);
+
     return EXIT_SUCCESS;
 }
