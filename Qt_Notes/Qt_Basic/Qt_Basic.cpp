@@ -3,9 +3,7 @@
 Qt_Basic::Qt_Basic(QWidget *parent)
     : QWidget(parent)
 {
-    b1 = new QPushButton("Hello Qt", this);
     ui.setupUi(this);
-
     // ≥ı ºªØ
 }
 
