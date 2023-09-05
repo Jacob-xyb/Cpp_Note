@@ -12,4 +12,8 @@ public:
     ~MainWindow();
 
 private:
+    void setupRibbonUi();
+
+public slots:
+    void test_hide();
 };
