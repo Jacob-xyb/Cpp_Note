@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Qt_Basic", "Qt_Basic\Qt_Bas
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DesignerSimpleSample", "Example\DesignerSimpleSample\DesignerSimpleSample.vcxproj", "{82685EB4-85BC-4DAC-8633-711349AD0F27}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SARibbonMainWindow", "OpenSourceLib\SARibbonMainWindow\SARibbonMainWindow.vcxproj", "{56D1DACC-A7FC-4724-B1F9-8DEDFDDF9C85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|x64 = Release|x64
@@ -16,6 +18,8 @@ Global
 		{D6E37D74-9D25-475F-9C62-8F88941849E3}.Release|x64.Build.0 = Release|x64
 		{82685EB4-85BC-4DAC-8633-711349AD0F27}.Release|x64.ActiveCfg = Release|x64
 		{82685EB4-85BC-4DAC-8633-711349AD0F27}.Release|x64.Build.0 = Release|x64
+		{56D1DACC-A7FC-4724-B1F9-8DEDFDDF9C85}.Release|x64.ActiveCfg = Release|x64
+		{56D1DACC-A7FC-4724-B1F9-8DEDFDDF9C85}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

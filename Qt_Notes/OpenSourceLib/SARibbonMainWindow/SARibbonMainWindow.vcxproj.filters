@@ -23,16 +23,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="DesignerSimpleSample.qrc">
+    <QtRcc Include="SARibbonMainWindow.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <QtUic Include="FontConversion.ui">
+    <QtUic Include="SARibbonMainWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="FontConversion.h">
+    <QtMoc Include="SARibbonMainWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClCompile Include="FontConversion.cpp">
+    <ClCompile Include="SARibbonMainWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -40,27 +40,13 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AMyWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CustomToolbars.cpp">
+    <ClCompile Include="SARibbon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="AMyWidget.h">
+    <QtMoc Include="SARibbon.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="CustomToolbars.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="AMyWidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="CustomToolbars.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
   </ItemGroup>
 </Project>

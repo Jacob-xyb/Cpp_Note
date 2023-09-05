@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DesignerSimpleSampleClass</class>
- <widget class="QDialog" name="DesignerSimpleSampleClass">
+ <class>FontConversion</class>
+ <widget class="QDialog" name="FontConversion">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>539</width>
-    <height>333</height>
+    <width>649</width>
+    <height>398</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>DesignerSimpleSample</string>
+   <string>Dialog by Designer</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -54,21 +54,21 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QRadioButton" name="radioButton_Blue">
+       <widget class="QRadioButton" name="rBtn_blue">
         <property name="text">
          <string>Blue</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="radioButton_Red">
+       <widget class="QRadioButton" name="rBtn_red">
         <property name="text">
          <string>Red</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="radioButton_Black">
+       <widget class="QRadioButton" name="rBtn_black">
         <property name="text">
          <string>Black</string>
         </property>
@@ -183,7 +183,7 @@ This is Jacob-xyb!</string>
   <connection>
    <sender>btn_OK</sender>
    <signal>clicked()</signal>
-   <receiver>DesignerSimpleSampleClass</receiver>
+   <receiver>FontConversion</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -199,7 +199,7 @@ This is Jacob-xyb!</string>
   <connection>
    <sender>btn_Cancel</sender>
    <signal>clicked()</signal>
-   <receiver>DesignerSimpleSampleClass</receiver>
+   <receiver>FontConversion</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
