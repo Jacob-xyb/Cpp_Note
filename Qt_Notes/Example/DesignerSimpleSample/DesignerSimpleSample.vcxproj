@@ -52,6 +52,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Widget\QTableViewTest.cpp" />
     <QtRcc Include="DesignerSimpleSample.qrc" />
     <QtUic Include="AMyWidget.ui" />
     <QtUic Include="CustomToolbars.ui" />
@@ -63,6 +64,7 @@
     <ClCompile Include="Layout\QSplitterTest.cpp" />
     <ClCompile Include="main.cpp" />
     <QtUic Include="Layout\QSplitterTest.ui" />
+    <QtUic Include="Widget\QTableViewTest.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h" />
@@ -72,6 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Layout\QSplitterTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Widget\QTableViewTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

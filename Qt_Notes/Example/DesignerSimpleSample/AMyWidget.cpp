@@ -3,6 +3,7 @@
 
 #include "FontConversion.h"
 #include "Layout/QSplitterTest.h"
+#include "Widget/QTableViewTest.h"
 
 using namespace std;
 
@@ -37,6 +38,13 @@ void AMyWidget::on_btn_FontConversion_clicked()
 void AMyWidget::on_btn_Splitter_clicked()
 {
 	QSplitterTest* w = new QSplitterTest;
+	w->exec();
+	delete w;
+}
+
+void AMyWidget::on_btn_TableView_clicked()
+{
+	QTableViewTest* w = new QTableViewTest;
 	w->exec();
 	delete w;
 }

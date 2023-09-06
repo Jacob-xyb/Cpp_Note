@@ -30,6 +30,15 @@
     <Filter Include="Header Files\Layout">
       <UniqueIdentifier>{7655e92b-37d0-4ab4-bd39-3599cc8d709d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Form Files\Widget">
+      <UniqueIdentifier>{597703c9-22a4-4876-8658-6ab6c5ae776c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widget">
+      <UniqueIdentifier>{99974f1d-6a12-4e76-9dc5-129907d316cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Widget">
+      <UniqueIdentifier>{1b800eee-e758-4925-8d42-cf4f0fbe6ea4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="DesignerSimpleSample.qrc">
@@ -58,6 +67,9 @@
     <ClCompile Include="Layout\QSplitterTest.cpp">
       <Filter>Source Files\Layout</Filter>
     </ClCompile>
+    <ClCompile Include="Widget\QTableViewTest.cpp">
+      <Filter>Source Files\Widget</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h">
@@ -69,6 +81,9 @@
     <QtMoc Include="Layout\QSplitterTest.h">
       <Filter>Header Files\Layout</Filter>
     </QtMoc>
+    <QtMoc Include="Widget\QTableViewTest.h">
+      <Filter>Header Files\Widget</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="AMyWidget.ui">
@@ -79,6 +94,9 @@
     </QtUic>
     <QtUic Include="Layout\QSplitterTest.ui">
       <Filter>Form Files\Layout</Filter>
+    </QtUic>
+    <QtUic Include="Widget\QTableViewTest.ui">
+      <Filter>Form Files\Widget</Filter>
     </QtUic>
   </ItemGroup>
 </Project>
