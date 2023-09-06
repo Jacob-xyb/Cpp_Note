@@ -13,7 +13,9 @@ public:
 
 private:
     void setupRibbonUi();
+    SARibbonMainWindow* widget = new SARibbonMainWindow();
 
 public slots:
+    void test_show();
     void test_hide();
 };

@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "FontConversion.h"
+#include "Layout/QSplitterTest.h"
 
 using namespace std;
 
@@ -33,4 +34,10 @@ void AMyWidget::on_btn_FontConversion_clicked()
 	delete w;
 }
 
+void AMyWidget::on_btn_Splitter_clicked()
+{
+	QSplitterTest* w = new QSplitterTest;
+	w->exec();
+	delete w;
+}
 

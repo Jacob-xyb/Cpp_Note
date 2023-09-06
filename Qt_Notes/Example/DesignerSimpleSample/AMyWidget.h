@@ -18,7 +18,9 @@ private:
 
 private slots:
     void on_btn_FontConversion_clicked();
-    void on_btn_CustomToolbars_clicked(); 
+    void on_btn_CustomToolbars_clicked();
+    void on_btn_Splitter_clicked();
+
 
 private:
     Ui::AMyWidget ui;

@@ -21,6 +21,15 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="Form Files\Layout">
+      <UniqueIdentifier>{34c77500-32a3-4f9e-b52a-c026e5567b71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Layout">
+      <UniqueIdentifier>{6100c0ed-77bb-4674-b3d5-07f68ac9c5f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Layout">
+      <UniqueIdentifier>{7655e92b-37d0-4ab4-bd39-3599cc8d709d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="DesignerSimpleSample.qrc">
@@ -46,6 +55,9 @@
     <ClCompile Include="CustomToolbars.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Layout\QSplitterTest.cpp">
+      <Filter>Source Files\Layout</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h">
@@ -54,6 +66,9 @@
     <QtMoc Include="CustomToolbars.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="Layout\QSplitterTest.h">
+      <Filter>Header Files\Layout</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="AMyWidget.ui">
@@ -61,6 +76,9 @@
     </QtUic>
     <QtUic Include="CustomToolbars.ui">
       <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Layout\QSplitterTest.ui">
+      <Filter>Form Files\Layout</Filter>
     </QtUic>
   </ItemGroup>
 </Project>
