@@ -52,6 +52,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Layout\QSizePolicyTest.cpp" />
     <ClCompile Include="Widget\QTableViewTest.cpp" />
     <QtRcc Include="DesignerSimpleSample.qrc" />
     <QtUic Include="AMyWidget.ui" />
@@ -63,6 +64,7 @@
     <ClCompile Include="FontConversion.cpp" />
     <ClCompile Include="Layout\QSplitterTest.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="Layout\QSizePolicyTest.ui" />
     <QtUic Include="Layout\QSplitterTest.ui" />
     <QtUic Include="Widget\QTableViewTest.ui" />
   </ItemGroup>
@@ -77,6 +79,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Widget\QTableViewTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Layout\QSizePolicyTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

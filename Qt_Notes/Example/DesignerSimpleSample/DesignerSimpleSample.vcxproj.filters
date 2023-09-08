@@ -70,6 +70,9 @@
     <ClCompile Include="Widget\QTableViewTest.cpp">
       <Filter>Source Files\Widget</Filter>
     </ClCompile>
+    <ClCompile Include="Layout\QSizePolicyTest.cpp">
+      <Filter>Source Files\Layout</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h">
@@ -84,6 +87,9 @@
     <QtMoc Include="Widget\QTableViewTest.h">
       <Filter>Header Files\Widget</Filter>
     </QtMoc>
+    <QtMoc Include="Layout\QSizePolicyTest.h">
+      <Filter>Header Files\Layout</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="AMyWidget.ui">
@@ -97,6 +103,9 @@
     </QtUic>
     <QtUic Include="Widget\QTableViewTest.ui">
       <Filter>Form Files\Widget</Filter>
+    </QtUic>
+    <QtUic Include="Layout\QSizePolicyTest.ui">
+      <Filter>Form Files\Layout</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

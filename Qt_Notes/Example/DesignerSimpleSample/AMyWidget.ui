@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="qtabwidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -59,10 +59,17 @@
        <string>Layout</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
+       <item row="0" column="1">
         <widget class="QPushButton" name="btn_Splitter">
          <property name="text">
           <string>QSplitter</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="btn_SizePolicy">
+         <property name="text">
+          <string>QSizePolicy</string>
          </property>
         </widget>
        </item>
