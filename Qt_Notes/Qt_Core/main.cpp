@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
     //TestQByteArray::QByteArray_InitDiff();
-    TestQString::QString_split_QRegExp();
+    TestQString::QString_toFloat();
 
     return a.exec();
 }

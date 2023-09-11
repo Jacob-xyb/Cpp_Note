@@ -19,3 +19,19 @@ void TestQString::QString_split_QRegExp()
 	qDebug() << s1.split(QRegExp("\\s"));	// \\s 代表所有空格，回车，换行等
 	qDebug() << s1.split(QRegExp("[\\s\,]"), Qt::SplitBehaviorFlags::SkipEmptyParts);	// \\s 代表所有空格，回车，换行等
 }
+
+void TestQString::QString_toFloat()
+{
+	QString s1 = "123a";
+	bool flag = false;
+	float f1 = s1.toFloat(&flag);
+	if (flag)
+	{
+		qDebug() << "successfully" << f1;
+	}
+	else
+	{
+		qDebug() << "failed" << f1;
+	}
+
+}
