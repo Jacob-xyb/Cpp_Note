@@ -29,9 +29,15 @@
     <ClCompile Include="TestQByteArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestQString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TestQByteArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestQString.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
