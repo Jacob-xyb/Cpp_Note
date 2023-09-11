@@ -12,12 +12,22 @@ void assign(int *p)
 	}
 }
 
+class Person
+{
+
+};
+
 int main()
 {
 	unsigned int x = 10;
 	int y = x;
 
-	cout << y << endl;
+	Person* p = nullptr;
 
+	if (p)
+	{
+		cout << y << endl;
+	}
+	
 	return 0;
 }
