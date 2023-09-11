@@ -1,10 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!--
-***************************************************************************************************
- Copyright (C) 2023 The Qt Company Ltd.
- SPDX-License-Identifier: LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
-***************************************************************************************************
--->
 <Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Release|x64">
@@ -13,7 +7,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{46A4B407-EFF9-478E-BDD6-652689BFE08E}</ProjectGuid>
+    <ProjectGuid>{1AAAFC81-7A2F-4C79-9928-9110F32655D9}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.22621.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
@@ -29,7 +23,7 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>5.15.2_msvc2019_64</QtInstall>
-    <QtModules>core</QtModules>
+    <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
@@ -57,15 +51,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <QtRcc Include="Qt_MainWindow.qrc" />
+    <QtUic Include="Qt_MainWindow.ui" />
+    <QtMoc Include="Qt_MainWindow.h" />
+    <ClCompile Include="Qt_MainWindow.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TestQByteArray.cpp" />
-    <ClCompile Include="TestQString.cpp" />
-    <ClCompile Include="TestQVector.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="TestQByteArray.h" />
-    <ClInclude Include="TestQString.h" />
-    <ClInclude Include="TestQVector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

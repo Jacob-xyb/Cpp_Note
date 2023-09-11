@@ -23,28 +23,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TestQByteArray.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TestQString.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TestQVector.cpp">
+    <QtRcc Include="Qt_MainWindow.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtUic Include="Qt_MainWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="Qt_MainWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClCompile Include="Qt_MainWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TestQByteArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TestQString.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TestQVector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

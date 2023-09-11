@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SARibbonMainWindow", "OpenS
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Qt_Core", "Qt_Core\Qt_Core.vcxproj", "{46A4B407-EFF9-478E-BDD6-652689BFE08E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Qt_MainWindow", "Qt_MainWindow\Qt_MainWindow.vcxproj", "{1AAAFC81-7A2F-4C79-9928-9110F32655D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|x64 = Release|x64
@@ -24,6 +26,8 @@ Global
 		{56D1DACC-A7FC-4724-B1F9-8DEDFDDF9C85}.Release|x64.Build.0 = Release|x64
 		{46A4B407-EFF9-478E-BDD6-652689BFE08E}.Release|x64.ActiveCfg = Release|x64
 		{46A4B407-EFF9-478E-BDD6-652689BFE08E}.Release|x64.Build.0 = Release|x64
+		{1AAAFC81-7A2F-4C79-9928-9110F32655D9}.Release|x64.ActiveCfg = Release|x64
+		{1AAAFC81-7A2F-4C79-9928-9110F32655D9}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
