@@ -22,7 +22,7 @@ private slots:
     void on_btn_Splitter_clicked();
     void on_btn_TableView_clicked();
     void on_btn_SizePolicy_clicked();
-
+    void on_btn_MessageBox_clicked();
 
 private:
     Ui::AMyWidget ui;

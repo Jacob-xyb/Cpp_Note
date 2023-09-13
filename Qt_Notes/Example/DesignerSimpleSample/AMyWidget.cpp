@@ -5,6 +5,7 @@
 #include "Layout/QSplitterTest.h"
 #include "Widget/QTableViewTest.h"
 #include "Layout/QSizePolicyTest.h"
+#include "Dialog/QMessageBoxTest.h"
 
 using namespace std;
 
@@ -57,3 +58,9 @@ void AMyWidget::on_btn_SizePolicy_clicked()
 	delete w;
 }
 
+void AMyWidget::on_btn_MessageBox_clicked()
+{
+	QMessageBoxTest* w = new QMessageBoxTest;
+	w->setAttribute(Qt::WA_DeleteOnClose);
+	w->exec();
+}

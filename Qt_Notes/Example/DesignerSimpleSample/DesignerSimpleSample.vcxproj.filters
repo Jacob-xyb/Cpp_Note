@@ -39,6 +39,15 @@
     <Filter Include="Source Files\Widget">
       <UniqueIdentifier>{1b800eee-e758-4925-8d42-cf4f0fbe6ea4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Form Files\Dialog">
+      <UniqueIdentifier>{883b62cc-388a-4982-8d0f-1480d7bc5003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Dialog">
+      <UniqueIdentifier>{4e3545d9-5109-4ccd-80bc-d3bf4e49ef3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Dialog">
+      <UniqueIdentifier>{306e7dfb-25b3-4577-bde4-6316beeea01d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="DesignerSimpleSample.qrc">
@@ -73,6 +82,9 @@
     <ClCompile Include="Layout\QSizePolicyTest.cpp">
       <Filter>Source Files\Layout</Filter>
     </ClCompile>
+    <ClCompile Include="Dialog\QMessageBoxTest.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h">
@@ -90,6 +102,9 @@
     <QtMoc Include="Layout\QSizePolicyTest.h">
       <Filter>Header Files\Layout</Filter>
     </QtMoc>
+    <QtMoc Include="Dialog\QMessageBoxTest.h">
+      <Filter>Header Files\Dialog</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="AMyWidget.ui">
@@ -106,6 +121,9 @@
     </QtUic>
     <QtUic Include="Layout\QSizePolicyTest.ui">
       <Filter>Form Files\Layout</Filter>
+    </QtUic>
+    <QtUic Include="Dialog\QMessageBoxTest.ui">
+      <Filter>Form Files\Dialog</Filter>
     </QtUic>
   </ItemGroup>
 </Project>
