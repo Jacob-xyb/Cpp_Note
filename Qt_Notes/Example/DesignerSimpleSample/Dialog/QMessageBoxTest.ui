@@ -53,6 +53,9 @@
    </item>
    <item>
     <widget class="QPushButton" name="btn_generate">
+     <property name="acceptDrops">
+      <bool>false</bool>
+     </property>
      <property name="text">
       <string>Generate</string>
      </property>

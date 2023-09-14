@@ -48,29 +48,26 @@
     <Filter Include="Source Files\Dialog">
       <UniqueIdentifier>{306e7dfb-25b3-4577-bde4-6316beeea01d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Form Files\SimpleSample">
+      <UniqueIdentifier>{2c1b3e10-ad31-45c7-8b07-9a0ae4eb0baa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SimpleSample">
+      <UniqueIdentifier>{268da3b0-9700-4989-b010-d61c94e162e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SimpleSample">
+      <UniqueIdentifier>{5a801559-a7c6-42db-a6d5-bc3bead47dba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="DesignerSimpleSample.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <QtUic Include="FontConversion.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtMoc Include="FontConversion.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="FontConversion.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AMyWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CustomToolbars.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Layout\QSplitterTest.cpp">
@@ -85,12 +82,15 @@
     <ClCompile Include="Dialog\QMessageBoxTest.cpp">
       <Filter>Source Files\Dialog</Filter>
     </ClCompile>
+    <ClCompile Include="FontConversion.cpp">
+      <Filter>Source Files\SimpleSample</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomToolbars.cpp">
+      <Filter>Source Files\SimpleSample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="CustomToolbars.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Layout\QSplitterTest.h">
@@ -105,12 +105,15 @@
     <QtMoc Include="Dialog\QMessageBoxTest.h">
       <Filter>Header Files\Dialog</Filter>
     </QtMoc>
+    <QtMoc Include="FontConversion.h">
+      <Filter>Header Files\SimpleSample</Filter>
+    </QtMoc>
+    <QtMoc Include="CustomToolbars.h">
+      <Filter>Header Files\SimpleSample</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="AMyWidget.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="CustomToolbars.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Layout\QSplitterTest.ui">
@@ -124,6 +127,12 @@
     </QtUic>
     <QtUic Include="Dialog\QMessageBoxTest.ui">
       <Filter>Form Files\Dialog</Filter>
+    </QtUic>
+    <QtUic Include="CustomToolbars.ui">
+      <Filter>Form Files\SimpleSample</Filter>
+    </QtUic>
+    <QtUic Include="FontConversion.ui">
+      <Filter>Form Files\SimpleSample</Filter>
     </QtUic>
   </ItemGroup>
 </Project>
