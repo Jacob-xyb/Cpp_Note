@@ -21,19 +21,22 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="Source Files\code">
+      <UniqueIdentifier>{c1df2cf3-c458-4a8b-9976-b7f496783f63}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestQVector.cpp">
+      <Filter>Source Files\code</Filter>
+    </ClCompile>
     <ClCompile Include="TestQByteArray.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\code</Filter>
     </ClCompile>
     <ClCompile Include="TestQString.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TestQVector.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\code</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

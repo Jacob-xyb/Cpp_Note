@@ -9,9 +9,10 @@ int main(int argc, char *argv[])
 
     //TestQByteArray::QByteArray_InitDiff();
 
-    TestQString::QString_split_QRegExp();
+    //TestQString::QString_split_QRegExp();
 
-    //TestQVector::QVector_copy();
+    TestQVector::QVector_copy();
+    TestQVector::QVector_initByStdVector();
 
     return a.exec();
 }
