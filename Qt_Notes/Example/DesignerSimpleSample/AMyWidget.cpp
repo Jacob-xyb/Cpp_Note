@@ -6,6 +6,7 @@
 #include "Widget/QTableViewTest.h"
 #include "Layout/QSizePolicyTest.h"
 #include "Dialog/QMessageBoxTest.h"
+#include "Dialog/QDialogTest.h"
 
 using namespace std;
 
@@ -62,5 +63,11 @@ void AMyWidget::on_btn_MessageBox_clicked()
 {
 	QMessageBoxTest* w = new QMessageBoxTest;
 	w->setAttribute(Qt::WA_DeleteOnClose);
+	w->exec();
+}
+
+void AMyWidget::on_btn_QDialog_clicked()
+{
+	QDialogTest* w = new QDialogTest;
 	w->exec();
 }

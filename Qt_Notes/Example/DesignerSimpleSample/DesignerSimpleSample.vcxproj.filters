@@ -88,6 +88,12 @@
     <ClCompile Include="CustomToolbars.cpp">
       <Filter>Source Files\SimpleSample</Filter>
     </ClCompile>
+    <ClCompile Include="Dialog\QDialogTest.cpp">
+      <Filter>Form Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialog\QDialogTest.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h">
@@ -111,6 +117,12 @@
     <QtMoc Include="CustomToolbars.h">
       <Filter>Header Files\SimpleSample</Filter>
     </QtMoc>
+    <QtMoc Include="Dialog\QDialogTest.h">
+      <Filter>Form Files\Dialog</Filter>
+    </QtMoc>
+    <QtMoc Include="Dialog\QDialogTest.h">
+      <Filter>Header Files\Dialog</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="AMyWidget.ui">
@@ -133,6 +145,9 @@
     </QtUic>
     <QtUic Include="FontConversion.ui">
       <Filter>Form Files\SimpleSample</Filter>
+    </QtUic>
+    <QtUic Include="Dialog\QDialogTest.ui">
+      <Filter>Form Files\Dialog</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

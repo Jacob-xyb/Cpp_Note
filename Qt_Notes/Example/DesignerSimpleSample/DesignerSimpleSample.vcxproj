@@ -52,6 +52,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Dialog\QDialogTest.cpp" />
     <ClCompile Include="Dialog\QMessageBoxTest.cpp" />
     <ClCompile Include="Layout\QSizePolicyTest.cpp" />
     <ClCompile Include="Widget\QTableViewTest.cpp">
@@ -61,6 +62,7 @@
     <QtRcc Include="DesignerSimpleSample.qrc" />
     <QtUic Include="AMyWidget.ui" />
     <QtUic Include="CustomToolbars.ui" />
+    <QtUic Include="Dialog\QDialogTest.ui" />
     <QtUic Include="Dialog\QMessageBoxTest.ui" />
     <QtUic Include="FontConversion.ui" />
     <QtMoc Include="FontConversion.h" />
@@ -90,6 +92,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Dialog\QMessageBoxTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Dialog\QDialogTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
