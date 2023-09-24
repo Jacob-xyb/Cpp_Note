@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-	bool isUI = 0;
+	bool isUI = 1;
 
 	QApplication a(argc, argv);
 

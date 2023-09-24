@@ -1,5 +1,6 @@
 #include "SARibbonMainWindow.h"
 #include <iostream>
+#include <QRadioButton>
 
 using namespace std;
 
@@ -11,7 +12,6 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(this->ribbonBar()->applicationButton(), SIGNAL(clicked()), this, SLOT(test_hide()));
     QObject::connect(widget->ribbonBar()->applicationButton(), SIGNAL(clicked()), this, SLOT(test_show()));
     setupRibbonUi();
-
 }
 
 MainWindow::~MainWindow()

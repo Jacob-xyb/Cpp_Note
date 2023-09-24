@@ -3,6 +3,7 @@
 #include <QtWidgets/QWidget>
 #include "ui_Qt_Basic.h"
 #include <qpushbutton.h>
+#include <QRadioButton>
 
 class Qt_Basic : public QWidget
 {

@@ -10,9 +10,11 @@ int main(int argc, char *argv[])
     //TestQByteArray::QByteArray_InitDiff();
 
     //TestQString::QString_split_QRegExp();
+    //TestQString::QString_replace_QRegExp();
+    TestQString::QString_toFloat();
 
-    TestQVector::QVector_copy();
-    TestQVector::QVector_initByStdVector();
+    //TestQVector::QVector_copy();
+    //TestQVector::QVector_initByStdVector();
 
     return a.exec();
 }
