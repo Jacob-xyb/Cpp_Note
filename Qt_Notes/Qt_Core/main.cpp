@@ -11,9 +11,10 @@ int main(int argc, char *argv[])
 
     //TestQString::QString_split_QRegExp();
     //TestQString::QString_replace_QRegExp();
-    TestQString::QString_toFloat();
+    //TestQString::QString_toFloat();
 
     //TestQVector::QVector_copy();
+    TestQVector::QVector_copy2();
     //TestQVector::QVector_initByStdVector();
 
     return a.exec();
