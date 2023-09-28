@@ -2,7 +2,7 @@
 #include <QtWidgets/QDialog>
 #include "ui_AMyWidget.h"
 #include "CustomToolbars.h"
-
+#include "Widget/QTreeWidgetTest.h"
 
 class AMyWidget : public QDialog
 {
@@ -24,6 +24,7 @@ private slots:
     void on_btn_SizePolicy_clicked();
     void on_btn_MessageBox_clicked();
     void on_btn_QDialog_clicked();
+    void on_btn_TreeWidget_clicked();
 
 private:
     Ui::AMyWidget ui;

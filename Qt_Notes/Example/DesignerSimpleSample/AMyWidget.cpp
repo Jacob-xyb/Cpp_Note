@@ -71,3 +71,9 @@ void AMyWidget::on_btn_QDialog_clicked()
 	QDialogTest* w = new QDialogTest;
 	w->exec();
 }
+
+void AMyWidget::on_btn_TreeWidget_clicked()
+{
+	QTreeWidgetTest* w = new QTreeWidgetTest;
+	w->exec();
+}

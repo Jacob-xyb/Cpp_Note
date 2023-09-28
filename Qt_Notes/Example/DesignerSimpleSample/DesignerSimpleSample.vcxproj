@@ -59,6 +59,7 @@
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
+    <ClCompile Include="Widget\QTreeWidgetTest.cpp" />
     <QtRcc Include="DesignerSimpleSample.qrc" />
     <QtUic Include="AMyWidget.ui" />
     <QtUic Include="CustomToolbars.ui" />
@@ -74,6 +75,7 @@
     <QtUic Include="Layout\QSizePolicyTest.ui" />
     <QtUic Include="Layout\QSplitterTest.ui" />
     <QtUic Include="Widget\QTableViewTest.ui" />
+    <QtUic Include="Widget\QTreeWidgetTest.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h" />
@@ -95,6 +97,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Dialog\QDialogTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Widget\QTreeWidgetTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

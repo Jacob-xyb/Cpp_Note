@@ -94,6 +94,9 @@
     <ClCompile Include="Dialog\QDialogTest.cpp">
       <Filter>Source Files\Dialog</Filter>
     </ClCompile>
+    <ClCompile Include="Widget\QTreeWidgetTest.cpp">
+      <Filter>Source Files\Widget</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h">
@@ -123,6 +126,9 @@
     <QtMoc Include="Dialog\QDialogTest.h">
       <Filter>Header Files\Dialog</Filter>
     </QtMoc>
+    <QtMoc Include="Widget\QTreeWidgetTest.h">
+      <Filter>Header Files\Widget</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="AMyWidget.ui">
@@ -148,6 +154,9 @@
     </QtUic>
     <QtUic Include="Dialog\QDialogTest.ui">
       <Filter>Form Files\Dialog</Filter>
+    </QtUic>
+    <QtUic Include="Widget\QTreeWidgetTest.ui">
+      <Filter>Form Files\Widget</Filter>
     </QtUic>
   </ItemGroup>
 </Project>
