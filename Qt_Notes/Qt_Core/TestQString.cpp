@@ -41,3 +41,19 @@ void TestQString::QString_toFloat()
 		qDebug() << "failed" << f1;
 	}
 }
+
+void TestQString::QString_sprintf()
+{
+	QString str;
+	str.sprintf("%s %s", "Hello", "World");
+	qDebug() << str;
+	str.sprintf("%s %s", "Hello", "Jx");
+	qDebug() << str;
+}
+
+void TestQString::QString_arg()
+{
+	QString str;
+	str = QString("%1 was born in %2").arg("Jx").arg(1995);
+	qDebug() << str;
+}

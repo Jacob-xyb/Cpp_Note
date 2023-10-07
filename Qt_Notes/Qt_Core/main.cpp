@@ -14,6 +14,8 @@ int main(int argc, char *argv[])
     //TestQString::QString_split_QRegExp();
     //TestQString::QString_replace_QRegExp();
     //TestQString::QString_toFloat();
+    //TestQString::QString_sprintf();
+    TestQString::QString_arg();
 
     //TestQVector::QVector_copy();
     //TestQVector::QVector_copy2();
@@ -23,7 +25,7 @@ int main(int argc, char *argv[])
 
     //TestQDateTime::TestQDateTime_static_currentDateTime();
 
-    TestQDir::TestQDir_filePath();
+    //TestQDir::TestQDir_filePath();
 
     return a.exec();
 }
