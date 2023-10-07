@@ -38,6 +38,12 @@
     <ClCompile Include="TestQString.cpp">
       <Filter>Source Files\code</Filter>
     </ClCompile>
+    <ClCompile Include="TestQTime.cpp">
+      <Filter>Source Files\code</Filter>
+    </ClCompile>
+    <ClCompile Include="TestFileManagement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TestQByteArray.h">
@@ -47,6 +53,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TestQVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestQTime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestFileManagement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

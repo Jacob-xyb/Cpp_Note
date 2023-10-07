@@ -58,13 +58,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TestFileManagement.cpp" />
     <ClCompile Include="TestQByteArray.cpp" />
     <ClCompile Include="TestQString.cpp" />
+    <ClCompile Include="TestQTime.cpp" />
     <ClCompile Include="TestQVector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="TestFileManagement.h" />
     <ClInclude Include="TestQByteArray.h" />
     <ClInclude Include="TestQString.h" />
+    <ClInclude Include="TestQTime.h" />
     <ClInclude Include="TestQVector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

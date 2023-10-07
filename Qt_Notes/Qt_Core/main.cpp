@@ -2,6 +2,8 @@
 #include "TestQByteArray.h"
 #include "TestQString.h"
 #include "TestQVector.h"
+#include "TestQTime.h"
+#include "TestFileManagement.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,8 +16,14 @@ int main(int argc, char *argv[])
     //TestQString::QString_toFloat();
 
     //TestQVector::QVector_copy();
-    TestQVector::QVector_copy2();
+    //TestQVector::QVector_copy2();
     //TestQVector::QVector_initByStdVector();
+
+    //TestQTime::TestQTime_static_currentTime();
+
+    //TestQDateTime::TestQDateTime_static_currentDateTime();
+
+    TestQDir::TestQDir_filePath();
 
     return a.exec();
 }

@@ -28,7 +28,6 @@ QTreeWidgetTest::QTreeWidgetTest(QWidget* parent)
 	QTreeWidgetItem* root3 = new QTreeWidgetItem(tree);
 	root3->setText(0, "Root3");                            // 设置节点文本
 	root3->setText(1, "3");                               // 设置节点文本
-	tree->insertTopLevelItem(0, root3);
 }
 
 QTreeWidgetTest::~QTreeWidgetTest()
