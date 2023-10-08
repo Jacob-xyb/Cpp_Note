@@ -7,5 +7,6 @@ namespace TestQString
 	void QString_toFloat();
 	void QString_sprintf();
 	void QString_arg();
+	void QString_delete_space();
 };
 

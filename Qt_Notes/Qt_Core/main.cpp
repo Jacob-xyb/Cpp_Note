@@ -15,7 +15,8 @@ int main(int argc, char *argv[])
     //TestQString::QString_replace_QRegExp();
     //TestQString::QString_toFloat();
     //TestQString::QString_sprintf();
-    TestQString::QString_arg();
+    //TestQString::QString_arg();
+    TestQString::QString_delete_space();
 
     //TestQVector::QVector_copy();
     //TestQVector::QVector_copy2();

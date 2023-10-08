@@ -57,3 +57,10 @@ void TestQString::QString_arg()
 	str = QString("%1 was born in %2").arg("Jx").arg(1995);
 	qDebug() << str;
 }
+
+void TestQString::QString_delete_space()
+{
+	QString str = "   Welcome \t to \n you   ";
+	qDebug() << str.trimmed();    // "Welcome \t to \n you"
+	qDebug() << str.simplified();  // "Welcome to you"
+}
