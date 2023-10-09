@@ -25,6 +25,7 @@ private slots:
     void on_btn_MessageBox_clicked();
     void on_btn_QDialog_clicked();
     void on_btn_TreeWidget_clicked();
+    void on_btn_QWindowType_clicked();
 
 private:
     Ui::AMyWidget ui;

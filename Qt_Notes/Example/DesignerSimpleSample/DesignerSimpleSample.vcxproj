@@ -54,6 +54,8 @@
   <ItemGroup>
     <ClCompile Include="Dialog\QDialogTest.cpp" />
     <ClCompile Include="Dialog\QMessageBoxTest.cpp" />
+    <ClCompile Include="Dialog\QWidgetTest.cpp" />
+    <ClCompile Include="Enum\QWindowTypeTest.cpp" />
     <ClCompile Include="Layout\QSizePolicyTest.cpp" />
     <ClCompile Include="Widget\QTableViewTest.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
@@ -65,6 +67,8 @@
     <QtUic Include="CustomToolbars.ui" />
     <QtUic Include="Dialog\QDialogTest.ui" />
     <QtUic Include="Dialog\QMessageBoxTest.ui" />
+    <QtUic Include="Dialog\QWidgetTest.ui" />
+    <QtUic Include="Enum\QWindowTypeTest.ui" />
     <QtUic Include="FontConversion.ui" />
     <QtMoc Include="FontConversion.h" />
     <ClCompile Include="AMyWidget.cpp" />
@@ -100,6 +104,12 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Widget\QTreeWidgetTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Dialog\QWidgetTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Enum\QWindowTypeTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

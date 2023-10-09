@@ -17,24 +17,24 @@
    <item>
     <widget class="QTabWidget" name="qtabwidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>3</number>
      </property>
-     <widget class="QWidget" name="tab">
+     <widget class="QWidget" name="tab_4">
       <attribute name="title">
-       <string>SimpleSample</string>
+       <string>Dialog</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="1">
-        <widget class="QPushButton" name="btn_CustomToolbars">
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="btn_QDialog">
          <property name="text">
-          <string>CustomToolbars</string>
+          <string>QDialog</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="0">
-        <widget class="QPushButton" name="btn_FontConversion">
+       <item row="0" column="1">
+        <widget class="QPushButton" name="btn_MessageBox">
          <property name="text">
-          <string>FontConversion</string>
+          <string>QMessageBox</string>
          </property>
         </widget>
        </item>
@@ -82,22 +82,36 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_4">
+     <widget class="QWidget" name="tab_5">
       <attribute name="title">
-       <string>Dialog</string>
+       <string>Enum</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_4">
-       <item row="0" column="1">
-        <widget class="QPushButton" name="btn_MessageBox">
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="btn_QWindowType">
          <property name="text">
-          <string>QMessageBox</string>
+          <string>QWindowType</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>SimpleSample</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="1">
+        <widget class="QPushButton" name="btn_CustomToolbars">
+         <property name="text">
+          <string>CustomToolbars</string>
          </property>
         </widget>
        </item>
        <item row="0" column="0">
-        <widget class="QPushButton" name="btn_QDialog">
+        <widget class="QPushButton" name="btn_FontConversion">
          <property name="text">
-          <string>QDialog</string>
+          <string>FontConversion</string>
          </property>
         </widget>
        </item>

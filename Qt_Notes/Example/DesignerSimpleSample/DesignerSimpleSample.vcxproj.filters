@@ -57,6 +57,15 @@
     <Filter Include="Source Files\SimpleSample">
       <UniqueIdentifier>{5a801559-a7c6-42db-a6d5-bc3bead47dba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Form Files\Enum">
+      <UniqueIdentifier>{7c8f1a00-206e-40bd-995e-423f74ab122d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Enum">
+      <UniqueIdentifier>{c07e1833-fb34-4bb0-8de2-a9666b6e1c7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Enum">
+      <UniqueIdentifier>{5ccaca56-2b24-4ca5-9175-a5b37cd3675e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="DesignerSimpleSample.qrc">
@@ -97,6 +106,12 @@
     <ClCompile Include="Widget\QTreeWidgetTest.cpp">
       <Filter>Source Files\Widget</Filter>
     </ClCompile>
+    <ClCompile Include="Dialog\QWidgetTest.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="Enum\QWindowTypeTest.cpp">
+      <Filter>Source Files\Enum</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h">
@@ -129,6 +144,12 @@
     <QtMoc Include="Widget\QTreeWidgetTest.h">
       <Filter>Header Files\Widget</Filter>
     </QtMoc>
+    <QtMoc Include="Dialog\QWidgetTest.h">
+      <Filter>Header Files\Dialog</Filter>
+    </QtMoc>
+    <QtMoc Include="Enum\QWindowTypeTest.h">
+      <Filter>Header Files\Enum</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="AMyWidget.ui">
@@ -157,6 +178,12 @@
     </QtUic>
     <QtUic Include="Widget\QTreeWidgetTest.ui">
       <Filter>Form Files\Widget</Filter>
+    </QtUic>
+    <QtUic Include="Dialog\QWidgetTest.ui">
+      <Filter>Form Files\Dialog</Filter>
+    </QtUic>
+    <QtUic Include="Enum\QWindowTypeTest.ui">
+      <Filter>Form Files\Enum</Filter>
     </QtUic>
   </ItemGroup>
 </Project>
