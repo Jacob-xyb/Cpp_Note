@@ -57,6 +57,7 @@
     <ClCompile Include="Dialog\QWidgetTest.cpp" />
     <ClCompile Include="Enum\QWindowTypeTest.cpp" />
     <ClCompile Include="Layout\QSizePolicyTest.cpp" />
+    <ClCompile Include="Widget\QLabelTest.cpp" />
     <ClCompile Include="Widget\QTableViewTest.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
@@ -78,6 +79,7 @@
     <ClCompile Include="main.cpp" />
     <QtUic Include="Layout\QSizePolicyTest.ui" />
     <QtUic Include="Layout\QSplitterTest.ui" />
+    <QtUic Include="Widget\QLabelTest.ui" />
     <QtUic Include="Widget\QTableViewTest.ui" />
     <QtUic Include="Widget\QTreeWidgetTest.ui" />
   </ItemGroup>
@@ -110,6 +112,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Enum\QWindowTypeTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Widget\QLabelTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

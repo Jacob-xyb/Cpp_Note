@@ -112,6 +112,9 @@
     <ClCompile Include="Enum\QWindowTypeTest.cpp">
       <Filter>Source Files\Enum</Filter>
     </ClCompile>
+    <ClCompile Include="Widget\QLabelTest.cpp">
+      <Filter>Source Files\Widget</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h">
@@ -150,6 +153,9 @@
     <QtMoc Include="Enum\QWindowTypeTest.h">
       <Filter>Header Files\Enum</Filter>
     </QtMoc>
+    <QtMoc Include="Widget\QLabelTest.h">
+      <Filter>Header Files\Widget</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="AMyWidget.ui">
@@ -184,6 +190,9 @@
     </QtUic>
     <QtUic Include="Enum\QWindowTypeTest.ui">
       <Filter>Form Files\Enum</Filter>
+    </QtUic>
+    <QtUic Include="Widget\QLabelTest.ui">
+      <Filter>Form Files\Widget</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

@@ -8,6 +8,7 @@
 #include "Dialog/QMessageBoxTest.h"
 #include "Dialog/QDialogTest.h"
 #include "Enum/QWindowTypeTest.h"
+#include "Widget/QLabelTest.h"
 
 using namespace std;
 
@@ -82,5 +83,11 @@ void AMyWidget::on_btn_TreeWidget_clicked()
 void AMyWidget::on_btn_QWindowType_clicked()
 {
 	QWindowTypeTest* w = new QWindowTypeTest;
+	w->exec();
+}
+
+void AMyWidget::on_btn_QLabel_clicked()
+{
+	QLabelTest* w = new QLabelTest;
 	w->exec();
 }

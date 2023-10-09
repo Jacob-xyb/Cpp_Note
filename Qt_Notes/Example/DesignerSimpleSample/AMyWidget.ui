@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="qtabwidget">
      <property name="currentIndex">
-      <number>3</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab_4">
       <attribute name="title">
@@ -45,17 +45,24 @@
        <string>Widget</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_3">
-       <item row="0" column="0">
+       <item row="1" column="1">
+        <widget class="QPushButton" name="btn_TreeWidget">
+         <property name="text">
+          <string>QTreeWidget</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
         <widget class="QPushButton" name="btn_TableView">
          <property name="text">
           <string>QTableView</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QPushButton" name="btn_TreeWidget">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="btn_QLabel">
          <property name="text">
-          <string>QTreeWidget</string>
+          <string>QLabel</string>
          </property>
         </widget>
        </item>
