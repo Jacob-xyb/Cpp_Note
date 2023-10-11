@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Qt_Core", "Qt_Core\Qt_Core.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Qt_MainWindow", "Qt_MainWindow\Qt_MainWindow.vcxproj", "{1AAAFC81-7A2F-4C79-9928-9110F32655D9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QCustomPlot", "OpenSourceLib\QCustomPlot\QCustomPlot.vcxproj", "{AB6C0AF2-3245-42E0-893E-545982B3A76B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|x64 = Release|x64
@@ -28,6 +30,8 @@ Global
 		{46A4B407-EFF9-478E-BDD6-652689BFE08E}.Release|x64.Build.0 = Release|x64
 		{1AAAFC81-7A2F-4C79-9928-9110F32655D9}.Release|x64.ActiveCfg = Release|x64
 		{1AAAFC81-7A2F-4C79-9928-9110F32655D9}.Release|x64.Build.0 = Release|x64
+		{AB6C0AF2-3245-42E0-893E-545982B3A76B}.Release|x64.ActiveCfg = Release|x64
+		{AB6C0AF2-3245-42E0-893E-545982B3A76B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
