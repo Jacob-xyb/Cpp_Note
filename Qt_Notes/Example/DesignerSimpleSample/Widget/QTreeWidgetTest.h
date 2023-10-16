@@ -18,10 +18,15 @@ public:
 	QTreeWidgetTest(QWidget *parent = nullptr);
 	~QTreeWidgetTest();
 
+	void updateParentItem(QTreeWidgetItem* item);
 
 public slots:
+	void treeItemChanged(QTreeWidgetItem* item, int column);
 	void slotMenuTriggered(QAction* action);
 	void slotMenuPopup(const QPoint& pos);
+	
+	void on_btn_PrintSelect_clicked();
+
 
 private:
 	Ui::QTreeWidgetTestClass *ui;
