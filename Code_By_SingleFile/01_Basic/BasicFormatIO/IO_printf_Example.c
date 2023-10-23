@@ -25,8 +25,19 @@ void Example_CPrimerPlus_41()
     return;
 }
 
+#define PRAISE "You are an extraordinary being."
+void Example_CPrimerPlus_42()
+{
+    char name[40];
+    printf("What's your name?");
+    scanf("%s", name);
+    printf("Hello, %s. %s\n", name, PRAISE);
+}
+
+
 int main(int argc, char const *argv[])
 {
-    Example_CPrimerPlus_41();
+    // Example_CPrimerPlus_41();
+    Example_CPrimerPlus_42();
     return 0;
 }

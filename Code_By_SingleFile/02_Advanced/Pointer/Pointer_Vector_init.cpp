@@ -36,7 +36,7 @@ void init_pointerFirst_pointerLast()
 void init_pointerFirst_pointerLast_copy()
 {
     float* arr = new float[10];
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 10; i++)`
     {
         arr[i] = i + 1;
     }
