@@ -9,6 +9,7 @@
 #include "Dialog/QDialogTest.h"
 #include "Enum/QWindowTypeTest.h"
 #include "Widget/QLabelTest.h"
+#include "Layout/QButtonGroupTest.h"
 
 using namespace std;
 
@@ -89,5 +90,11 @@ void AMyWidget::on_btn_QWindowType_clicked()
 void AMyWidget::on_btn_QLabel_clicked()
 {
 	QLabelTest* w = new QLabelTest;
+	w->exec();
+}
+
+void AMyWidget::on_btn_QButtonGroup_clicked()
+{
+	QButtonGroupTest* w = new QButtonGroupTest;
 	w->exec();
 }

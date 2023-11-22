@@ -1,6 +1,7 @@
 // xx.cpp
 #include <iostream>
 #include <stdio.h>
+#include <vector>
 
 using namespace std;
 
@@ -14,20 +15,18 @@ void assign(int *p)
 
 class Person
 {
-
 };
 
 int main()
 {
-	unsigned int x = 10;
-	int y = x;
-
-	Person* p = nullptr;
-
-	if (p)
+	for (int i = 0; i < 10; i++)
 	{
-		cout << y << endl;
+		if (i >= 10 / 2 + 1)
+		{
+			cout << i << " ";
+		}
 	}
 	
+
 	return 0;
 }

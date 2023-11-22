@@ -115,6 +115,9 @@
     <ClCompile Include="Widget\QLabelTest.cpp">
       <Filter>Source Files\Widget</Filter>
     </ClCompile>
+    <ClCompile Include="Layout\QButtonGroupTest.cpp">
+      <Filter>Source Files\Layout</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h">
@@ -156,6 +159,9 @@
     <QtMoc Include="Widget\QLabelTest.h">
       <Filter>Header Files\Widget</Filter>
     </QtMoc>
+    <QtMoc Include="Layout\QButtonGroupTest.h">
+      <Filter>Header Files\Layout</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="AMyWidget.ui">
@@ -193,6 +199,9 @@
     </QtUic>
     <QtUic Include="Widget\QLabelTest.ui">
       <Filter>Form Files\Widget</Filter>
+    </QtUic>
+    <QtUic Include="Layout\QButtonGroupTest.ui">
+      <Filter>Form Files\Layout</Filter>
     </QtUic>
   </ItemGroup>
 </Project>

@@ -56,6 +56,7 @@
     <ClCompile Include="Dialog\QMessageBoxTest.cpp" />
     <ClCompile Include="Dialog\QWidgetTest.cpp" />
     <ClCompile Include="Enum\QWindowTypeTest.cpp" />
+    <ClCompile Include="Layout\QButtonGroupTest.cpp" />
     <ClCompile Include="Layout\QSizePolicyTest.cpp" />
     <ClCompile Include="Widget\QLabelTest.cpp" />
     <ClCompile Include="Widget\QTableViewTest.cpp">
@@ -77,6 +78,7 @@
     <ClCompile Include="FontConversion.cpp" />
     <ClCompile Include="Layout\QSplitterTest.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="Layout\QButtonGroupTest.ui" />
     <QtUic Include="Layout\QSizePolicyTest.ui" />
     <QtUic Include="Layout\QSplitterTest.ui" />
     <QtUic Include="Widget\QLabelTest.ui" />
@@ -115,6 +117,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Widget\QLabelTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Layout\QButtonGroupTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

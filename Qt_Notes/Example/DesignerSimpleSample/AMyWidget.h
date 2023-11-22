@@ -27,6 +27,7 @@ private slots:
     void on_btn_TreeWidget_clicked();
     void on_btn_QWindowType_clicked();
     void on_btn_QLabel_clicked();
+    void on_btn_QButtonGroup_clicked();
 
 private:
     Ui::AMyWidget ui;

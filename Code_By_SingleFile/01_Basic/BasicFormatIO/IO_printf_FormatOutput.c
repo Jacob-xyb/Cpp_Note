@@ -4,17 +4,7 @@ void Func_printf_placeholder()
 {
 }
 
-void Func_printf_format_minwidth()
-{
-    int a = 123456;
-    printf("a = %1d\n", a);  // 123456; 指定宽度不足时， 不会遮掩数字本身
-    printf("a = %10d\n", a); //     123456;
 
-    printf("\n=== test fill with zero. ===\n");
-    printf("a = %010dHHH\n", a);  // 0000123456HHH; 前面填充0
-    printf("a = %-10dHHH\n", a);
-    printf("a = %-010dHHH\n", a); // 在左对齐下，0填充失效
-}
 
 void Func_printf_format_sign()
 {

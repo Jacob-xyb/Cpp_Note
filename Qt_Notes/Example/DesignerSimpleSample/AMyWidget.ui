@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="qtabwidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tab_4">
       <attribute name="title">
@@ -84,6 +84,13 @@
         <widget class="QPushButton" name="btn_SizePolicy">
          <property name="text">
           <string>QSizePolicy</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QPushButton" name="btn_QButtonGroup">
+         <property name="text">
+          <string>QButtonGroup</string>
          </property>
         </widget>
        </item>

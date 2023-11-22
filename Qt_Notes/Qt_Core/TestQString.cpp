@@ -24,7 +24,8 @@ void TestQString::QString_replace_QRegExp()
 {
 	//正则表达式
 	QString s1 = "<font color=red>hhhh</font>eeee";
-	qDebug() << s1.replace(QRegExp("<[^>]*>"), "");	// \\s 代表所有空格，回车，换行等
+	qDebug() << QString(s1).replace(QRegExp("<.*>"), "");	// .除\n外的所有字符
+	qDebug() << QString(s1).replace(QRegExp("<[^>]*>"), "");	// [^] 负合集
 }
 
 void TestQString::QString_toFloat()

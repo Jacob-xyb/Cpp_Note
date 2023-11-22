@@ -43,8 +43,8 @@ void Func_BitwiseLeftShift()
     x <<= 1;
     cout << x << endl; // 16
 
-    int x2 = -2;
-    x2 <<= 1;
+    int x2 = -2;  // ²¹Âë£º...1110
+    x2 <<= 1;     // ²¹Âë: ...1100
     cout << x2 << endl; // -4
 }
 
