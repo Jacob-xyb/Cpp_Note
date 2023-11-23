@@ -7,6 +7,13 @@ void CharInit1()
 {
     char arr[] = "Hello World1";
     printf("%s, sizeof=%d\n", arr, sizeof(arr));  // 13
+
+    // 指定了长度的情况下，也可以用字面值赋值
+    char arr2[20] = "Hello World2";
+    printf("%s, sizeof=%d\n", arr2, sizeof(arr2));  // 13
+
+    // arr = arr2;
+    // error: incompatible types in assignment of 'char [20]' to 'char [13]'
 }
 
 // 字符数组初始化
