@@ -10,6 +10,7 @@
 #include "Enum/QWindowTypeTest.h"
 #include "Widget/QLabelTest.h"
 #include "Layout/QButtonGroupTest.h"
+#include "SimpleSample/FontConversionByCode.h"
 
 using namespace std;
 
@@ -34,9 +35,16 @@ void AMyWidget::on_btn_CustomToolbars_clicked()
 	w->show();
 }
 
-void AMyWidget::on_btn_FontConversion_clicked()
+void AMyWidget::on_btn_UIDevelopMode_Mixture_clicked()
 {
 	FontConversion* w = new FontConversion;
+	w->exec();
+	delete w;
+}
+
+void AMyWidget::on_btn_UIDevelopMode_Code_clicked()
+{
+	FontConversionByCode* w = new FontConversionByCode;
 	w->exec();
 	delete w;
 }

@@ -118,6 +118,9 @@
     <ClCompile Include="Layout\QButtonGroupTest.cpp">
       <Filter>Source Files\Layout</Filter>
     </ClCompile>
+    <ClCompile Include="SimpleSample\FontConversionByCode.cpp">
+      <Filter>Header Files\SimpleSample</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h">
@@ -161,6 +164,9 @@
     </QtMoc>
     <QtMoc Include="Layout\QButtonGroupTest.h">
       <Filter>Header Files\Layout</Filter>
+    </QtMoc>
+    <QtMoc Include="SimpleSample\FontConversionByCode.h">
+      <Filter>Header Files\SimpleSample</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

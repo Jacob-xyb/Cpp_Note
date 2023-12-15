@@ -19,13 +19,24 @@ class Person
 
 int main()
 {
-	for (int i = 0; i < 10; i++)
+	bool is_b = 2 * 2 < 3;
+	cout << is_b << endl;;
+	if (is_b = false)
 	{
-		if (i >= 10 / 2 + 1)
-		{
-			cout << i << " ";
-		}
+		cout << "xx";
 	}
+
+	int arr[20] = {};
+	// *barr = false;
+
+	for (int i = 0; i < 20; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	
+	// cout << barr[0] << endl;
+	// cout << barr[1] << endl;
+	
 	
 
 	return 0;

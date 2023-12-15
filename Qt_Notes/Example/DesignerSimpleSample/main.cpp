@@ -10,7 +10,5 @@ int main(int argc, char *argv[])
     AMyWidget w;
     w.show();
 
-    //CustomToolbars w2 = new CustomToolbars;
-    //w2.show();
     return a.exec();
 }

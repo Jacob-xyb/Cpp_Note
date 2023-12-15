@@ -58,6 +58,7 @@
     <ClCompile Include="Enum\QWindowTypeTest.cpp" />
     <ClCompile Include="Layout\QButtonGroupTest.cpp" />
     <ClCompile Include="Layout\QSizePolicyTest.cpp" />
+    <ClCompile Include="SimpleSample\FontConversionByCode.cpp" />
     <ClCompile Include="Widget\QLabelTest.cpp" />
     <ClCompile Include="Widget\QTableViewTest.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
@@ -120,6 +121,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Layout\QButtonGroupTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="SimpleSample\FontConversionByCode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -17,7 +17,10 @@ private:
 
 
 private slots:
-    void on_btn_FontConversion_clicked();
+    // SimpleSample
+    void on_btn_UIDevelopMode_Mixture_clicked();
+    void on_btn_UIDevelopMode_Code_clicked();
+
     void on_btn_CustomToolbars_clicked();
     void on_btn_Splitter_clicked();
     void on_btn_TableView_clicked();
