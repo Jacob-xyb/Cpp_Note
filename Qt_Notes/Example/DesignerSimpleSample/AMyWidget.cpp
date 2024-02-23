@@ -9,6 +9,7 @@
 #include "Dialog/QDialogTest.h"
 #include "Enum/QWindowTypeTest.h"
 #include "Widget/QLabelTest.h"
+#include "Widget/QLineEditTest.h"
 #include "Layout/QButtonGroupTest.h"
 #include "SimpleSample/FontConversionByCode.h"
 
@@ -27,6 +28,15 @@ AMyWidget::~AMyWidget()
 void AMyWidget::initSignalSlots()
 {
 
+}
+
+void AMyWidget::keyPressEvent(QKeyEvent* event)
+{
+	//qDebug() << event->text();
+	if (event->key() == Qt::Key::Key_R && event->modifiers() == (Qt::AltModifier | Qt::ControlModifier))
+	{
+
+	}
 }
 
 void AMyWidget::on_btn_CustomToolbars_clicked()
@@ -75,34 +85,47 @@ void AMyWidget::on_btn_MessageBox_clicked()
 	QMessageBoxTest* w = new QMessageBoxTest;
 	w->setAttribute(Qt::WA_DeleteOnClose);
 	w->exec();
+	delete w;
 }
 
 void AMyWidget::on_btn_QDialog_clicked()
 {
 	QDialogTest* w = new QDialogTest;
 	w->exec();
+	delete w;
 }
 
 void AMyWidget::on_btn_TreeWidget_clicked()
 {
 	QTreeWidgetTest* w = new QTreeWidgetTest;
 	w->exec();
+	delete w;
 }
 
 void AMyWidget::on_btn_QWindowType_clicked()
 {
 	QWindowTypeTest* w = new QWindowTypeTest;
 	w->exec();
+	delete w;
 }
 
 void AMyWidget::on_btn_QLabel_clicked()
 {
 	QLabelTest* w = new QLabelTest;
 	w->exec();
+	delete w;
+}
+
+void AMyWidget::on_btn_QLineEdit_clicked()
+{
+	QLineEditTest w;
+	w.exec();
 }
 
 void AMyWidget::on_btn_QButtonGroup_clicked()
 {
 	QButtonGroupTest* w = new QButtonGroupTest;
 	w->exec();
+	delete w;
 }
+

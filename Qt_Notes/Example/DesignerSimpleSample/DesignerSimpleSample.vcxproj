@@ -60,6 +60,7 @@
     <ClCompile Include="Layout\QSizePolicyTest.cpp" />
     <ClCompile Include="SimpleSample\FontConversionByCode.cpp" />
     <ClCompile Include="Widget\QLabelTest.cpp" />
+    <ClCompile Include="Widget\QLineEditTest.cpp" />
     <ClCompile Include="Widget\QTableViewTest.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
@@ -83,6 +84,7 @@
     <QtUic Include="Layout\QSizePolicyTest.ui" />
     <QtUic Include="Layout\QSplitterTest.ui" />
     <QtUic Include="Widget\QLabelTest.ui" />
+    <QtUic Include="Widget\QLineEditTest.ui" />
     <QtUic Include="Widget\QTableViewTest.ui" />
     <QtUic Include="Widget\QTreeWidgetTest.ui" />
   </ItemGroup>
@@ -124,6 +126,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="SimpleSample\FontConversionByCode.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Widget\QLineEditTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

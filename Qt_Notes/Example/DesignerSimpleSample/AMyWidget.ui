@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="qtabwidget">
      <property name="currentIndex">
-      <number>4</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab_4">
       <attribute name="title">
@@ -63,6 +63,13 @@
         <widget class="QPushButton" name="btn_QLabel">
          <property name="text">
           <string>QLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="btn_QLineEdit">
+         <property name="text">
+          <string>QLineEdit</string>
          </property>
         </widget>
        </item>

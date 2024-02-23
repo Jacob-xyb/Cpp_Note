@@ -15,6 +15,7 @@ public:
 private:
     void initSignalSlots();
 
+    void keyPressEvent(QKeyEvent* event);
 
 private slots:
     // SimpleSample
@@ -30,6 +31,7 @@ private slots:
     void on_btn_TreeWidget_clicked();
     void on_btn_QWindowType_clicked();
     void on_btn_QLabel_clicked();
+    void on_btn_QLineEdit_clicked();
     void on_btn_QButtonGroup_clicked();
 
 private:

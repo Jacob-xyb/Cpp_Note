@@ -14,6 +14,7 @@ class Qt_MainWindow : public QMainWindow
 public:
     Qt_MainWindow(QWidget *parent = nullptr);
     ~Qt_MainWindow();
+    void show_messagebox();
 
 private:
     Ui::Qt_MainWindowClass *ui;
