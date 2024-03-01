@@ -219,4 +219,9 @@
       <Filter>Form Files\Widget</Filter>
     </QtUic>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="main.qss">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

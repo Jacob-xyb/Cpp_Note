@@ -33,10 +33,16 @@ void AMyWidget::initSignalSlots()
 void AMyWidget::keyPressEvent(QKeyEvent* event)
 {
 	//qDebug() << event->text();
-	if (event->key() == Qt::Key::Key_R && event->modifiers() == (Qt::AltModifier | Qt::ControlModifier))
+	if (event->key() == Qt::Key::Key_R && event->modifiers() == Qt::ControlModifier)
 	{
+		QString dirname = QApplication::applicationDirPath();
+		QString proj_dir = dirname.left(dirname.indexOf("/x64"));
 
-	}
+		QFile file(proj_dir + "/Example/DesignerSimpleSample/main.qss");
+		file.open(QIODevice::ReadOnly);
+		qobject_cast<QApplication*>(QApplication::instance())->setStyleSheet(file.readAll());
+		file.close();
+	} 
 }
 
 void AMyWidget::on_btn_CustomToolbars_clicked()

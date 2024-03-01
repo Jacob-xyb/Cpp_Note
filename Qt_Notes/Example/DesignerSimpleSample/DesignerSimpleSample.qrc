@@ -2,4 +2,7 @@
     <qresource prefix="/DesignerSimpleSample">
         <file>images/file.svg</file>
     </qresource>
+    <qresource prefix="/">
+        <file>main.qss</file>
+    </qresource>
 </RCC>
