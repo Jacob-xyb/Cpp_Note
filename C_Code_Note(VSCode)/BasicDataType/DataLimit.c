@@ -1,3 +1,11 @@
+/*
+ * @Author: Jacob-xyb 949782197@qq.com
+ * @Date: 2024-06-21 17:17:29
+ * @LastEditors: Jacob-xyb 949782197@qq.com
+ * @LastEditTime: 2024-10-12 14:37:19
+ * @Description: Life is struggle.
+ */
+
 #include <stdio.h>
 #include <float.h>
 
