@@ -111,3 +111,6 @@ ModelManifest.xml
 #Backup file  
 *.bak
 
+
+# Not ignore files in the root directory  
+!**/.vscode/tasks.json
