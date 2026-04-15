@@ -124,6 +124,12 @@
     <ClCompile Include="Widget\QLineEditTest.cpp">
       <Filter>Source Files\Widget</Filter>
     </ClCompile>
+    <ClCompile Include="Widget\QTreeViewTest.cpp">
+      <Filter>Form Files\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="Widget\QTreeViewTest.cpp">
+      <Filter>Source Files\Widget</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h">
@@ -174,6 +180,12 @@
     <QtMoc Include="Widget\QLineEditTest.h">
       <Filter>Header Files\Widget</Filter>
     </QtMoc>
+    <QtMoc Include="Widget\QTreeViewTest.h">
+      <Filter>Form Files\Widget</Filter>
+    </QtMoc>
+    <QtMoc Include="Widget\QTreeViewTest.h">
+      <Filter>Header Files\Widget</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="AMyWidget.ui">
@@ -216,6 +228,9 @@
       <Filter>Form Files\Layout</Filter>
     </QtUic>
     <QtUic Include="Widget\QLineEditTest.ui">
+      <Filter>Form Files\Widget</Filter>
+    </QtUic>
+    <QtUic Include="Widget\QTreeViewTest.ui">
       <Filter>Form Files\Widget</Filter>
     </QtUic>
   </ItemGroup>

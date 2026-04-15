@@ -16,7 +16,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
-    <UseDebugLibraries>true</UseDebugLibraries>
+    <UseDebugLibraries>false</UseDebugLibraries>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
@@ -65,6 +65,7 @@
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
+    <ClCompile Include="Widget\QTreeViewTest.cpp" />
     <ClCompile Include="Widget\QTreeWidgetTest.cpp" />
     <QtRcc Include="DesignerSimpleSample.qrc" />
     <QtUic Include="AMyWidget.ui" />
@@ -86,6 +87,7 @@
     <QtUic Include="Widget\QLabelTest.ui" />
     <QtUic Include="Widget\QLineEditTest.ui" />
     <QtUic Include="Widget\QTableViewTest.ui" />
+    <QtUic Include="Widget\QTreeViewTest.ui" />
     <QtUic Include="Widget\QTreeWidgetTest.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="main.qss" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Widget\QTreeViewTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

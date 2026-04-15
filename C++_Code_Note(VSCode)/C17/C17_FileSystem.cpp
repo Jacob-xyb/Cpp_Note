@@ -18,10 +18,14 @@ void Func_Path_Is_Exists();
 /// @brief 获取目录中所有的文件路径
 void Func_Get_Files_In_Directory();
 
+/// @brief 获取父目录路径
+void Func_Get_ParentPath();
+
 int main()
 {
     Func_Path_Is_Exists();
     Func_Get_Files_In_Directory();
+    Func_Get_ParentPath();
     return 0;
 }
 
@@ -66,4 +70,13 @@ void Func_Get_Files_In_Directory()
 		std::cout << file.string() << std::endl;	// 拼接后的路径
         std::cout << file.filename().string() << std::endl;
     }
+}
+
+void Func_Get_ParentPath()
+{
+	printf("** Start Func_Get_ParentPath **\n");
+
+    std::string path = "/home/user/documents/file.txt";
+    fs::path p(path);
+    std::cout << p.parent_path() << std::endl;  // 输出: "/home/user/documents"
 }

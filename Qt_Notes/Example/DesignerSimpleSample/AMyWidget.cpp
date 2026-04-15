@@ -10,6 +10,8 @@
 #include "Enum/QWindowTypeTest.h"
 #include "Widget/QLabelTest.h"
 #include "Widget/QLineEditTest.h"
+#include "Widget/QTreeWidgetTest.h"
+#include "Widget/QTreeViewTest.h"
 #include "Layout/QButtonGroupTest.h"
 #include "SimpleSample/FontConversionByCode.h"
 
@@ -75,6 +77,13 @@ void AMyWidget::on_btn_Splitter_clicked()
 void AMyWidget::on_btn_TableView_clicked()
 {
 	QTableViewTest* w = new QTableViewTest;
+	w->exec();
+	delete w;
+}
+
+void AMyWidget::on_btn_QTreeView_clicked()
+{	
+	QTreeViewTest* w = new QTreeViewTest;
 	w->exec();
 	delete w;
 }
