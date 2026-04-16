@@ -130,6 +130,9 @@
     <ClCompile Include="Widget\QTreeViewTest.cpp">
       <Filter>Source Files\Widget</Filter>
     </ClCompile>
+    <ClCompile Include="Dialog\QSSDebugWidget.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AMyWidget.h">
@@ -185,6 +188,12 @@
     </QtMoc>
     <QtMoc Include="Widget\QTreeViewTest.h">
       <Filter>Header Files\Widget</Filter>
+    </QtMoc>
+    <QtMoc Include="Dialog\QSSDebugWidget.h">
+      <Filter>Source Files\Dialog</Filter>
+    </QtMoc>
+    <QtMoc Include="Dialog\QSSDebugWidget.h">
+      <Filter>Header Files\Dialog</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

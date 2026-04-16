@@ -54,6 +54,7 @@
   <ItemGroup>
     <ClCompile Include="Dialog\QDialogTest.cpp" />
     <ClCompile Include="Dialog\QMessageBoxTest.cpp" />
+    <ClCompile Include="Dialog\QSSDebugWidget.cpp" />
     <ClCompile Include="Dialog\QWidgetTest.cpp" />
     <ClCompile Include="Enum\QWindowTypeTest.cpp" />
     <ClCompile Include="Layout\QButtonGroupTest.cpp" />
@@ -137,6 +138,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Widget\QTreeViewTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Dialog\QSSDebugWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -1,7 +1,7 @@
 #include <QtWidgets/QApplication>
 #include "AMyWidget.h"
 #include "CustomToolbars.h"
-
+#include "Dialog/QSSDebugWidget.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,6 +9,9 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     AMyWidget w;
     w.show();
+
+    QSSDebugWidget debugWidget;
+    debugWidget.show();
 
     return a.exec();
 }
